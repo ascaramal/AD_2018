@@ -7,17 +7,17 @@ import dao.ClienteDAO;
 import dto.ClienteDTO;
 import negocio.Cliente;
 
-public class Controlador {
+public class ControladorTest {
 
-	private static Controlador instancia;
+	private static ControladorTest instancia;
 
-	private Controlador() {
+	private ControladorTest() {
 		
 	}
 	
-	public static Controlador getInstancia(){
+	public static ControladorTest getInstancia(){
 		if(instancia == null)
-			instancia = new Controlador();
+			instancia = new ControladorTest();
 		return instancia;
 	}
 	

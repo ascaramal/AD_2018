@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import controlador.Controlador;
+import controlador.ControladorTest;
 import controlador.ControladorDespacho;
 import dto.ClienteDTO;
 import interfaces.INegocio;
@@ -37,6 +37,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 
 	@Override
 	public List<ClienteDTO> getClientes() throws RemoteException {
-		return Controlador.getInstancia().getClientes();
+		return ControladorTest.getInstancia().getClientes();
 	}
 }
