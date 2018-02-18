@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ClienteEntity;
-import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Cliente;
 
@@ -39,23 +38,6 @@ public class ClienteDAO {
 		return resultado;
 	}
 	
-	//Buscar cliente por nroCliente
-	public Cliente recuperarCliente(Cliente cliente) throws DAOException {
-		try {
-			Session session = sf.openSession();
-			session.beginTransaction();
-			ClienteEntity clienteE = (ClienteEntity) session
-					.createQuery("from ClienteEntity c where c.nroCliente = :nroCliente ")
-					.setParameter("nroCliente", cliente.getNroCliente()).uniqueResult();
-			session.getTransaction().commit();
-			session.close();
-				
-		} catch (Exception e) {
-			System.out.println("Error ClienteDAO.recuperarCliente");
-		}
-		return null;
-	}
-	
 	
 	public Cliente toNegocio(ClienteEntity cliente) {
 		Cliente res = new Cliente();
@@ -67,7 +49,8 @@ public class ClienteDAO {
 		res.setTelefono(cliente.getTelefono());
 		res.setCuit(cliente.getCuit());
 		res.setCondIVA(cliente.getCondIVA());
-		res.setNroCtaCte(cliente.getNroCtaCte().toNegocio());
+		res.setLimiteDeCredito(cliente.getLimiteDeCredito());
+		res.setSaldo(cliente.getSaldo());
 		
 		return res;
 	}

@@ -1,14 +1,16 @@
 package entities;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
-public class ArticuloEntity {
+public class ArticuloEntity implements Serializable {
 
+	private static final long serialVersionUID = -5575910136338372533L;
+	
 	private int nroArticulo;
 	private String codigoBarras;
-	private String tipo;
 	private String marca;
+	private String tipo;
 	private String descripcion;
 	private String presentacion;
 	private String tamano;
@@ -17,15 +19,23 @@ public class ArticuloEntity {
 	private List<LoteEntity> lotes;
 	private StockEntity stock;
 	private List<UbicacionEntity> ubicaciones;
-	private Date fechaVto;
+	private int cantReservada;
 	private float precio;
+	private List<MovimientoEntity> movimientos;
 	
-	public ArticuloEntity(int nroArticulo, String codigoBarras, String tipo, String marca, String descripcion, String presentacion,
-			String tamano, int unidad, int cantidadAComprar, List<LoteEntity> lotes, StockEntity stock, 
-			List<UbicacionEntity> ubicaciones, Date fechaVto, float precio) {
+	public ArticuloEntity() {
+		
+	}
+	
+	public ArticuloEntity(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
+			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteEntity> lotes,
+			StockEntity stock, List<UbicacionEntity> ubicaciones, int cantReservada, float precio,
+			List<MovimientoEntity> movimientos) {
+		super();
 		this.nroArticulo = nroArticulo;
 		this.codigoBarras = codigoBarras;
 		this.marca = marca;
+		this.tipo = tipo;
 		this.descripcion = descripcion;
 		this.presentacion = presentacion;
 		this.tamano = tamano;
@@ -33,122 +43,131 @@ public class ArticuloEntity {
 		this.cantidadAComprar = cantidadAComprar;
 		this.lotes = lotes;
 		this.stock = stock;
-		this.tipo = tipo;
 		this.ubicaciones = ubicaciones;
-		this.fechaVto = fechaVto;
+		this.cantReservada = cantReservada;
 		this.precio = precio;
+		this.movimientos = movimientos;
 	}
 
 	public int getNroArticulo() {
 		return nroArticulo;
 	}
-	
+
 	public void setNroArticulo(int nroArticulo) {
 		this.nroArticulo = nroArticulo;
 	}
-	
+
 	public String getCodigoBarras() {
 		return codigoBarras;
 	}
-	
+
 	public void setCodigoBarras(String codigoBarras) {
 		this.codigoBarras = codigoBarras;
 	}
-	
+
 	public String getMarca() {
 		return marca;
 	}
-	
+
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	
-	public String getDescripcion() {
-		return descripcion;
-	}
-	
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	public String getPresentacion() {
-		return presentacion;
-	}
-	
-	public void setPresentacion(String presentacion) {
-		this.presentacion = presentacion;
-	}
-	
-	public String getTamano() {
-		return tamano;
-	}
-	
-	public void setTamano(String tamano) {
-		this.tamano = tamano;
-	}
-	
-	public int getUnidad() {
-		return unidad;
-	}
-	
-	public void setUnidad(int unidad) {
-		this.unidad = unidad;
-	}
-	
-	public int getCantidadAComprar() {
-		return cantidadAComprar;
-	}
-	
-	public void setCantidadAComprar(int cantidadAComprar) {
-		this.cantidadAComprar = cantidadAComprar;
-	}
-	
-	public List<LoteEntity> getLotes() {
-		return lotes;
-	}
-	
-	public void setLotes(List<LoteEntity> lotes) {
-		this.lotes = lotes;
-	}
-	
-	public StockEntity getStock() {
-		return stock;
-	}
-	
-	public void setStock(StockEntity stock) {
-		this.stock = stock;
-	}
-	
+
 	public String getTipo() {
 		return tipo;
 	}
-	
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getPresentacion() {
+		return presentacion;
+	}
+
+	public void setPresentacion(String presentacion) {
+		this.presentacion = presentacion;
+	}
+
+	public String getTamano() {
+		return tamano;
+	}
+
+	public void setTamano(String tamano) {
+		this.tamano = tamano;
+	}
+
+	public int getUnidad() {
+		return unidad;
+	}
+
+	public void setUnidad(int unidad) {
+		this.unidad = unidad;
+	}
+
+	public int getCantidadAComprar() {
+		return cantidadAComprar;
+	}
+
+	public void setCantidadAComprar(int cantidadAComprar) {
+		this.cantidadAComprar = cantidadAComprar;
+	}
+
+	public List<LoteEntity> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<LoteEntity> lotes) {
+		this.lotes = lotes;
+	}
+
+	public StockEntity getStock() {
+		return stock;
+	}
+
+	public void setStock(StockEntity stock) {
+		this.stock = stock;
+	}
+
 	public List<UbicacionEntity> getUbicaciones() {
 		return ubicaciones;
 	}
-	
+
 	public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
 		this.ubicaciones = ubicaciones;
 	}
-	
-	public Date getFechaVto() {
-		return fechaVto;
+
+	public int getCantReservada() {
+		return cantReservada;
 	}
-	
-	public void setFechaVto(Date fechaVto) {
-		this.fechaVto = fechaVto;
+
+	public void setCantReservada(int cantReservada) {
+		this.cantReservada = cantReservada;
 	}
-	
+
 	public float getPrecio() {
 		return precio;
 	}
-	
+
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
+
+	public List<MovimientoEntity> getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(List<MovimientoEntity> movimientos) {
+		this.movimientos = movimientos;
+	}
+	
 	
 }

@@ -1,14 +1,14 @@
 package dto;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
+
 
 
 public class ArticuloDTO implements Serializable {
 
-	private static final long serialVersionUID = -1228576285913548205L;
-	
+	private static final long serialVersionUID = -6053174672137577622L;
+
 	private int nroArticulo;
 	private String codigoBarras;
 	private String marca;
@@ -21,14 +21,17 @@ public class ArticuloDTO implements Serializable {
 	private List<LoteDTO> lotes;
 	private StockDTO stock;
 	private List<UbicacionDTO> ubicaciones;
-	private Date fechaVto;
+	private int cantReservada;
 	private float precio;
+	private List<MovimientoDTO> movimientos;
 	
-	public ArticuloDTO() { }
-
+	public ArticuloDTO() {
+		
+	}
+	
 	public ArticuloDTO(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
 			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteDTO> lotes, StockDTO stock,
-			List<UbicacionDTO> ubicaciones, Date fechaVto, float precio) {
+			List<UbicacionDTO> ubicaciones, int cantReservada, float precio, List<MovimientoDTO> movimientos) {
 		this.nroArticulo = nroArticulo;
 		this.codigoBarras = codigoBarras;
 		this.marca = marca;
@@ -41,8 +44,9 @@ public class ArticuloDTO implements Serializable {
 		this.lotes = lotes;
 		this.stock = stock;
 		this.ubicaciones = ubicaciones;
-		this.fechaVto = fechaVto;
+		this.cantReservada = cantReservada;
 		this.precio = precio;
+		this.movimientos = movimientos;
 	}
 
 	public int getNroArticulo() {
@@ -141,12 +145,12 @@ public class ArticuloDTO implements Serializable {
 		this.ubicaciones = ubicaciones;
 	}
 
-	public Date getFechaVto() {
-		return fechaVto;
+	public int getCantReservada() {
+		return cantReservada;
 	}
 
-	public void setFechaVto(Date fechaVto) {
-		this.fechaVto = fechaVto;
+	public void setCantReservada(int cantReservada) {
+		this.cantReservada = cantReservada;
 	}
 
 	public float getPrecio() {
@@ -157,15 +161,13 @@ public class ArticuloDTO implements Serializable {
 		this.precio = precio;
 	}
 
-	@Override
-	public String toString() {
-		return "ArticuloDTO [nroArticulo=" + nroArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
-				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
-				+ tamano + ", unidad=" + unidad + ", cantidadAComprar=" + cantidadAComprar + ", lotes=" + lotes
-				+ ", stock=" + stock + ", ubicaciones=" + ubicaciones + ", fechaVto=" + fechaVto + ", precio=" + precio
-				+ "]";
+	public List<MovimientoDTO> getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(List<MovimientoDTO> movimientos) {
+		this.movimientos = movimientos;
 	}
 
 	
-		
 }

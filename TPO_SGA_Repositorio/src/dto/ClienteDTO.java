@@ -15,14 +15,13 @@ public class ClienteDTO implements Serializable {
 	private String telefono;
 	private String cuit;
 	private String condIVA;
-	private CuentaCorrienteDTO nroCtaCte;
+	private float limiteDeCredito;
+	private float saldo;
 	
 	public ClienteDTO() { }
 
-
-	public ClienteDTO(int nroCliente, String razonSocial, String direccion, 
-			String localidad, int codPostal, String telefono, String cuit, String condIVA, 
-			CuentaCorrienteDTO nroCtaCte) {
+	public ClienteDTO(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
+			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
 		this.nroCliente = nroCliente;
 		this.razonSocial = razonSocial;
 		this.direccion = direccion;
@@ -31,7 +30,8 @@ public class ClienteDTO implements Serializable {
 		this.telefono = telefono;
 		this.cuit = cuit;
 		this.condIVA = condIVA;
-		this.nroCtaCte = nroCtaCte;
+		this.limiteDeCredito = limiteDeCredito;
+		this.saldo = saldo;
 	}
 
 	public int getNroCliente() {
@@ -100,21 +100,28 @@ public class ClienteDTO implements Serializable {
 		this.condIVA = condIVA;
 	}
 
+	public float getLimiteDeCredito() {
+		return limiteDeCredito;
+	}
 
-	public CuentaCorrienteDTO getNroCtaCte() {
-		return nroCtaCte;
+	public void setLimiteDeCredito(float limiteDeCredito) {
+		this.limiteDeCredito = limiteDeCredito;
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
 	}
 
 
-	public void setNroCtaCte(CuentaCorrienteDTO nroCtaCte) {
-		this.nroCtaCte = nroCtaCte;
-	}
-	
 	@Override
 	public String toString() {
-		return "Cliente [" + nroCliente + " - " + razonSocial + " - " + direccion
-				+ " - " + localidad + " - " + codPostal + " - " + telefono + " - " + cuit
-				+ " - " + condIVA + " - " + nroCtaCte.toString() + "]";
+		return "ClienteDTO [nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
+				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
+				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
 	}
 
 }

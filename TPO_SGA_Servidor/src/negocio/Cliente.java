@@ -1,7 +1,6 @@
 package negocio;
 
 import dto.ClienteDTO;
-import negocio.CuentaCorriente;
 
 public class Cliente {
 
@@ -13,15 +12,16 @@ public class Cliente {
 	private String telefono;
 	private String cuit;
 	private String condIVA;
-	private CuentaCorriente nroCtaCte;
+	private float limiteDeCredito;
+	private float saldo;
 
 	public Cliente() {
 		
 	}
-	
-	public Cliente(int nroCliente, String razonSocial, String direccion, 
-			String localidad, int codPostal, String telefono, String cuit, String condIVA, 
-			CuentaCorriente nroCtaCte) {
+
+	public Cliente(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
+			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
+		super();
 		this.nroCliente = nroCliente;
 		this.razonSocial = razonSocial;
 		this.direccion = direccion;
@@ -30,84 +30,95 @@ public class Cliente {
 		this.telefono = telefono;
 		this.cuit = cuit;
 		this.condIVA = condIVA;
-		this.nroCtaCte = nroCtaCte;
+		this.limiteDeCredito = limiteDeCredito;
+		this.saldo = saldo;
 	}
+
+
 	
 	public int getNroCliente() {
 		return nroCliente;
 	}
-	
+
 	public void setNroCliente(int nroCliente) {
 		this.nroCliente = nroCliente;
 	}
-	
+
 	public String getRazonSocial() {
 		return razonSocial;
 	}
-	
+
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
 	}
-	
+
 	public String getDireccion() {
 		return direccion;
 	}
-	
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	
+
 	public String getLocalidad() {
 		return localidad;
 	}
-	
+
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
-	
+
 	public int getCodPostal() {
 		return codPostal;
 	}
-	
+
 	public void setCodPostal(int codPostal) {
 		this.codPostal = codPostal;
 	}
-	
+
 	public String getTelefono() {
 		return telefono;
 	}
-	
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
+
 	public String getCuit() {
 		return cuit;
 	}
-	
+
 	public void setCuit(String cuit) {
 		this.cuit = cuit;
 	}
-	
+
 	public String getCondIVA() {
 		return condIVA;
 	}
-	
+
 	public void setCondIVA(String condIVA) {
 		this.condIVA = condIVA;
 	}
-	
-	public CuentaCorriente getNroCtaCte() {
-		return nroCtaCte;
+
+	public float getLimiteDeCredito() {
+		return limiteDeCredito;
 	}
-	
-	public void setNroCtaCte(CuentaCorriente nroCtaCte) {
-		this.nroCtaCte = nroCtaCte;
+
+	public void setLimiteDeCredito(float limiteDeCredito) {
+		this.limiteDeCredito = limiteDeCredito;
 	}
-	
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+
 	public ClienteDTO toDTO() {
 		ClienteDTO resultado = new ClienteDTO(nroCliente, razonSocial, direccion, localidad, 
-				codPostal, telefono, cuit, condIVA, nroCtaCte.toDTO());
+				codPostal, telefono, cuit, condIVA, limiteDeCredito, saldo);
 		return resultado; 
 	}
 
