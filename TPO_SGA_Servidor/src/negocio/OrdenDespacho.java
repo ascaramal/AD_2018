@@ -4,31 +4,23 @@ import java.util.List;
 
 public class OrdenDespacho extends Orden {
 
-	private int nroOrdenDespacho;
-	private Pedido pedido;
+	private int numeroPedido;
+
 	
-	
-	public OrdenDespacho(int nroOrden, List<ItemOrden> itemsOrden, int nroOrdenDespacho, Pedido pedido) {
+	public OrdenDespacho(int nroOrden, List<ItemOrden> itemsOrden, int numeroPedido) {
 		super(nroOrden, itemsOrden);
-		this.nroOrdenDespacho = nroOrdenDespacho;
-		this.pedido = pedido;
+		this.numeroPedido = numeroPedido;
 	}
 
-	public int getNroOrdenDespacho() {
-		return nroOrdenDespacho;
+	public int getNumeroPedido() {
+		return numeroPedido;
+	}
+
+	public void setNumeroPedido(int numeroPedido) {
+		this.numeroPedido = numeroPedido;
 	}
 	
-	public void setNroOrdenDespacho(int nroOrdenDespacho) {
-		this.nroOrdenDespacho = nroOrdenDespacho;
-	}
 	
-	public Pedido getPedido() {
-		return pedido;
-	}
-	
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
 	
 	
 }

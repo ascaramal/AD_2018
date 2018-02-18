@@ -4,25 +4,26 @@ import java.util.List;
 
 public class OrdenAlmacenamientoDTO extends OrdenDTO {
 
-	
-	private OrdenDeCompraDTO ordenDeCompra;
+	private int numeroOC;
 
-	public OrdenAlmacenamientoDTO(int nroOrden, List<ItemOrdenDTO> itemsOrden, OrdenDeCompraDTO ordenDeCompra) {
+	public OrdenAlmacenamientoDTO(int nroOrden, List<ItemOrdenDTO> itemsOrden, int numeroOC) {
 		super(nroOrden, itemsOrden);
-		this.ordenDeCompra = ordenDeCompra;
+		this.numeroOC = numeroOC;
 	}
 
-	public OrdenDeCompraDTO getOrdenDeCompra() {
-		return ordenDeCompra;
+	public int getNumeroOC() {
+		return numeroOC;
 	}
 
-	public void setOrdenDeCompra(OrdenDeCompraDTO ordenDeCompra) {
-		this.ordenDeCompra = ordenDeCompra;
+	public void setNumeroOC(int numeroOC) {
+		this.numeroOC = numeroOC;
 	}
 
 	@Override
 	public String toString() {
-		return "OrdenAlmacenamientoDTO [ordenDeCompra=" + ordenDeCompra + "]";
+		return "OrdenAlmacenamientoDTO [numeroOC=" + numeroOC + "]";
 	}
+
+	
 	
 }

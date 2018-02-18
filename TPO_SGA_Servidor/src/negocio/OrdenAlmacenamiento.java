@@ -4,21 +4,20 @@ import java.util.List;
 
 public class OrdenAlmacenamiento extends Orden {
 
-	private OrdenDeCompra ordenDeCompra;
+	private int numeroOC;
 
-	public OrdenAlmacenamiento(int nroOrden, List<ItemOrden> itemsOrden, OrdenDeCompra ordenDeCompra) {
+	public OrdenAlmacenamiento(int nroOrden, List<ItemOrden> itemsOrden, int numeroOC) {
 		super(nroOrden, itemsOrden);
-		this.ordenDeCompra = ordenDeCompra;
+		this.numeroOC = numeroOC;
 	}
 
-	public OrdenDeCompra getOrdenDeCompra() {
-		return ordenDeCompra;
+	public int getNumeroOC() {
+		return numeroOC;
 	}
 
-	public void setOrdenDeCompra(OrdenDeCompra ordenDeCompra) {
-		this.ordenDeCompra = ordenDeCompra;
+	public void setNumeroOC(int numeroOC) {
+		this.numeroOC = numeroOC;
 	}
-	
 	
 	
 }

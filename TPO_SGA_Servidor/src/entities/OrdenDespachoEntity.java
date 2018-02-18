@@ -1,12 +1,16 @@
-package dto;
+package entities;
 
 import java.util.List;
 
-public class OrdenDespachoDTO extends OrdenDTO {
+public class OrdenDespachoEntity extends OrdenEntity {
 
 	private int numeroPedido;
 
-	public OrdenDespachoDTO(int nroOrden, List<ItemOrdenDTO> itemsOrden, int numeroPedido) {
+	public OrdenDespachoEntity() {
+		
+	}
+	
+	public OrdenDespachoEntity(int nroOrden, List<ItemOrdenEntity> itemsOrden, int numeroPedido) {
 		super(nroOrden, itemsOrden);
 		this.numeroPedido = numeroPedido;
 	}
@@ -18,13 +22,6 @@ public class OrdenDespachoDTO extends OrdenDTO {
 	public void setNumeroPedido(int numeroPedido) {
 		this.numeroPedido = numeroPedido;
 	}
-
-	@Override
-	public String toString() {
-		return "OrdenDespachoDTO [numeroPedido=" + numeroPedido + "]";
-	}
-	
-	
 	
 	
 }
