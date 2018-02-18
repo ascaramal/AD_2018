@@ -1,26 +1,86 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class FacturaDTO {
+public class FacturaDTO implements Serializable{
 	
+	private static final long serialVersionUID = 5065139918157523159L;
+	
+	private int numero;
+	private int prefijo;
+	private Date fechaEmision;
+	private ClienteDTO cliente;
+	private float total;
 	private List<ItemFacturaDTO> itemsFactura = new ArrayList<ItemFacturaDTO>();
 	
+	public FacturaDTO(int numero, int prefijo, Date fechaEmision, ClienteDTO cliente, float total,
+			List<ItemFacturaDTO> itemsFactura) {
+		super();
+		this.numero = numero;
+		this.prefijo = prefijo;
+		this.fechaEmision = fechaEmision;
+		this.cliente = cliente;
+		this.total = total;
+		this.itemsFactura = itemsFactura;
+	}
 	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getPrefijo() {
+		return prefijo;
+	}
+
+	public void setPrefijo(int prefijo) {
+		this.prefijo = prefijo;
+	}
+
+	public Date getFechaEmision() {
+		return fechaEmision;
+	}
+
+	public void setFechaEmision(Date fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+
+	public ClienteDTO getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(ClienteDTO cliente) {
+		this.cliente = cliente;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
 	public List<ItemFacturaDTO> getItemsFactura() {
 		return itemsFactura;
 	}
-	
+
 	public void setItemsFactura(List<ItemFacturaDTO> itemsFactura) {
 		this.itemsFactura = itemsFactura;
 	}
 
-	
+
 	
 	@Override
 	public String toString() {
-		return "FacturaDTO [itemsFactura=" + itemsFactura + "]";
+		return "FacturaDTO [numero=" + numero + ", prefijo=" + prefijo + ", fechaEmision=" + fechaEmision + ", cliente="
+				+ cliente + ", total=" + total + ", itemsFactura=" + itemsFactura + "]";
 	}
 
 	//metodos 

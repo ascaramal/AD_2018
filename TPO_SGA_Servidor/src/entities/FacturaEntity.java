@@ -1,10 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FacturaEntity {
+public class FacturaEntity implements Serializable {
+
+	private static final long serialVersionUID = -6936396874193303401L;
 
 	private int numero;
 	private int prefijo;
