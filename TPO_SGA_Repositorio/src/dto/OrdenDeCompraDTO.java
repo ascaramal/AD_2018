@@ -3,19 +3,52 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+import enumerations.EstadoOC;
+
 public class OrdenDeCompraDTO implements Serializable {
 
-	private static final long serialVersionUID = -8121523449254283620L;
+	private static final long serialVersionUID = -129116213862222038L;
 	
 	private int nroOrdenDeCompra;
+	private int nroProveedor;
+	private EstadoOC estado;
 	private List<ItemOrdenDeCompraDTO> itemsOC;
 	
+	public void imprimirOrdenDeCompra() { 
+		
+	}
+
+	public OrdenDeCompraDTO(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado,
+			List<ItemOrdenDeCompraDTO> itemsOC) {
+		super();
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
+		this.nroProveedor = nroProveedor;
+		this.estado = estado;
+		this.itemsOC = itemsOC;
+	}
+
 	public int getNroOrdenDeCompra() {
 		return nroOrdenDeCompra;
 	}
-	
+
 	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
 		this.nroOrdenDeCompra = nroOrdenDeCompra;
+	}
+
+	public int getNroProveedor() {
+		return nroProveedor;
+	}
+
+	public void setNroProveedor(int nroProveedor) {
+		this.nroProveedor = nroProveedor;
+	}
+
+	public EstadoOC getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoOC estado) {
+		this.estado = estado;
 	}
 
 	public List<ItemOrdenDeCompraDTO> getItemsOC() {
@@ -26,15 +59,6 @@ public class OrdenDeCompraDTO implements Serializable {
 		this.itemsOC = itemsOC;
 	}
 
-	
-	public void imprimirOrdenDeCompra() { 
-		
-	}
-
-	@Override
-	public String toString() {
-		return "OrdenDeCompraDTO [nroOrdenDeCompra=" + nroOrdenDeCompra + ", itemsOC=" + itemsOC + "]";
-	}
 	
 	
 	
