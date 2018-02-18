@@ -2,28 +2,19 @@ package negocio;
 
 import java.util.Date;
 
+
 public class Lote {
 	
-	private int nroLote;
 	private int codLote;
 	private Date fechaVtoLote;
 	private String proveedor;
+	private Ubicacion ubicacion;
 	
-	
-	public Lote(int nroLote, int codLote, Date fechaVtoLote, String proveedor) {
-		super();
-		this.nroLote = nroLote;
+	public Lote(int codLote, Date fechaVtoLote, String proveedor, Ubicacion ubicacion) {
 		this.codLote = codLote;
 		this.fechaVtoLote = fechaVtoLote;
 		this.proveedor = proveedor;
-	}
-
-	public int getNroLote() {
-		return nroLote;
-	}
-
-	public void setNroLote(int nroLote) {
-		this.nroLote = nroLote;
+		this.ubicacion = ubicacion;
 	}
 
 	public int getCodLote() {
@@ -33,15 +24,15 @@ public class Lote {
 	public void setCodLote(int codLote) {
 		this.codLote = codLote;
 	}
-	
+
 	public Date getFechaVtoLote() {
 		return fechaVtoLote;
 	}
-	
+
 	public void setFechaVtoLote(Date fechaVtoLote) {
 		this.fechaVtoLote = fechaVtoLote;
 	}
-	
+
 	public String getProveedor() {
 		return proveedor;
 	}
@@ -50,5 +41,12 @@ public class Lote {
 		this.proveedor = proveedor;
 	}
 	
-	
+	public Ubicacion getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(Ubicacion ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
 }

@@ -7,6 +7,10 @@ public abstract class OrdenEntity {
 	protected int nroOrden;
 	protected List<ItemOrdenEntity> itemsOrden;
 	
+	public OrdenEntity() {
+		
+	}
+	
 	public OrdenEntity(int nroOrden, List<ItemOrdenEntity> itemsOrden) {
 		this.nroOrden = nroOrden;
 		this.itemsOrden = itemsOrden;

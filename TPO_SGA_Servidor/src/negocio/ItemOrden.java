@@ -7,7 +7,6 @@ public class ItemOrden {
 	private Ubicacion ubicacion;
 	
 	public ItemOrden(int nroItemOrden, Articulo articulo, Ubicacion ubicacion) {
-		super();
 		this.nroItemOrden = nroItemOrden;
 		this.articulo = articulo;
 		this.ubicacion = ubicacion;

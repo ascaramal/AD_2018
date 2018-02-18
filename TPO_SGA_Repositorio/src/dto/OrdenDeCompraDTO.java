@@ -59,7 +59,11 @@ public class OrdenDeCompraDTO implements Serializable {
 		this.itemsOC = itemsOC;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "OrdenDeCompraDTO [nroOrdenDeCompra=" + nroOrdenDeCompra + ", nroProveedor=" + nroProveedor + ", estado="
+				+ estado + ", itemsOC=" + itemsOC + "]";
+	}
+
 	
 }

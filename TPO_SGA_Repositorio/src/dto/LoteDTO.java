@@ -3,31 +3,23 @@ package dto;
 import java.io.Serializable;
 import java.util.Date;
 
+
 public class LoteDTO implements Serializable {
 	
 	private static final long serialVersionUID = -2582825385773550673L;
 	
-	private int nroLote;
 	private int codLote;
 	private Date fechaVtoLote;
 	private String proveedor;
+	private UbicacionDTO ubicacion;
 	
-	
-	public LoteDTO(int nroLote, int codLote, Date fechaVtoLote, String proveedor) {
-		this.nroLote = nroLote;
+	public LoteDTO(int codLote, Date fechaVtoLote, String proveedor, dto.UbicacionDTO ubicacion) {
 		this.codLote = codLote;
 		this.fechaVtoLote = fechaVtoLote;
 		this.proveedor = proveedor;
+		this.ubicacion = ubicacion;
 	}
-
-	public int getNroLote() {
-		return nroLote;
-	}
-
-	public void setNroLote(int nroLote) {
-		this.nroLote = nroLote;
-	}
-
+	
 	public int getCodLote() {
 		return codLote;
 	}
@@ -51,12 +43,18 @@ public class LoteDTO implements Serializable {
 	public void setProveedor(String proveedor) {
 		this.proveedor = proveedor;
 	}
-
-	@Override
-	public String toString() {
-		return "LoteDTO [nroLote=" + nroLote + ", codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote
-				+ ", proveedor=" + proveedor + "]";
+	
+	public UbicacionDTO getUbicacion() {
+		return ubicacion;
 	}
 	
+	public void setUbicacion(UbicacionDTO ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+	
+	@Override
+	public String toString() {
+		return "LoteDTO [codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote + ", proveedor=" + proveedor + "]";
+	}
 	
 }

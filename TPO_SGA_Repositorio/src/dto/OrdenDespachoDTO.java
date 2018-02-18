@@ -4,8 +4,6 @@ import java.util.List;
 
 public class OrdenDespachoDTO extends OrdenDTO {
 
-	private static final long serialVersionUID = -6693312853777264175L;
-
 	private int nroOrdenDespacho;
 	private PedidoDTO pedido;
 	

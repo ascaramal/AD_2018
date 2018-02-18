@@ -11,7 +11,6 @@ public class ItemOrdenDTO implements Serializable{
 	private UbicacionDTO ubicacion;
 	
 	public ItemOrdenDTO(int nroItemOrden, ArticuloDTO articulo, UbicacionDTO ubicacion) {
-		super();
 		this.nroItemOrden = nroItemOrden;
 		this.articulo = articulo;
 		this.ubicacion = ubicacion;

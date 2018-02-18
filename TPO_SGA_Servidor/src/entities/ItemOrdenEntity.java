@@ -1,13 +1,21 @@
 package entities;
 
-public class ItemOrdenEntity {
+import java.io.Serializable;
+
+
+public class ItemOrdenEntity implements Serializable{
+
+	private static final long serialVersionUID = -4831683718141581352L;
 	
 	private int nroItemOrden;
 	private ArticuloEntity articulo;
 	private UbicacionEntity ubicacion;
 	
+	public ItemOrdenEntity() {
+		 
+	}
+	
 	public ItemOrdenEntity(int nroItemOrden, ArticuloEntity articulo, UbicacionEntity ubicacion) {
-		super();
 		this.nroItemOrden = nroItemOrden;
 		this.articulo = articulo;
 		this.ubicacion = ubicacion;

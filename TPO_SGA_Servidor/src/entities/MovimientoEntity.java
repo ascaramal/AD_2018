@@ -1,52 +1,93 @@
 package entities;
 
-public abstract class MovimientoEntity {
+import java.io.Serializable;
+
+
+public class MovimientoEntity implements Serializable {
+
+	private static final long serialVersionUID = -461116227869749125L;
 	
-	protected int nroMovimiento;
-	protected String tipoMovimiento;
-	protected OrdenDeCompraEntity ordenDeCompra;
-	protected PedidoEntity pedido;
+	private int nroMovimiento;
+	private String tipoMovimiento;
+	private int nroPedido;
+	private int nroOCompra;
+	private EmpleadoEntity responsable;
+	private String motivoAjuste;
+	private int cant;
 	
-	
-	public MovimientoEntity(int nroMovimiento, String tipoMovimiento, OrdenDeCompraEntity ordenDeCompra, PedidoEntity pedido) {
+	public MovimientoEntity() {
+		
+	}
+
+	public MovimientoEntity(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOCompra,
+			EmpleadoEntity responsable, String motivoAjuste, int cant) {
+		super();
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
-		this.ordenDeCompra = ordenDeCompra;
-		this.pedido = pedido;
+		this.nroPedido = nroPedido;
+		this.nroOCompra = nroOCompra;
+		this.responsable = responsable;
+		this.motivoAjuste = motivoAjuste;
+		this.cant = cant;
 	}
 
 	public int getNroMovimiento() {
 		return nroMovimiento;
 	}
-	
+
 	public void setNroMovimiento(int nroMovimiento) {
 		this.nroMovimiento = nroMovimiento;
 	}
-	
+
 	public String getTipoMovimiento() {
 		return tipoMovimiento;
 	}
-	
+
 	public void setTipoMovimiento(String tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
 	}
-	
-	public OrdenDeCompraEntity getOrdenDeCompra() {
-		return ordenDeCompra;
+
+	public int getNroPedido() {
+		return nroPedido;
 	}
-	
-	public void setOrdenDeCompra(OrdenDeCompraEntity ordenDeCompra) {
-		this.ordenDeCompra = ordenDeCompra;
+
+	public void setNroPedido(int nroPedido) {
+		this.nroPedido = nroPedido;
 	}
-	
-	public PedidoEntity getPedido() {
-		return pedido;
+
+	public int getNroOCompra() {
+		return nroOCompra;
 	}
-	
-	public void setPedido(PedidoEntity pedido) {
-		this.pedido = pedido;
+
+	public void setNroOCompra(int nroOCompra) {
+		this.nroOCompra = nroOCompra;
 	}
-	
+
+	public EmpleadoEntity getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(EmpleadoEntity responsable) {
+		this.responsable = responsable;
+	}
+
+	public String getMotivoAjuste() {
+		return motivoAjuste;
+	}
+
+	public void setMotivoAjuste(String motivoAjuste) {
+		this.motivoAjuste = motivoAjuste;
+	}
+
+	public int getCant() {
+		return cant;
+	}
+
+	public void setCant(int cant) {
+		this.cant = cant;
+	}
+
+
 	
 	public void agregarMovimiento(){
 		
