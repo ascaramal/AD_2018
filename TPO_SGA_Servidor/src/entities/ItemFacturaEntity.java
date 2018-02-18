@@ -1,20 +1,19 @@
 package entities;
 
-import java.util.List;
-import negocio.Articulo;
+
 
 public class ItemFacturaEntity {
 
 	private int nroItemFactura;
 	private int cantidad;
-	private List<Articulo> articulos;
+	private ArticuloEntity articulo;
 	private float precio;
 
 
-	public ItemFacturaEntity(int nroItemFactura, int cantidad, List<Articulo> articulos, float precio) {
+	public ItemFacturaEntity(int nroItemFactura, int cantidad, ArticuloEntity articulo, float precio) {
 		this.nroItemFactura = nroItemFactura;
 		this.cantidad = cantidad;
-		this.articulos = articulos;
+		this.articulo = articulo;
 		this.precio = precio;
 	}
 
@@ -29,17 +28,17 @@ public class ItemFacturaEntity {
 	public int getCantidad() {
 		return cantidad;
 	}
-	
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	public List<Articulo> getArticulos() {
-		return articulos;
+	public ArticuloEntity getArticulo() {
+		return articulo;
 	}
 
-	public void setArticulos(List<Articulo> articulos) {
-		this.articulos = articulos;
+	public void setArticulo(ArticuloEntity articulo) {
+		this.articulo = articulo;
 	}
 
 	public float getPrecio() {
@@ -49,8 +48,8 @@ public class ItemFacturaEntity {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	
-	
+
+
 	//metodos
     public float getSubtotal() {
         return this.precio * this.cantidad;

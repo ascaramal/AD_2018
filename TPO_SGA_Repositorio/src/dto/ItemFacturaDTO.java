@@ -1,19 +1,18 @@
 package dto;
 
-import java.util.List;
 
 public class ItemFacturaDTO {
 
 	private int nroItemFactura;
 	private int cantidad;
-	private List<ArticuloDTO> articulos;
+	private ArticuloDTO articulo;
 	private float precio;
 
 
-	public ItemFacturaDTO(int nroItemFactura, int cantidad, List<ArticuloDTO> articulos, float precio) {
+	public ItemFacturaDTO(int nroItemFactura, int cantidad, ArticuloDTO articulo, float precio) {
 		this.nroItemFactura = nroItemFactura;
 		this.cantidad = cantidad;
-		this.articulos = articulos;
+		this.articulo = articulo;
 		this.precio = precio;
 	}
 
@@ -28,17 +27,17 @@ public class ItemFacturaDTO {
 	public int getCantidad() {
 		return cantidad;
 	}
-	
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	public List<ArticuloDTO> getArticulos() {
-		return articulos;
+	public ArticuloDTO getArticulo() {
+		return articulo;
 	}
 
-	public void setArticulos(List<ArticuloDTO> articulos) {
-		this.articulos = articulos;
+	public void setArticulo(ArticuloDTO articulo) {
+		this.articulo = articulo;
 	}
 
 	public float getPrecio() {
@@ -48,13 +47,12 @@ public class ItemFacturaDTO {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "ItemFacturaDTO [nroItemFactura=" + nroItemFactura + ", cantidad=" + cantidad + ", articulos="
-				+ articulos + ", precio=" + precio + "]";
+		return "ItemFacturaDTO [nroItemFactura=" + nroItemFactura + ", cantidad=" + cantidad + ", articulo=" + articulo
+				+ ", precio=" + precio + "]";
 	}
 
 	//metodos

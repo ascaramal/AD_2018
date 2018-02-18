@@ -2,10 +2,10 @@ package entities;
 
 import java.util.List;
 
-public class OrdenDeCompra {
+public class OrdenDeCompraEntity {
 	
 	private int nroOrdenDeCompra;
-	private List<ItemOrdenDeCompra> itemsOC;
+	private List<ItemOrdenDeCompraEntity> itemsOC;
 	
 	public int getNroOrdenDeCompra() {
 		return nroOrdenDeCompra;
@@ -15,11 +15,11 @@ public class OrdenDeCompra {
 		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 
-	public List<ItemOrdenDeCompra> getItemsOC() {
+	public List<ItemOrdenDeCompraEntity> getItemsOC() {
 		return itemsOC;
 	}
 
-	public void setItemsOC(List<ItemOrdenDeCompra> itemsOC) {
+	public void setItemsOC(List<ItemOrdenDeCompraEntity> itemsOC) {
 		this.itemsOC = itemsOC;
 	}
 

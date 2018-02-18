@@ -8,7 +8,7 @@ public class OrdenDeCompraDTO implements Serializable {
 	private static final long serialVersionUID = -8121523449254283620L;
 	
 	private int nroOrdenDeCompra;
-	private List<ItemOrdenDeCompra> itemsOC;
+	private List<ItemOrdenDeCompraDTO> itemsOC;
 	
 	public int getNroOrdenDeCompra() {
 		return nroOrdenDeCompra;
@@ -18,11 +18,11 @@ public class OrdenDeCompraDTO implements Serializable {
 		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 
-	public List<ItemOrdenDeCompra> getItemsOC() {
+	public List<ItemOrdenDeCompraDTO> getItemsOC() {
 		return itemsOC;
 	}
 
-	public void setItemsOC(List<ItemOrdenDeCompra> itemsOC) {
+	public void setItemsOC(List<ItemOrdenDeCompraDTO> itemsOC) {
 		this.itemsOC = itemsOC;
 	}
 

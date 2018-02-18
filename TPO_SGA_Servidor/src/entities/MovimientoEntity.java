@@ -4,11 +4,11 @@ public abstract class MovimientoEntity {
 	
 	protected int nroMovimiento;
 	protected String tipoMovimiento;
-	protected OrdenDeCompra ordenDeCompra;
+	protected OrdenDeCompraEntity ordenDeCompra;
 	protected PedidoEntity pedido;
 	
 	
-	public MovimientoEntity(int nroMovimiento, String tipoMovimiento, OrdenDeCompra ordenDeCompra, PedidoEntity pedido) {
+	public MovimientoEntity(int nroMovimiento, String tipoMovimiento, OrdenDeCompraEntity ordenDeCompra, PedidoEntity pedido) {
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
 		this.ordenDeCompra = ordenDeCompra;
@@ -31,11 +31,11 @@ public abstract class MovimientoEntity {
 		this.tipoMovimiento = tipoMovimiento;
 	}
 	
-	public OrdenDeCompra getOrdenDeCompra() {
+	public OrdenDeCompraEntity getOrdenDeCompra() {
 		return ordenDeCompra;
 	}
 	
-	public void setOrdenDeCompra(OrdenDeCompra ordenDeCompra) {
+	public void setOrdenDeCompra(OrdenDeCompraEntity ordenDeCompra) {
 		this.ordenDeCompra = ordenDeCompra;
 	}
 	

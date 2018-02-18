@@ -2,14 +2,18 @@ package dto;
 
 import java.io.Serializable;
 
-public class ItemOrdenDeCompra implements Serializable{
+public class ItemOrdenDeCompraDTO implements Serializable{
 
 	private static final long serialVersionUID = 2331798291360422676L;
 	
 	private int cantidad;
 	private ArticuloDTO articulo;
 	
-	public ItemOrdenDeCompra(int cantidad, ArticuloDTO articulo) {
+	public ItemOrdenDeCompraDTO() {
+		
+	}
+	
+	public ItemOrdenDeCompraDTO(int cantidad, ArticuloDTO articulo) {
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}

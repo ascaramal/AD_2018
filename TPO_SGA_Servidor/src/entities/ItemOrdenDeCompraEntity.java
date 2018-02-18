@@ -1,11 +1,15 @@
 package entities;
 
-public class ItemOrdenDeCompra {
+import java.io.Serializable;
+
+public class ItemOrdenDeCompraEntity implements Serializable {
+
+	private static final long serialVersionUID = -5799446753184265316L;
 
 	private int cantidad;
 	private ArticuloEntity articulo;
 	
-	public ItemOrdenDeCompra(int cantidad, ArticuloEntity articulo) {
+	public ItemOrdenDeCompraEntity(int cantidad, ArticuloEntity articulo) {
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}

@@ -1,20 +1,18 @@
 package negocio;
 
-import java.util.List;
 import negocio.Articulo;
 
 public class ItemFactura {
 
 	private int nroItemFactura;
 	private int cantidad;
-	private List<Articulo> articulos;
+	private Articulo articulo;
 	private float precio;
 
-
-	public ItemFactura(int nroItemFactura, int cantidad, List<Articulo> articulos, float precio) {
+	public ItemFactura(int nroItemFactura, int cantidad, Articulo articulo, float precio) {
 		this.nroItemFactura = nroItemFactura;
 		this.cantidad = cantidad;
-		this.articulos = articulos;
+		this.articulo = articulo;
 		this.precio = precio;
 	}
 
@@ -29,17 +27,17 @@ public class ItemFactura {
 	public int getCantidad() {
 		return cantidad;
 	}
-	
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	public List<Articulo> getArticulos() {
-		return articulos;
+	public Articulo getArticulo() {
+		return articulo;
 	}
 
-	public void setArticulos(List<Articulo> articulos) {
-		this.articulos = articulos;
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
 	}
 
 	public float getPrecio() {
@@ -49,12 +47,10 @@ public class ItemFactura {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	
-	
+
 	//metodos
     public float getSubtotal() {
         return this.precio * this.cantidad;
-    }
-	
+    }	
 	
 }

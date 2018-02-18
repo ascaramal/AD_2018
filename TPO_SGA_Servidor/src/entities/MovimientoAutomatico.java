@@ -4,7 +4,7 @@ public class MovimientoAutomatico extends MovimientoEntity {
 
 	private int nroPedido;
 	
-	public MovimientoAutomatico(int nroMovimiento, String tipoMovimiento, OrdenDeCompra ordenDeCompra, PedidoEntity pedido) {
+	public MovimientoAutomatico(int nroMovimiento, String tipoMovimiento, OrdenDeCompraEntity ordenDeCompra, PedidoEntity pedido) {
 		super(nroMovimiento, tipoMovimiento, ordenDeCompra, pedido);
 	}
 
