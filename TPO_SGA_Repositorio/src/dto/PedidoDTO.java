@@ -16,16 +16,18 @@ public class PedidoDTO implements Serializable {
 	private Date fechaGeneracion;
 	private Date fechaDespacho;
 	private List<ItemPedidoDTO> itemPedido;
+	private float total;
 	
 		
-	public PedidoDTO(int nroPedido, ClienteDTO cliente, EstadoPedido estadoPedido, Date fechaGeneracion, Date fechaDespacho,
-			List<ItemPedidoDTO> itemPedido) {
+	public PedidoDTO(int nroPedido, ClienteDTO cliente, EstadoPedido estadoPedido, Date fechaGeneracion,
+			Date fechaDespacho, List<ItemPedidoDTO> itemPedido, float total) {
 		this.nroPedido = nroPedido;
 		this.cliente = cliente;
 		this.estadoPedido = estadoPedido;
 		this.fechaGeneracion = fechaGeneracion;
 		this.fechaDespacho = fechaDespacho;
 		this.itemPedido = itemPedido;
+		this.total = total;
 	}
 
 	public int getNroPedido() {
@@ -77,11 +79,20 @@ public class PedidoDTO implements Serializable {
 		this.itemPedido = itemPedido;
 	}
 	
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
 	@Override
 	public String toString() {
 		return "PedidoDTO [nroPedido=" + nroPedido + ", cliente=" + cliente + ", estadoPedido=" + estadoPedido
 				+ ", fechaGeneracion=" + fechaGeneracion + ", fechaDespacho=" + fechaDespacho + ", itemPedido="
-				+ itemPedido + "]";
+				+ itemPedido + ", total=" + total + "]";
 	}
+	
 
 }

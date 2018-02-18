@@ -1,28 +1,37 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import enumerations.EstadoPedido;
 
-public class PedidoEntity {
+public class PedidoEntity implements Serializable {
 
+	private static final long serialVersionUID = -4407559481781381441L;
+	
 	private int nroPedido;
 	private ClienteEntity cliente;
 	private EstadoPedido estadoPedido;
 	private Date fechaGeneracion;
 	private Date fechaDespacho;
 	private List<ItemPedidoEntity> itemPedido;
+	private float total;
 	
+	public PedidoEntity() {
 		
-	public PedidoEntity(int nroPedido, ClienteEntity cliente, EstadoPedido estadoPedido, Date fechaGeneracion, Date fechaDespacho,
-			List<ItemPedidoEntity> itemPedido) {
+	}
+
+	public PedidoEntity(int nroPedido, ClienteEntity cliente, EstadoPedido estadoPedido, Date fechaGeneracion,
+			Date fechaDespacho, List<ItemPedidoEntity> itemPedido, float total) {
+		super();
 		this.nroPedido = nroPedido;
 		this.cliente = cliente;
 		this.estadoPedido = estadoPedido;
 		this.fechaGeneracion = fechaGeneracion;
 		this.fechaDespacho = fechaDespacho;
 		this.itemPedido = itemPedido;
+		this.total = total;
 	}
 
 	public int getNroPedido() {
@@ -71,6 +80,14 @@ public class PedidoEntity {
 	
 	public void setItemPedido(List<ItemPedidoEntity> itemPedido) {
 		this.itemPedido = itemPedido;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
 	}
 	
 	

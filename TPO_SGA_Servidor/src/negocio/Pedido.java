@@ -13,16 +13,17 @@ public class Pedido {
 	private Date fechaGeneracion;
 	private Date fechaDespacho;
 	private List<ItemPedido> itemPedido;
+	private float total;
 	
-		
 	public Pedido(int nroPedido, Cliente cliente, EstadoPedido estadoPedido, Date fechaGeneracion, Date fechaDespacho,
-			List<ItemPedido> itemPedido) {
+			List<ItemPedido> itemPedido, float total) {
 		this.nroPedido = nroPedido;
 		this.cliente = cliente;
 		this.estadoPedido = estadoPedido;
 		this.fechaGeneracion = fechaGeneracion;
 		this.fechaDespacho = fechaDespacho;
 		this.itemPedido = itemPedido;
+		this.setTotal(total);
 	}
 
 	public int getNroPedido() {
@@ -71,6 +72,14 @@ public class Pedido {
 	
 	public void setItemPedido(List<ItemPedido> itemPedido) {
 		this.itemPedido = itemPedido;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
 	}
 	
 	
