@@ -16,8 +16,8 @@ public class ArticuloEntity {
 	private List<LoteEntity> lotes;
 	private List<UbicacionEntity> ubicaciones;
 	private int cantReservada;
-	private float precio;
 	private List<MovimientoEntity> movimientos;
+	private float precio;
 	
 	public ArticuloEntity() {
 		
