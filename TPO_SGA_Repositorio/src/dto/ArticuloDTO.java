@@ -3,8 +3,6 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
-
-
 public class ArticuloDTO implements Serializable {
 
 	private static final long serialVersionUID = -6053174672137577622L;
@@ -19,7 +17,6 @@ public class ArticuloDTO implements Serializable {
 	private int unidad;
 	private int cantidadAComprar;
 	private List<LoteDTO> lotes;
-	private StockDTO stock;
 	private List<UbicacionDTO> ubicaciones;
 	private int cantReservada;
 	private float precio;
@@ -30,7 +27,7 @@ public class ArticuloDTO implements Serializable {
 	}
 	
 	public ArticuloDTO(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
-			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteDTO> lotes, StockDTO stock,
+			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteDTO> lotes,
 			List<UbicacionDTO> ubicaciones, int cantReservada, float precio, List<MovimientoDTO> movimientos) {
 		this.nroArticulo = nroArticulo;
 		this.codigoBarras = codigoBarras;
@@ -42,7 +39,6 @@ public class ArticuloDTO implements Serializable {
 		this.unidad = unidad;
 		this.cantidadAComprar = cantidadAComprar;
 		this.lotes = lotes;
-		this.stock = stock;
 		this.ubicaciones = ubicaciones;
 		this.cantReservada = cantReservada;
 		this.precio = precio;
@@ -129,14 +125,6 @@ public class ArticuloDTO implements Serializable {
 		this.lotes = lotes;
 	}
 
-	public StockDTO getStock() {
-		return stock;
-	}
-
-	public void setStock(StockDTO stock) {
-		this.stock = stock;
-	}
-
 	public List<UbicacionDTO> getUbicaciones() {
 		return ubicaciones;
 	}
@@ -167,6 +155,15 @@ public class ArticuloDTO implements Serializable {
 
 	public void setMovimientos(List<MovimientoDTO> movimientos) {
 		this.movimientos = movimientos;
+	}
+
+	@Override
+	public String toString() {
+		return "ArticuloDTO [nroArticulo=" + nroArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
+				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
+				+ tamano + ", unidad=" + unidad + ", cantidadAComprar=" + cantidadAComprar + ", lotes=" + lotes
+				+ ", ubicaciones=" + ubicaciones + ", cantReservada=" + cantReservada + ", precio=" + precio
+				+ ", movimientos=" + movimientos + "]";
 	}
 
 	

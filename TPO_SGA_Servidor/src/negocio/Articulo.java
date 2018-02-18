@@ -14,14 +14,13 @@ public class Articulo {
 	private int unidad;
 	private int cantidadAComprar;
 	private List<Lote> lotes;
-	private Stock stock;
 	private List<Ubicacion> ubicaciones;
 	private int cantReservada;
 	private float precio;
 	private List<Movimiento> movimientos;
 	
 	public Articulo(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
-			String presentacion, String tamano, int unidad, int cantidadAComprar, List<Lote> lotes, Stock stock,
+			String presentacion, String tamano, int unidad, int cantidadAComprar, List<Lote> lotes,
 			List<Ubicacion> ubicaciones, int cantReservada, float precio, List<Movimiento> movimientos) {
 		this.nroArticulo = nroArticulo;
 		this.codigoBarras = codigoBarras;
@@ -33,7 +32,6 @@ public class Articulo {
 		this.unidad = unidad;
 		this.cantidadAComprar = cantidadAComprar;
 		this.lotes = lotes;
-		this.stock = stock;
 		this.ubicaciones = ubicaciones;
 		this.cantReservada = cantReservada;
 		this.precio = precio;
@@ -118,14 +116,6 @@ public class Articulo {
 
 	public void setLotes(List<Lote> lotes) {
 		this.lotes = lotes;
-	}
-
-	public Stock getStock() {
-		return stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
 	}
 
 	public List<Ubicacion> getUbicaciones() {

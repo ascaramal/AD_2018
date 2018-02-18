@@ -1,11 +1,8 @@
 package entities;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class ArticuloEntity implements Serializable {
-
-	private static final long serialVersionUID = -5575910136338372533L;
+public class ArticuloEntity {
 	
 	private int nroArticulo;
 	private String codigoBarras;
@@ -17,7 +14,6 @@ public class ArticuloEntity implements Serializable {
 	private int unidad;
 	private int cantidadAComprar;
 	private List<LoteEntity> lotes;
-	private StockEntity stock;
 	private List<UbicacionEntity> ubicaciones;
 	private int cantReservada;
 	private float precio;
@@ -29,9 +25,8 @@ public class ArticuloEntity implements Serializable {
 	
 	public ArticuloEntity(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
 			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteEntity> lotes,
-			StockEntity stock, List<UbicacionEntity> ubicaciones, int cantReservada, float precio,
+		    List<UbicacionEntity> ubicaciones, int cantReservada, float precio,
 			List<MovimientoEntity> movimientos) {
-		super();
 		this.nroArticulo = nroArticulo;
 		this.codigoBarras = codigoBarras;
 		this.marca = marca;
@@ -42,7 +37,6 @@ public class ArticuloEntity implements Serializable {
 		this.unidad = unidad;
 		this.cantidadAComprar = cantidadAComprar;
 		this.lotes = lotes;
-		this.stock = stock;
 		this.ubicaciones = ubicaciones;
 		this.cantReservada = cantReservada;
 		this.precio = precio;
@@ -127,14 +121,6 @@ public class ArticuloEntity implements Serializable {
 
 	public void setLotes(List<LoteEntity> lotes) {
 		this.lotes = lotes;
-	}
-
-	public StockEntity getStock() {
-		return stock;
-	}
-
-	public void setStock(StockEntity stock) {
-		this.stock = stock;
 	}
 
 	public List<UbicacionEntity> getUbicaciones() {
