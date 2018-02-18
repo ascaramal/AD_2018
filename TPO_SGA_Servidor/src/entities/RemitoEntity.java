@@ -1,6 +1,6 @@
 package entities;
 
-public class RemitoEntity extends ComprobanteEntity {
+public class RemitoEntity {
 	
 	private FacturaEntity factura;
 	

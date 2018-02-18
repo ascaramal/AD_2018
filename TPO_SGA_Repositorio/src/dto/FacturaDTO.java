@@ -3,9 +3,7 @@ package dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacturaDTO extends ComprobanteDTO{
-
-	private static final long serialVersionUID = 1890664212209660227L;
+public class FacturaDTO {
 	
 	private List<ItemFacturaDTO> itemsFactura = new ArrayList<ItemFacturaDTO>();
 	

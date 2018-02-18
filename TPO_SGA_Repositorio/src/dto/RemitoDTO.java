@@ -1,6 +1,6 @@
 package dto;
 
-public class RemitoDTO extends ComprobanteDTO {
+public class RemitoDTO {
 	
 	private static final long serialVersionUID = -6343086119078212271L;
 	

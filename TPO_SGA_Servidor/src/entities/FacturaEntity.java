@@ -3,7 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacturaEntity extends ComprobanteEntity{
+public class FacturaEntity {
 
 	private List<ItemFacturaEntity> itemsFactura = new ArrayList<ItemFacturaEntity>();
 	

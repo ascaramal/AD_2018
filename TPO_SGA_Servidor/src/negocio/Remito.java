@@ -1,6 +1,6 @@
 package negocio;
 
-public class Remito extends Comprobante {
+public class Remito {
 	
 	private Factura factura;
 	

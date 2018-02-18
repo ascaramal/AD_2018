@@ -4,7 +4,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import entities.ClienteEntity;
-import entities.CuentaCorrienteEntity;
 
 
 public class HibernateUtil {
@@ -15,7 +14,6 @@ public class HibernateUtil {
              // config.addAnnotatedClass(ArticuloEntity.class);
              config.addAnnotatedClass(ClienteEntity.class);
              // config.addAnnotatedClass(ComprobanteEntity.class);
-             config.addAnnotatedClass(CuentaCorrienteEntity.class);
              /*config.addAnnotatedClass(FacturaEntity.class);
              config.addAnnotatedClass(ItemFacturaEntity.class);
              config.addAnnotatedClass(ItemOrdenDeCompraEntity.class);

@@ -3,7 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Factura extends Comprobante{
+public class Factura {
 
 	private List<ItemFactura> itemsFactura = new ArrayList<ItemFactura>();
 	

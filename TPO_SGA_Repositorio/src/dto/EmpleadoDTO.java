@@ -9,7 +9,6 @@ public class EmpleadoDTO implements Serializable{
 	private int nroLegajo;
 	private String nombre;
 	
-	
 	public EmpleadoDTO(int nroLegajo, String nombre) {
 		super();
 		this.nroLegajo = nroLegajo;
