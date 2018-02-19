@@ -1,11 +1,14 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+
 import entities.PedidoEntity;
 import hbt.HibernateUtil;
+import negocio.Pedido;
 
 public class PedidoDAO {
 
@@ -23,15 +26,17 @@ public class PedidoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PedidoEntity> recuperarListaPedidosAceptado() {
+	public List<Pedido> recuperarListaPedidosAceptado() {
 		try {
-			Session session = sf.openSession();
-			session.beginTransaction();
-			List<PedidoEntity> Pedidos = session.createQuery("from PedidoEntity p where p.estadoPedido ='Aceptado' ")
+			List<Pedido> resultado = new ArrayList<Pedido>();
+			Session s = sf.openSession();
+			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("from PedidoEntity p where p.estadoPedido ='Aceptado' ")
 					.list();
-			session.getTransaction().commit();
-			session.close();
-			return Pedidos;
+			s.getTransaction().commit();
+			s.close();
+			for(PedidoEntity pedido : aux)
+				resultado.add(this.toNegocio(pedido));
+			return resultado;
 		} catch (Exception e) {
 			System.out.println(e);
 			System.out.println("Error PedidoDAO.recuperarListaPedidosAceptado");
@@ -71,5 +76,19 @@ public class PedidoDAO {
 			System.out.println("Error PedidoDAO.recuperarListaPedidosCliente");
 		}
 		return null;
+	}
+	
+	public Pedido toNegocio(PedidoEntity pedido) {
+		Pedido res = new Pedido();
+		res.setNroPedido(res.getNroPedido());
+		res.setCliente(res.getCliente());
+		res.setEstadoPedido(res.getEstadoPedido());
+		res.setFechaGeneracion(res.getFechaGeneracion());
+		res.setFechaDespacho(res.getFechaDespacho());
+		res.setItemPedido(res.getItemPedido());
+		res.setTotal(res.getTotal());
+		
+		return res;
+
 	}
 }

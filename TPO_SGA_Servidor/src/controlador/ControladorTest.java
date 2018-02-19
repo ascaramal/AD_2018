@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ClienteDAO;
+import dao.PedidoDAO;
 import dto.ClienteDTO;
+import dto.PedidoDTO;
 import negocio.Cliente;
+import negocio.Pedido;
 
 public class ControladorTest {
 
@@ -27,6 +30,13 @@ public class ControladorTest {
 		for(Cliente cliente : clientes) 
 			resultado.add(cliente.toDTO());
 		return resultado;
-		
+	}
+	
+	public List<PedidoDTO> recuperarListaPedidosAceptado() {
+		List<PedidoDTO> resultado = new ArrayList<PedidoDTO>();
+		List<Pedido> pedidos = PedidoDAO.getInstancia().recuperarListaPedidosAceptado();
+		for(Pedido pedido : pedidos)
+			resultado.add(pedido.toDTO());
+		return resultado;
 	}
 }

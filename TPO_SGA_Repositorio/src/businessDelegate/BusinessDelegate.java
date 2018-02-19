@@ -7,7 +7,9 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import dto.ClienteDTO;
+import dto.PedidoDTO;
 import exceptions.ClienteException;
+import exceptions.PedidoException;
 import exceptions.SistemaException;
 import interfaces.INegocio;
 
@@ -49,5 +51,14 @@ public class BusinessDelegate {
 		return lst;
 	}
 	
+	public List<PedidoDTO> recuperarListaPedidosAceptado() throws SistemaException, PedidoException {
+		List<PedidoDTO> lst = null;
+		try {
+			lst = negocioRemoto.recuperarListaPedidoAceptado();
+		} catch(RemoteException e) {
+			throw new PedidoException("No se puede listar los pedidos aceptados");
+		}
+		return lst;
+	}
 
 }

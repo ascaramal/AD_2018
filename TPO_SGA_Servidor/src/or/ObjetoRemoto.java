@@ -7,6 +7,7 @@ import java.util.List;
 import controlador.ControladorTest;
 import controlador.ControladorDespacho;
 import dto.ClienteDTO;
+import dto.PedidoDTO;
 import interfaces.INegocio;
 import or.ObjetoRemoto;
 
@@ -38,5 +39,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 	@Override
 	public List<ClienteDTO> getClientes() throws RemoteException {
 		return ControladorTest.getInstancia().getClientes();
+	}
+
+	@Override
+	public List<PedidoDTO> recuperarListaPedidoAceptado() throws RemoteException {
+		return ControladorTest.getInstancia().recuperarListaPedidosAceptado();
 	}
 }

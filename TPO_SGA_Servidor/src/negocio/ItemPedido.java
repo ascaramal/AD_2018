@@ -1,5 +1,7 @@
 package negocio;
 
+import dto.ItemPedidoDTO;
+
 public class ItemPedido {
 	
 	private int nroItemPedido;
@@ -37,5 +39,8 @@ public class ItemPedido {
 		this.cantidad = cantidad;
 	}
 	
-	
+	public ItemPedidoDTO toDTO() {
+		ItemPedidoDTO resultado = new ItemPedidoDTO(nroItemPedido, articulo.toDTO(), cantidad);
+		return resultado;
+	}
 }

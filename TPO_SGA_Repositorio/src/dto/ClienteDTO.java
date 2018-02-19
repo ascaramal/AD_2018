@@ -119,7 +119,7 @@ public class ClienteDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ClienteDTO [nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
+		return "nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
 				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
 				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
 	}

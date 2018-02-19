@@ -2,6 +2,8 @@ package negocio;
 
 import java.util.List;
 
+import dto.ArticuloDTO;
+
 public class Articulo {
 
 	private int nroArticulo;
@@ -148,6 +150,12 @@ public class Articulo {
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
+	}
+
+	public ArticuloDTO toDTO() {
+		ArticuloDTO resultado = new ArticuloDTO(nroArticulo, codigoBarras, marca, tipo, descripcion,
+				presentacion, tamano, unidad, cantidadAComprar, lotes.toDTO(), ubicaciones.toDTO(), cantReservada, precio, movimientos.toDTO() );
+		return resultado;
 	}
 	
 }

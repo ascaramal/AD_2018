@@ -49,4 +49,7 @@ public class Lote {
 		this.ubicacion = ubicacion;
 	}
 
+	public LoteDTO toDTO() {
+		
+	}
 }

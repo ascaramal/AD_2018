@@ -3,6 +3,7 @@ package negocio;
 import java.util.Date;
 import java.util.List;
 
+import dto.PedidoDTO;
 import enumerations.EstadoPedido;
 
 public class Pedido {
@@ -24,6 +25,9 @@ public class Pedido {
 		this.fechaDespacho = fechaDespacho;
 		this.itemPedido = itemPedido;
 		this.setTotal(total);
+	}
+
+	public Pedido() {
 	}
 
 	public int getNroPedido() {
@@ -80,6 +84,12 @@ public class Pedido {
 
 	public void setTotal(float total) {
 		this.total = total;
+	}
+
+	public PedidoDTO toDTO() {
+		PedidoDTO resultado = new PedidoDTO(nroPedido, cliente.toDTO(), estadoPedido, fechaGeneracion, fechaDespacho,
+				itemPedido.toDTO(), total);
+		return resultado;
 	}
 	
 	

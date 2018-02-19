@@ -29,13 +29,19 @@ public class ClienteDAO {
 	//Listado de Clientes
 	@SuppressWarnings("unchecked")
 	public List<Cliente> getClientes() {
-		List<Cliente> resultado = new ArrayList<Cliente>();
-		Session s = sf.openSession();
-		List<ClienteEntity> aux = (List<ClienteEntity>)s.createQuery("FROM ClienteEntity").list();
-		sf.close();
-		for(ClienteEntity cliente : aux)
-			resultado.add(this.toNegocio(cliente));
-		return resultado;
+		try {
+			List<Cliente> resultado = new ArrayList<Cliente>();
+			Session s = sf.openSession();
+			List<ClienteEntity> aux = (List<ClienteEntity>)s.createQuery("FROM ClienteEntity").list();
+			s.close();
+			for(ClienteEntity cliente : aux)
+				resultado.add(this.toNegocio(cliente));
+			return resultado;
+		} catch(Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.recuperarListaPedidosAceptado");
+		}
+		return null;
 	}
 	
 	
