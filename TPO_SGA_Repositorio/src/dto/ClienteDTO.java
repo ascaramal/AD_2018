@@ -18,20 +18,10 @@ public class ClienteDTO implements Serializable {
 	private float limiteDeCredito;
 	private float saldo;
 	
-	public ClienteDTO() { }
-
-	public ClienteDTO(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
-			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
-		this.nroCliente = nroCliente;
-		this.razonSocial = razonSocial;
-		this.direccion = direccion;
-		this.localidad = localidad;
-		this.codPostal = codPostal;
-		this.telefono = telefono;
-		this.cuit = cuit;
-		this.condIVA = condIVA;
-		this.limiteDeCredito = limiteDeCredito;
-		this.saldo = saldo;
+	
+	//Constructor
+	public ClienteDTO() { 
+		
 	}
 
 	public int getNroCliente() {

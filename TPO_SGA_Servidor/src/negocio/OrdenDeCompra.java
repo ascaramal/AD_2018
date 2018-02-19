@@ -1,5 +1,6 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.EstadoOC;
@@ -12,11 +13,10 @@ public class OrdenDeCompra {
 	private List<ItemOrdenDeCompra> itemsOC;
 	
 	public OrdenDeCompra(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado, List<ItemOrdenDeCompra> itemsOC) {
-		super();
 		this.nroOrdenDeCompra = nroOrdenDeCompra;
 		this.nroProveedor = nroProveedor;
 		this.estado = estado;
-		this.itemsOC = itemsOC;
+		this.itemsOC = new ArrayList<ItemOrdenDeCompra>();
 	}
 
 	public int getNroOrdenDeCompra() {
@@ -55,4 +55,5 @@ public class OrdenDeCompra {
 		
 	}
 	
+	//falta toDTO()
 }

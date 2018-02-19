@@ -7,7 +7,6 @@ public class ItemRemito {
 	private int cant;
 	
 	public ItemRemito(int nroItemRemito, Articulo articulo, int cant) {
-		super();
 		this.nroItemRemito = nroItemRemito;
 		this.articulo = articulo;
 		this.cant = cant;

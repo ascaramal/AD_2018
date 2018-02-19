@@ -15,12 +15,6 @@ public class ItemRemitoDTO implements Serializable {
 		
 	}
 	
-	public ItemRemitoDTO(int nroItemRemito, ArticuloDTO articulo, int cant) {
-		this.nroItemRemito = nroItemRemito;
-		this.articulo = articulo;
-		this.cant = cant;
-	}
-
 	public int getNroItemRemito() {
 		return nroItemRemito;
 	}

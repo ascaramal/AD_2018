@@ -1,61 +1,60 @@
 package entities;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class LoteEntity implements Serializable {
-	
-	private static final long serialVersionUID = 2076203845381608484L;
+public class LoteEntity  {
 	
 	private int codLote;
 	private Date fechaVtoLote;
-	private String proveedor;
-	private UbicacionEntity ubicacion;
+	private List<UbicacionEntity> ubicaciones;
+	private ArticuloEntity articulo;
+
 	
 	public LoteEntity() {
-		
+		this.ubicaciones = new ArrayList<UbicacionEntity>();
 	}
 
-	public LoteEntity(int codLote, Date fechaVtoLote, String proveedor, UbicacionEntity ubicacion) {
-		this.codLote = codLote;
-		this.fechaVtoLote = fechaVtoLote;
-		this.proveedor = proveedor;
-		this.ubicacion = ubicacion;
-	}
 
 	public int getCodLote() {
 		return codLote;
 	}
 
+
 	public void setCodLote(int codLote) {
 		this.codLote = codLote;
 	}
+
 
 	public Date getFechaVtoLote() {
 		return fechaVtoLote;
 	}
 
+
 	public void setFechaVtoLote(Date fechaVtoLote) {
 		this.fechaVtoLote = fechaVtoLote;
 	}
 
-	public String getProveedor() {
-		return proveedor;
+
+	public List<UbicacionEntity> getUbicaciones() {
+		return ubicaciones;
 	}
 
-	public void setProveedor(String proveedor) {
-		this.proveedor = proveedor;
+
+	public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
+		this.ubicaciones = ubicaciones;
 	}
 
-	public UbicacionEntity getUbicacion() {
-		return ubicacion;
+
+	public ArticuloEntity getArticulo() {
+		return articulo;
 	}
 
-	public void setUbicacion(UbicacionEntity ubicacion) {
-		this.ubicacion = ubicacion;
-	}
-	
 
-	
+	public void setArticulo(ArticuloEntity articulo) {
+		this.articulo = articulo;
+	}
+
 	
 }

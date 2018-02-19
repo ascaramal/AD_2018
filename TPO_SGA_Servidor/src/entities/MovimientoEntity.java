@@ -1,34 +1,17 @@
 package entities;
 
-import java.io.Serializable;
+public class MovimientoEntity {
 
-
-public class MovimientoEntity implements Serializable {
-
-	private static final long serialVersionUID = -461116227869749125L;
-	
 	private int nroMovimiento;
 	private String tipoMovimiento;
 	private int nroPedido;
-	private int nroOCompra;
-	private EmpleadoEntity responsable;
+	private int nroOrdenDeCompra;
 	private String motivoAjuste;
 	private int cant;
-	
-	public MovimientoEntity() {
-		
-	}
+	private String empleado;
 
-	public MovimientoEntity(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOCompra,
-			EmpleadoEntity responsable, String motivoAjuste, int cant) {
-		super();
-		this.nroMovimiento = nroMovimiento;
-		this.tipoMovimiento = tipoMovimiento;
-		this.nroPedido = nroPedido;
-		this.nroOCompra = nroOCompra;
-		this.responsable = responsable;
-		this.motivoAjuste = motivoAjuste;
-		this.cant = cant;
+	public MovimientoEntity() {
+
 	}
 
 	public int getNroMovimiento() {
@@ -55,20 +38,12 @@ public class MovimientoEntity implements Serializable {
 		this.nroPedido = nroPedido;
 	}
 
-	public int getNroOCompra() {
-		return nroOCompra;
+	public int getNroOrdenDeCompra() {
+		return nroOrdenDeCompra;
 	}
 
-	public void setNroOCompra(int nroOCompra) {
-		this.nroOCompra = nroOCompra;
-	}
-
-	public EmpleadoEntity getResponsable() {
-		return responsable;
-	}
-
-	public void setResponsable(EmpleadoEntity responsable) {
-		this.responsable = responsable;
+	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 
 	public String getMotivoAjuste() {
@@ -87,10 +62,16 @@ public class MovimientoEntity implements Serializable {
 		this.cant = cant;
 	}
 
-
-	
-	public void agregarMovimiento(){
-		
+	public String getEmpleado() {
+		return empleado;
 	}
-	
+
+	public void setEmpleado(String empleado) {
+		this.empleado = empleado;
+	}
+
+	public void agregarMovimiento() {
+
+	}
+
 }

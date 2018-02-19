@@ -10,11 +10,8 @@ public class ItemPedidoDTO implements Serializable {
 	private ArticuloDTO articulo;
 	private int cantidad;
 
-	
-	public ItemPedidoDTO(int nroItemPedido, ArticuloDTO articulo, int cantidad) {
-		this.nroItemPedido = nroItemPedido;
-		this.articulo = articulo;
-		this.cantidad = cantidad;
+	public ItemPedidoDTO() {
+		
 	}
 
 	public int getNroItemPedido() {

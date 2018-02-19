@@ -6,16 +6,14 @@ public class ItemOrdenDeCompraDTO implements Serializable{
 
 	private static final long serialVersionUID = 2331798291360422676L;
 	
+	private int nroOrdenDeCompra;
 	private int cantidad;
 	private ArticuloDTO articulo;
 	
+	
+	//Constructor
 	public ItemOrdenDeCompraDTO() {
 		
-	}
-	
-	public ItemOrdenDeCompraDTO(int cantidad, ArticuloDTO articulo) {
-		this.cantidad = cantidad;
-		this.articulo = articulo;
 	}
 
 	public int getCantidad() {
@@ -37,6 +35,14 @@ public class ItemOrdenDeCompraDTO implements Serializable{
 	@Override
 	public String toString() {
 		return "ItemOrdenDeCompra [cantidad=" + cantidad + ", articulo=" + articulo + "]";
+	}
+
+	public int getNroOrdenDeCompra() {
+		return nroOrdenDeCompra;
+	}
+
+	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 	
 	

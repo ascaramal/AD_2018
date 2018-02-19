@@ -1,13 +1,11 @@
 package entities;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.EstadoOC;
 
-public class OrdenDeCompraEntity implements Serializable{
-
-	private static final long serialVersionUID = -60969457653842533L;
+public class OrdenDeCompraEntity {
 	
 	private int nroOrdenDeCompra;
 	private int nroProveedor;
@@ -16,18 +14,9 @@ public class OrdenDeCompraEntity implements Serializable{
 	
 	
 	public OrdenDeCompraEntity() {
-		
+		this.itemsOC = new ArrayList<ItemOrdenDeCompraEntity>();
 	}
 	
-	public OrdenDeCompraEntity(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado,
-			List<ItemOrdenDeCompraEntity> itemsOC) {
-		super();
-		this.nroOrdenDeCompra = nroOrdenDeCompra;
-		this.nroProveedor = nroProveedor;
-		this.estado = estado;
-		this.itemsOC = itemsOC;
-	}
-
 	public int getNroOrdenDeCompra() {
 		return nroOrdenDeCompra;
 	}

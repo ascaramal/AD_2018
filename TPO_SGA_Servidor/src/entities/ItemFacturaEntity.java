@@ -1,7 +1,6 @@
 package entities;
 
 
-
 public class ItemFacturaEntity {
 
 	private int nroItemFactura;
@@ -9,12 +8,9 @@ public class ItemFacturaEntity {
 	private ArticuloEntity articulo;
 	private float precio;
 
-
-	public ItemFacturaEntity(int nroItemFactura, int cantidad, ArticuloEntity articulo, float precio) {
-		this.nroItemFactura = nroItemFactura;
-		this.cantidad = cantidad;
-		this.articulo = articulo;
-		this.precio = precio;
+	//Constructor
+	public ItemFacturaEntity() {
+		
 	}
 
 	public int getNroItemFactura() {

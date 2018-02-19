@@ -1,23 +1,15 @@
 package negocio;
 
-public class ItemOrden {
-	
-	private int nroItemOrden;
+public class OrdenDeTrabajo {
+
 	private Articulo articulo;
+	private int cantidad;
 	private Ubicacion ubicacion;
 	
-	public ItemOrden(int nroItemOrden, Articulo articulo, Ubicacion ubicacion) {
-		this.nroItemOrden = nroItemOrden;
+	public OrdenDeTrabajo(Articulo articulo, int cantidad, Ubicacion ubicacion) {
 		this.articulo = articulo;
+		this.cantidad = cantidad;
 		this.ubicacion = ubicacion;
-	}
-
-	public int getNroItemOrden() {
-		return nroItemOrden;
-	}
-
-	public void setNroItemOrden(int nroItemOrden) {
-		this.nroItemOrden = nroItemOrden;
 	}
 
 	public Articulo getArticulo() {
@@ -28,6 +20,14 @@ public class ItemOrden {
 		this.articulo = articulo;
 	}
 
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
 	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
@@ -36,7 +36,5 @@ public class ItemOrden {
 		this.ubicacion = ubicacion;
 	}
 	
-	
-
 	
 }

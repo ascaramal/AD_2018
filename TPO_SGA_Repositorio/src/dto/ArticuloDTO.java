@@ -1,13 +1,15 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class ArticuloDTO implements Serializable {
 
 	private static final long serialVersionUID = -6053174672137577622L;
 
-	private int nroArticulo;
+	private int codArticulo;
 	private String codigoBarras;
 	private String marca;
 	private String tipo;
@@ -15,42 +17,27 @@ public class ArticuloDTO implements Serializable {
 	private String presentacion;
 	private String tamano;
 	private int unidad;
-	private int cantidadAComprar;
-	private List<LoteDTO> lotes;
-	private List<UbicacionDTO> ubicaciones;
+	private int cantAComprar;
 	private int cantReservada;
+	private int cantReal;
+	private int cantFuturoDisponible;
 	private float precio;
 	private List<MovimientoDTO> movimientos;
-	
+	private List<LoteDTO> lotes;
+
+	//Constructor
 	public ArticuloDTO() {
-		
-	}
-	
-	public ArticuloDTO(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
-			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteDTO> lotes,
-			List<UbicacionDTO> ubicaciones, int cantReservada, float precio, List<MovimientoDTO> movimientos) {
-		this.nroArticulo = nroArticulo;
-		this.codigoBarras = codigoBarras;
-		this.marca = marca;
-		this.tipo = tipo;
-		this.descripcion = descripcion;
-		this.presentacion = presentacion;
-		this.tamano = tamano;
-		this.unidad = unidad;
-		this.cantidadAComprar = cantidadAComprar;
-		this.lotes = lotes;
-		this.ubicaciones = ubicaciones;
-		this.cantReservada = cantReservada;
-		this.precio = precio;
-		this.movimientos = movimientos;
+		this.movimientos = new ArrayList<MovimientoDTO>();
+		this.lotes = new ArrayList<LoteDTO>();
 	}
 
-	public int getNroArticulo() {
-		return nroArticulo;
+
+	public int getCodArticulo() {
+		return codArticulo;
 	}
 
-	public void setNroArticulo(int nroArticulo) {
-		this.nroArticulo = nroArticulo;
+	public void setCodArticulo(int codArticulo) {
+		this.codArticulo = codArticulo;
 	}
 
 	public String getCodigoBarras() {
@@ -109,28 +96,12 @@ public class ArticuloDTO implements Serializable {
 		this.unidad = unidad;
 	}
 
-	public int getCantidadAComprar() {
-		return cantidadAComprar;
+	public int getCantAComprar() {
+		return cantAComprar;
 	}
 
-	public void setCantidadAComprar(int cantidadAComprar) {
-		this.cantidadAComprar = cantidadAComprar;
-	}
-
-	public List<LoteDTO> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<LoteDTO> lotes) {
-		this.lotes = lotes;
-	}
-
-	public List<UbicacionDTO> getUbicaciones() {
-		return ubicaciones;
-	}
-
-	public void setUbicaciones(List<UbicacionDTO> ubicaciones) {
-		this.ubicaciones = ubicaciones;
+	public void setCantAComprar(int cantAComprar) {
+		this.cantAComprar = cantAComprar;
 	}
 
 	public int getCantReservada() {
@@ -139,6 +110,22 @@ public class ArticuloDTO implements Serializable {
 
 	public void setCantReservada(int cantReservada) {
 		this.cantReservada = cantReservada;
+	}
+
+	public int getCantReal() {
+		return cantReal;
+	}
+
+	public void setCantReal(int cantReal) {
+		this.cantReal = cantReal;
+	}
+
+	public int getCantFuturoDisponible() {
+		return cantFuturoDisponible;
+	}
+
+	public void setCantFuturoDisponible(int cantFuturoDisponible) {
+		this.cantFuturoDisponible = cantFuturoDisponible;
 	}
 
 	public float getPrecio() {
@@ -157,14 +144,12 @@ public class ArticuloDTO implements Serializable {
 		this.movimientos = movimientos;
 	}
 
-	@Override
-	public String toString() {
-		return "ArticuloDTO [nroArticulo=" + nroArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
-				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
-				+ tamano + ", unidad=" + unidad + ", cantidadAComprar=" + cantidadAComprar + ", lotes=" + lotes
-				+ ", ubicaciones=" + ubicaciones + ", cantReservada=" + cantReservada + ", precio=" + precio
-				+ ", movimientos=" + movimientos + "]";
+	public List<LoteDTO> getLotes() {
+		return lotes;
 	}
 
+	public void setLotes(List<LoteDTO> lotes) {
+		this.lotes = lotes;
+	}
 	
 }

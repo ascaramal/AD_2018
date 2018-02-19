@@ -1,26 +1,30 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 
 public class Lote {
 	
 	private int codLote;
 	private Date fechaVtoLote;
-	private String proveedor;
-	private Ubicacion ubicacion;
+	private List<Ubicacion> ubicaciones;
+	private Articulo articulo;
 	
-	public Lote(int codLote, Date fechaVtoLote, String proveedor, Ubicacion ubicacion) {
+	
+	public Lote(int codLote, Date fechaVtoLote, List<Ubicacion> ubicaciones, Articulo articulo) {
 		this.codLote = codLote;
 		this.fechaVtoLote = fechaVtoLote;
-		this.proveedor = proveedor;
-		this.ubicacion = ubicacion;
+		this.ubicaciones = new ArrayList<Ubicacion>();
+		this.articulo = articulo;
 	}
-
+	
 	public int getCodLote() {
 		return codLote;
 	}
-	
+
 	public void setCodLote(int codLote) {
 		this.codLote = codLote;
 	}
@@ -33,23 +37,45 @@ public class Lote {
 		this.fechaVtoLote = fechaVtoLote;
 	}
 
-	public String getProveedor() {
-		return proveedor;
-	}
-	
-	public void setProveedor(String proveedor) {
-		this.proveedor = proveedor;
-	}
-	
-	public Ubicacion getUbicacion() {
-		return ubicacion;
+	public List<Ubicacion> getUbicaciones() {
+		return ubicaciones;
 	}
 
-	public void setUbicacion(Ubicacion ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setUbicaciones(List<Ubicacion> ubicaciones) {
+		this.ubicaciones = ubicaciones;
 	}
 
-	public LoteDTO toDTO() {
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+
+
+	/*public LoteDTO toDTO() {
+		LoteDTO res = new LoteDTO();
+		res.setCodLote(this.codLote);
+		res.setFechaVtoLote(this.fechaVtoLote);
+		res.setArticulo(this.articulo.toDTO());
 		
-	}
+		for(UbicacionDTO ubiAux : this.getUbicaciones()) {
+			UbicacionDTO ubicacionDTO = ubiAux.toDTO();
+			ubicacionDTO.setLote(res);
+		}
+		
+		return res;	
+	}*/
 }
+
+
+
+
+
+
+
+
+
+
+

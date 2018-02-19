@@ -12,7 +12,8 @@ public class Factura {
 	private Date fechaEmision;
 	private Cliente cliente;
 	private float total;
-	private List<ItemFactura> itemsFactura = new ArrayList<ItemFactura>();
+	private List<ItemFactura> itemsFactura;
+	
 	
 	public Factura(int numero, int prefijo, Date fechaEmision, Cliente cliente, float total,
 			List<ItemFactura> itemsFactura) {
@@ -21,7 +22,7 @@ public class Factura {
 		this.fechaEmision = fechaEmision;
 		this.cliente = cliente;
 		this.total = total;
-		this.itemsFactura = itemsFactura;
+		this.itemsFactura = new ArrayList<ItemFactura>();
 	}
 	
 	

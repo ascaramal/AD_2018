@@ -14,17 +14,11 @@ public class FacturaDTO implements Serializable{
 	private Date fechaEmision;
 	private ClienteDTO cliente;
 	private float total;
-	private List<ItemFacturaDTO> itemsFactura = new ArrayList<ItemFacturaDTO>();
+	private List<ItemFacturaDTO> itemsFactura;
 	
-	public FacturaDTO(int numero, int prefijo, Date fechaEmision, ClienteDTO cliente, float total,
-			List<ItemFacturaDTO> itemsFactura) {
-		super();
-		this.numero = numero;
-		this.prefijo = prefijo;
-		this.fechaEmision = fechaEmision;
-		this.cliente = cliente;
-		this.total = total;
-		this.itemsFactura = itemsFactura;
+	//Constructor 
+	public FacturaDTO() {
+		this.itemsFactura = new ArrayList<ItemFacturaDTO>();  
 	}
 	
 	public int getNumero() {
@@ -76,7 +70,7 @@ public class FacturaDTO implements Serializable{
 	}
 
 
-	
+
 	@Override
 	public String toString() {
 		return "FacturaDTO [numero=" + numero + ", prefijo=" + prefijo + ", fechaEmision=" + fechaEmision + ", cliente="

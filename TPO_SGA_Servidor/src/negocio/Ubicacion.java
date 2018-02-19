@@ -1,5 +1,7 @@
 package negocio;
 
+import dto.UbicacionDTO;
+
 public class Ubicacion {
 
 	private int nroUbicacion;
@@ -50,5 +52,10 @@ public class Ubicacion {
 
 	public boolean sosUbicacion() {
 		return false;
+	}
+	
+	public UbicacionDTO toDTO() {
+		UbicacionDTO resultado = new UbicacionDTO(nroUbicacion, articulo.toDTO(), codigoUbicacion, cantLibre);
+		return resultado;
 	}
 }

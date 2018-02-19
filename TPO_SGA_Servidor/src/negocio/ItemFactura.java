@@ -8,13 +8,14 @@ public class ItemFactura {
 	private int cantidad;
 	private Articulo articulo;
 	private float precio;
-
+	
 	public ItemFactura(int nroItemFactura, int cantidad, Articulo articulo, float precio) {
 		this.nroItemFactura = nroItemFactura;
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 		this.precio = precio;
 	}
+
 
 	public int getNroItemFactura() {
 		return nroItemFactura;
@@ -48,9 +49,9 @@ public class ItemFactura {
 		this.precio = precio;
 	}
 
-	//metodos
-    public float getSubtotal() {
-        return this.precio * this.cantidad;
-    }	
-	
+	// metodos
+	public float getSubtotal() {
+		return this.precio * this.cantidad;
+	}
+
 }

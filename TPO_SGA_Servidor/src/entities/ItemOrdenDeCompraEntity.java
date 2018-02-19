@@ -6,12 +6,13 @@ public class ItemOrdenDeCompraEntity implements Serializable {
 
 	private static final long serialVersionUID = -5799446753184265316L;
 
+	private int nroOrdenDeCompra;
 	private int cantidad;
 	private ArticuloEntity articulo;
 	
-	public ItemOrdenDeCompraEntity(int cantidad, ArticuloEntity articulo) {
-		this.cantidad = cantidad;
-		this.articulo = articulo;
+	//Constructor
+	public ItemOrdenDeCompraEntity() {
+	
 	}
 
 	public int getCantidad() {
@@ -28,6 +29,14 @@ public class ItemOrdenDeCompraEntity implements Serializable {
 	
 	public void setArticulo(ArticuloEntity articulo) {
 		this.articulo = articulo;
+	}
+
+	public int getNroOrdenDeCompra() {
+		return nroOrdenDeCompra;
+	}
+
+	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 	
 	

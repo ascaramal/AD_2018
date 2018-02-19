@@ -1,12 +1,15 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dto.ArticuloDTO;
+import dto.LoteDTO;
+import dto.MovimientoDTO;
 
 public class Articulo {
 
-	private int nroArticulo;
+	private int codArticulo;
 	private String codigoBarras;
 	private String marca;
 	private String tipo;
@@ -14,17 +17,22 @@ public class Articulo {
 	private String presentacion;
 	private String tamano;
 	private int unidad;
-	private int cantidadAComprar;
-	private List<Lote> lotes;
-	private List<Ubicacion> ubicaciones;
+	private int cantAComprar;
 	private int cantReservada;
+	private int cantReal;
+	private int cantFuturoDisponible;
 	private float precio;
 	private List<Movimiento> movimientos;
+	private List<Lote> lotes;
+
+	public Articulo() {
+		
+	}	
 	
-	public Articulo(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
-			String presentacion, String tamano, int unidad, int cantidadAComprar, List<Lote> lotes,
-			List<Ubicacion> ubicaciones, int cantReservada, float precio, List<Movimiento> movimientos) {
-		this.nroArticulo = nroArticulo;
+	public Articulo(int codArticulo, String codigoBarras, String marca, String tipo, String descripcion,
+			String presentacion, String tamano, int unidad, int cantAComprar, int cantReservada, int cantReal,
+			int cantFuturoDisponible, float precio, List<Movimiento> movimientos, List<Lote> lotes) {
+		this.codArticulo = codArticulo;
 		this.codigoBarras = codigoBarras;
 		this.marca = marca;
 		this.tipo = tipo;
@@ -32,20 +40,23 @@ public class Articulo {
 		this.presentacion = presentacion;
 		this.tamano = tamano;
 		this.unidad = unidad;
-		this.cantidadAComprar = cantidadAComprar;
-		this.lotes = lotes;
-		this.ubicaciones = ubicaciones;
+		this.cantAComprar = cantAComprar;
 		this.cantReservada = cantReservada;
+		this.cantReal = cantReal;
+		this.cantFuturoDisponible = cantFuturoDisponible;
 		this.precio = precio;
-		this.movimientos = movimientos;
+		this.movimientos = new ArrayList<Movimiento>();
+		this.lotes = new ArrayList<Lote>();
 	}
 
-	public int getNroArticulo() {
-		return nroArticulo;
+
+
+	public int getCodArticulo() {
+		return codArticulo;
 	}
 
-	public void setNroArticulo(int nroArticulo) {
-		this.nroArticulo = nroArticulo;
+	public void setCodArticulo(int codArticulo) {
+		this.codArticulo = codArticulo;
 	}
 
 	public String getCodigoBarras() {
@@ -104,28 +115,12 @@ public class Articulo {
 		this.unidad = unidad;
 	}
 
-	public int getCantidadAComprar() {
-		return cantidadAComprar;
+	public int getCantAComprar() {
+		return cantAComprar;
 	}
 
-	public void setCantidadAComprar(int cantidadAComprar) {
-		this.cantidadAComprar = cantidadAComprar;
-	}
-
-	public List<Lote> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<Lote> lotes) {
-		this.lotes = lotes;
-	}
-
-	public List<Ubicacion> getUbicaciones() {
-		return ubicaciones;
-	}
-
-	public void setUbicaciones(List<Ubicacion> ubicaciones) {
-		this.ubicaciones = ubicaciones;
+	public void setCantAComprar(int cantAComprar) {
+		this.cantAComprar = cantAComprar;
 	}
 
 	public int getCantReservada() {
@@ -134,6 +129,22 @@ public class Articulo {
 
 	public void setCantReservada(int cantReservada) {
 		this.cantReservada = cantReservada;
+	}
+
+	public int getCantReal() {
+		return cantReal;
+	}
+
+	public void setCantReal(int cantReal) {
+		this.cantReal = cantReal;
+	}
+
+	public int getCantFuturoDisponible() {
+		return cantFuturoDisponible;
+	}
+
+	public void setCantFuturoDisponible(int cantFuturoDisponible) {
+		this.cantFuturoDisponible = cantFuturoDisponible;
 	}
 
 	public float getPrecio() {
@@ -152,10 +163,65 @@ public class Articulo {
 		this.movimientos = movimientos;
 	}
 
-	public ArticuloDTO toDTO() {
-		ArticuloDTO resultado = new ArticuloDTO(nroArticulo, codigoBarras, marca, tipo, descripcion,
-				presentacion, tamano, unidad, cantidadAComprar, lotes.toDTO(), ubicaciones.toDTO(), cantReservada, precio, movimientos.toDTO() );
-		return resultado;
+	public List<Lote> getLotes() {
+		return lotes;
 	}
-	
+
+	public void setLotes(List<Lote> lotes) {
+		this.lotes = lotes;
+	}
+
+	public ArticuloDTO toDTO() {
+		ArticuloDTO res = new ArticuloDTO();
+		res.setCodArticulo(this.codArticulo);
+		res.setCodigoBarras(this.codigoBarras);
+		res.setMarca(this.marca);
+		res.setTipo(this.tipo);
+		res.setDescripcion(this.descripcion);
+		res.setPresentacion(this.presentacion);
+		res.setTamano(this.tamano);
+		res.setUnidad(this.unidad);
+		res.setCantAComprar(this.cantAComprar);
+		res.setCantReservada(this.cantReservada);
+		res.setPrecio(this.precio);
+
+		for(Lote loteAux : this.getLotes()) {
+			LoteDTO loteDTO = loteAux.toDTO();
+			loteDTO.setArticulo(res);
+			res.getLotes().add(loteDTO);
+		}
+		
+		for(Movimiento movAux : this.getMovimientos()) {
+			MovimientoDTO movimientoDTO = movAux.toDTO();
+			movimientoDTO.setArticulo(res);
+			res.getMovimientos().add(movimientoDTO);
+		}
+		
+		return res;
+	}
+
+	// metodos
+
+	public Movimiento generarMovimientoVenta(int cantPedida, String tipoMovimiento, int nroPedido) {
+
+		return null;
+	}
+
+	public Movimiento generarMovimientoCompra(int cantComprada, String tipoMovimiento, int nroOrdenDeCompra) {
+
+		return null;
+	}
+
+	public Movimiento generarMovimientoAjusteEntrada(int cant, String tipoMovimiento, String empleado,
+			String motivoDeAjuste) {
+
+		return null;
+	}
+
+	public Movimiento generarMovimientoAjusteSalida(int cant, String tipoMovimiento, String empleado,
+			String motivoDeAjuste) {
+
+		return null;
+	}
+
 }

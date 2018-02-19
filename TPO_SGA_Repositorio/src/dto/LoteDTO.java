@@ -1,7 +1,9 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class LoteDTO implements Serializable {
@@ -10,51 +12,50 @@ public class LoteDTO implements Serializable {
 	
 	private int codLote;
 	private Date fechaVtoLote;
-	private String proveedor;
-	private UbicacionDTO ubicacion;
+	private List<UbicacionDTO> ubicaciones;
+	private ArticuloDTO articulo;
 	
-	public LoteDTO(int codLote, Date fechaVtoLote, String proveedor, dto.UbicacionDTO ubicacion) {
-		this.codLote = codLote;
-		this.fechaVtoLote = fechaVtoLote;
-		this.proveedor = proveedor;
-		this.ubicacion = ubicacion;
+	public LoteDTO() {
+		this.ubicaciones = new ArrayList<UbicacionDTO>();
 	}
-	
+
 	public int getCodLote() {
 		return codLote;
 	}
-	
+
 	public void setCodLote(int codLote) {
 		this.codLote = codLote;
 	}
-	
+
 	public Date getFechaVtoLote() {
 		return fechaVtoLote;
 	}
-	
+
 	public void setFechaVtoLote(Date fechaVtoLote) {
 		this.fechaVtoLote = fechaVtoLote;
 	}
-	
-	public String getProveedor() {
-		return proveedor;
+
+	public List<UbicacionDTO> getUbicaciones() {
+		return ubicaciones;
 	}
-	
-	public void setProveedor(String proveedor) {
-		this.proveedor = proveedor;
+
+	public void setUbicaciones(List<UbicacionDTO> ubicaciones) {
+		this.ubicaciones = ubicaciones;
 	}
-	
-	public UbicacionDTO getUbicacion() {
-		return ubicacion;
+
+	public ArticuloDTO getArticulo() {
+		return articulo;
 	}
-	
-	public void setUbicacion(UbicacionDTO ubicacion) {
-		this.ubicacion = ubicacion;
+
+	public void setArticulo(ArticuloDTO articulo) {
+		this.articulo = articulo;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "LoteDTO [codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote + ", proveedor=" + proveedor + "]";
+		return "LoteDTO [codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote + ", ubicaciones=" + ubicaciones
+				+ ", articulo=" + articulo + "]";
 	}
 	
+		
 }

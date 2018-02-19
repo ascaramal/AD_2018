@@ -10,12 +10,6 @@ public class ItemRemitoEntity {
 		
 	}
 
-	public ItemRemitoEntity(int nroItemRemito, ArticuloEntity articulo, int cant) {
-		this.nroItemRemito = nroItemRemito;
-		this.articulo = articulo;
-		this.cant = cant;
-	}
-
 	public int getNroItemRemito() {
 		return nroItemRemito;
 	}

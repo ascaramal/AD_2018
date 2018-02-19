@@ -1,19 +1,19 @@
 package dto;
 
+import java.io.Serializable;
 
-public class ItemFacturaDTO {
+public class ItemFacturaDTO implements Serializable {
 
+	private static final long serialVersionUID = -5519684029885030186L;
+	
 	private int nroItemFactura;
 	private int cantidad;
 	private ArticuloDTO articulo;
 	private float precio;
 
-
-	public ItemFacturaDTO(int nroItemFactura, int cantidad, ArticuloDTO articulo, float precio) {
-		this.nroItemFactura = nroItemFactura;
-		this.cantidad = cantidad;
-		this.articulo = articulo;
-		this.precio = precio;
+	//Constructor
+	public ItemFacturaDTO() {
+		
 	}
 
 	public int getNroItemFactura() {

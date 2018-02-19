@@ -14,18 +14,13 @@ public class FacturaEntity implements Serializable {
 	private Date fechaEmision;
 	private ClienteEntity cliente;
 	private float total;
-	private List<ItemFacturaEntity> itemsFactura = new ArrayList<ItemFacturaEntity>();
-
-	public FacturaEntity(int numero, int prefijo, Date fechaEmision, ClienteEntity cliente, float total,
-			List<ItemFacturaEntity> itemsFactura) {
-		this.numero = numero;
-		this.prefijo = prefijo;
-		this.fechaEmision = fechaEmision;
-		this.cliente = cliente;
-		this.total = total;
-		this.itemsFactura = itemsFactura;
-	}
+	private List<ItemFacturaEntity> itemsFactura;
 	
+	
+	//Constructor
+	public FacturaEntity() {
+		this.itemsFactura = new ArrayList<ItemFacturaEntity>();
+	}
 	
 
 	public int getNumero() {

@@ -15,13 +15,8 @@ public class Cliente {
 	private float limiteDeCredito;
 	private float saldo;
 
-	public Cliente() {
-		
-	}
-
 	public Cliente(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
 			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
-		super();
 		this.nroCliente = nroCliente;
 		this.razonSocial = razonSocial;
 		this.direccion = direccion;
@@ -34,8 +29,6 @@ public class Cliente {
 		this.saldo = saldo;
 	}
 
-
-	
 	public int getNroCliente() {
 		return nroCliente;
 	}
@@ -117,9 +110,9 @@ public class Cliente {
 	}
 
 	public ClienteDTO toDTO() {
-		ClienteDTO resultado = new ClienteDTO(nroCliente, razonSocial, direccion, localidad, 
-				codPostal, telefono, cuit, condIVA, limiteDeCredito, saldo);
-		return resultado; 
+		ClienteDTO res = new ClienteDTO();
+		//falta terminar
+		return res; 
 	}
 
 }

@@ -2,9 +2,12 @@ package entities;
 
 import java.util.List;
 
+import dto.ArticuloDTO;
+
+
 public class ArticuloEntity {
 	
-	private int nroArticulo;
+	private int codArticulo;
 	private String codigoBarras;
 	private String marca;
 	private String tipo;
@@ -12,43 +15,24 @@ public class ArticuloEntity {
 	private String presentacion;
 	private String tamano;
 	private int unidad;
-	private int cantidadAComprar;
-	private List<LoteEntity> lotes;
-	private List<UbicacionEntity> ubicaciones;
+	private int cantAComprar;
 	private int cantReservada;
-	private List<MovimientoEntity> movimientos;
+	private int cantReal;
+	private int cantFuturoDisponible;
 	private float precio;
+	private List<MovimientoEntity> movimientos;
+	private List<LoteEntity> lotes;
 	
 	public ArticuloEntity() {
 		
 	}
-	
-	public ArticuloEntity(int nroArticulo, String codigoBarras, String marca, String tipo, String descripcion,
-			String presentacion, String tamano, int unidad, int cantidadAComprar, List<LoteEntity> lotes,
-		    List<UbicacionEntity> ubicaciones, int cantReservada, float precio,
-			List<MovimientoEntity> movimientos) {
-		this.nroArticulo = nroArticulo;
-		this.codigoBarras = codigoBarras;
-		this.marca = marca;
-		this.tipo = tipo;
-		this.descripcion = descripcion;
-		this.presentacion = presentacion;
-		this.tamano = tamano;
-		this.unidad = unidad;
-		this.cantidadAComprar = cantidadAComprar;
-		this.lotes = lotes;
-		this.ubicaciones = ubicaciones;
-		this.cantReservada = cantReservada;
-		this.precio = precio;
-		this.movimientos = movimientos;
+
+	public int getCodArticulo() {
+		return codArticulo;
 	}
 
-	public int getNroArticulo() {
-		return nroArticulo;
-	}
-
-	public void setNroArticulo(int nroArticulo) {
-		this.nroArticulo = nroArticulo;
+	public void setCodArticulo(int codArticulo) {
+		this.codArticulo = codArticulo;
 	}
 
 	public String getCodigoBarras() {
@@ -107,28 +91,12 @@ public class ArticuloEntity {
 		this.unidad = unidad;
 	}
 
-	public int getCantidadAComprar() {
-		return cantidadAComprar;
+	public int getCantAComprar() {
+		return cantAComprar;
 	}
 
-	public void setCantidadAComprar(int cantidadAComprar) {
-		this.cantidadAComprar = cantidadAComprar;
-	}
-
-	public List<LoteEntity> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<LoteEntity> lotes) {
-		this.lotes = lotes;
-	}
-
-	public List<UbicacionEntity> getUbicaciones() {
-		return ubicaciones;
-	}
-
-	public void setUbicaciones(List<UbicacionEntity> ubicaciones) {
-		this.ubicaciones = ubicaciones;
+	public void setCantAComprar(int cantAComprar) {
+		this.cantAComprar = cantAComprar;
 	}
 
 	public int getCantReservada() {
@@ -137,6 +105,22 @@ public class ArticuloEntity {
 
 	public void setCantReservada(int cantReservada) {
 		this.cantReservada = cantReservada;
+	}
+
+	public int getCantReal() {
+		return cantReal;
+	}
+
+	public void setCantReal(int cantReal) {
+		this.cantReal = cantReal;
+	}
+
+	public int getCantFuturoDisponible() {
+		return cantFuturoDisponible;
+	}
+
+	public void setCantFuturoDisponible(int cantFuturoDisponible) {
+		this.cantFuturoDisponible = cantFuturoDisponible;
 	}
 
 	public float getPrecio() {
@@ -154,6 +138,19 @@ public class ArticuloEntity {
 	public void setMovimientos(List<MovimientoEntity> movimientos) {
 		this.movimientos = movimientos;
 	}
+
+	public List<LoteEntity> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<LoteEntity> lotes) {
+		this.lotes = lotes;
+	}
 	
 	
+	public ArticuloDTO toDTO() {
+		ArticuloDTO res = new ArticuloDTO();
+		//falta terminar
+		return res;
+	}
 }

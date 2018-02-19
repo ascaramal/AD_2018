@@ -1,10 +1,7 @@
 package entities;
 
-import java.io.Serializable;
 
-public class ItemPedidoEntity implements Serializable{
-	
-	private static final long serialVersionUID = -3519855777113724300L;
+public class ItemPedidoEntity {
 	
 	private int nroItemPedido;
 	private ArticuloEntity articulo;
@@ -14,12 +11,6 @@ public class ItemPedidoEntity implements Serializable{
 		
 	}
 	
-	public ItemPedidoEntity(int nroItemPedido, ArticuloEntity articulo, int cantidad) {
-		this.nroItemPedido = nroItemPedido;
-		this.articulo = articulo;
-		this.cantidad = cantidad;
-	}
-
 	public int getNroItemPedido() {
 		return nroItemPedido;
 	}

@@ -1,26 +1,27 @@
 package negocio;
 
+import dto.MovimientoDTO;
+
 public class Movimiento {
-	
+
 	private int nroMovimiento;
 	private String tipoMovimiento;
 	private int nroPedido;
-	private int nroOCompra;
-	private Empleado responsable;
+	private int nroOrdenDeCompra;
 	private String motivoAjuste;
 	private int cant;
-	
-	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOCompra, Empleado responsable,
-			String motivoAjuste, int cant) {
+	private String empleado;
+
+	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOCompra, String motivoAjuste,
+			int cant) {
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
 		this.nroPedido = nroPedido;
-		this.nroOCompra = nroOCompra;
-		this.responsable = responsable;
+		this.nroOrdenDeCompra = nroOCompra;
 		this.motivoAjuste = motivoAjuste;
 		this.cant = cant;
 	}
-	
+
 	public int getNroMovimiento() {
 		return nroMovimiento;
 	}
@@ -45,20 +46,12 @@ public class Movimiento {
 		this.nroPedido = nroPedido;
 	}
 
-	public int getNroOCompra() {
-		return nroOCompra;
-	}
-	
-	public void setNroOCompra(int nroOCompra) {
-		this.nroOCompra = nroOCompra;
+	public int getNroOrdenDeCompra() {
+		return nroOrdenDeCompra;
 	}
 
-	public Empleado getResponsable() {
-		return responsable;
-	}
-
-	public void setResponsable(Empleado responsable) {
-		this.responsable = responsable;
+	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
 	}
 
 	public String getMotivoAjuste() {
@@ -77,10 +70,18 @@ public class Movimiento {
 		this.cant = cant;
 	}
 
-	
-	
-	public void agregarMovimiento(){
-		
+	public String getEmpleado() {
+		return empleado;
 	}
-	
+
+	public void setEmpleado(String empleado) {
+		this.empleado = empleado;
+	}
+
+	public MovimientoDTO toDTO() {
+		MovimientoDTO res = new MovimientoDTO();
+		res.setNroMovimiento(this.nroMovimiento);
+		//falta completar
+		return null;
+	}
 }

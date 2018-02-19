@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.EstadoOC;
@@ -14,17 +15,9 @@ public class OrdenDeCompraDTO implements Serializable {
 	private EstadoOC estado;
 	private List<ItemOrdenDeCompraDTO> itemsOC;
 	
-	public void imprimirOrdenDeCompra() { 
-		
-	}
-
-	public OrdenDeCompraDTO(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado,
-			List<ItemOrdenDeCompraDTO> itemsOC) {
-		super();
-		this.nroOrdenDeCompra = nroOrdenDeCompra;
-		this.nroProveedor = nroProveedor;
-		this.estado = estado;
-		this.itemsOC = itemsOC;
+	
+	public OrdenDeCompraDTO() {
+		this.itemsOC = new ArrayList<ItemOrdenDeCompraDTO>();
 	}
 
 	public int getNroOrdenDeCompra() {
