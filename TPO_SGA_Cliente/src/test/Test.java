@@ -11,14 +11,7 @@ import exceptions.SistemaException;
 public class Test {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		//prueba euge2
-		//prueba euge 3
-		//prueba euge 4
-		//prueba euge 5
-		//prueba para guido 20-2-18 15:47hs
-=======
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
+
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
 			List<ClienteDTO> clientes = bd.getClientes();
