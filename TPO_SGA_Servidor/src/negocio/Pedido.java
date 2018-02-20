@@ -20,6 +20,10 @@ public class Pedido {
 	private List<OrdenDeTrabajo> ordenesDeTrabajo;
 	private float total;
 	
+	public Pedido() {
+		
+	}
+	
 	public Pedido(int nroPedido, Cliente cliente, EstadoPedido estadoPedido, Date fechaGeneracion, Date fechaDespacho,
 			List<ItemPedido> itemsPedido, List<OrdenDeTrabajo> ordenesDeTrabajo, float total) {
 		this.nroPedido = nroPedido;

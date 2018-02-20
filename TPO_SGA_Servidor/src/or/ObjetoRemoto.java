@@ -41,8 +41,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 		return ControladorTest.getInstancia().getClientes();
 	}
 
-	/*@Override
-	public List<PedidoDTO> recuperarListaPedidoAceptado() throws RemoteException {
+	@Override
+	public List<PedidoDTO> recuperarListaPedidos() throws RemoteException {
 		return ControladorTest.getInstancia().recuperarListaPedidosAceptado();
-	}*/
+	}
 }

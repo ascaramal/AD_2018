@@ -26,11 +26,11 @@ public class PedidoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Pedido> recuperarListaPedidosAceptado() {
+	public List<Pedido> recuperarListaPedidos() {
 		try {
 			List<Pedido> resultado = new ArrayList<Pedido>();
 			Session s = sf.openSession();
-			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("from PedidoEntity p where p.estadoPedido ='Aceptado' ")
+			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("from PedidoEntity")
 					.list();
 			s.getTransaction().commit();
 			s.close();
@@ -39,7 +39,7 @@ public class PedidoDAO {
 			return resultado;
 		} catch (Exception e) {
 			System.out.println(e);
-			System.out.println("Error PedidoDAO.recuperarListaPedidosAceptado");
+			System.out.println("Error PedidoDAO.recuperarListaPedidos");
 		}
 		return null;
 	}
@@ -85,8 +85,9 @@ public class PedidoDAO {
 		res.setEstadoPedido(res.getEstadoPedido());
 		res.setFechaGeneracion(res.getFechaGeneracion());
 		res.setFechaDespacho(res.getFechaDespacho());
-		res.setItemPedido(res.getItemPedido());
 		res.setTotal(res.getTotal());
+		
+		for()
 		
 		return res;
 

@@ -32,11 +32,11 @@ public class ControladorTest {
 		return resultado;
 	}
 	
-	/*public List<PedidoDTO> recuperarListaPedidosAceptado() {
+	public List<PedidoDTO> recuperarListaPedidosAceptado() {
 		List<PedidoDTO> resultado = new ArrayList<PedidoDTO>();
-		List<Pedido> pedidos = PedidoDAO.getInstancia().recuperarListaPedidosAceptado();
+		List<Pedido> pedidos = PedidoDAO.getInstancia().recuperarListaPedidos();
 		for(Pedido pedido : pedidos)
 			resultado.add(pedido.toDTO());
 		return resultado;
-	}*/
+	}
 }
