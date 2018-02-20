@@ -81,7 +81,7 @@ public class Movimiento {
 	public MovimientoDTO toDTO() {
 		MovimientoDTO res = new MovimientoDTO();
 		res.setNroMovimiento(this.nroMovimiento);
-		//falta completar
+		
 		return null;
 	}
 }
