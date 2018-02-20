@@ -1,9 +1,13 @@
 package entities;
 
-@Entity
-@Table(name="Movimientos")
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Movimientos")
 public class MovimientoEntity {
 
 	private int nroMovimiento;

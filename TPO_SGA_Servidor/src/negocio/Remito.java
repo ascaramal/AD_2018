@@ -1,7 +1,11 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import dto.ItemRemitoDTO;
+import dto.RemitoDTO;
 
 public class Remito {
 	
@@ -16,7 +20,7 @@ public class Remito {
 		this.prefijo = prefijo;
 		this.fecha = fecha;
 		this.cliente = cliente;
-		this.items = items;
+		this.items = new ArrayList<ItemRemito>();
 	}
 
 	public int getNumero() {
@@ -59,6 +63,21 @@ public class Remito {
 		this.items = items;
 	}
 	
+	public RemitoDTO toDTO() {
+		RemitoDTO res = new RemitoDTO();
+		res.setNumero(this.numero);
+		res.setPrefijo(this.prefijo);
+		res.setCliente(this.cliente.toDTO());
+		res.setFecha(this.fecha);
+		
+		for(ItemRemito itemRAux : this.getItems()) {
+			ItemRemitoDTO itemRDTO = itemRAux.toDTO();
+			itemRDTO.setRemito(res);
+			res.getItems().add(itemRDTO);
+		}
+		
+		return res;
+	}
 	
 		
 }

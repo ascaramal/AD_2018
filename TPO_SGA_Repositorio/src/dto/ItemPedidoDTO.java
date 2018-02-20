@@ -9,6 +9,7 @@ public class ItemPedidoDTO implements Serializable {
 	private int nroItemPedido;
 	private ArticuloDTO articulo;
 	private int cantidad;
+	private PedidoDTO pedido;
 
 	public ItemPedidoDTO() {
 		
@@ -38,11 +39,18 @@ public class ItemPedidoDTO implements Serializable {
 		this.cantidad = cantidad;
 	}
 
+	public PedidoDTO getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(PedidoDTO pedido) {
+		this.pedido = pedido;
+	}
+
 	@Override
 	public String toString() {
 		return "ItemPedidoDTO [nroItemPedido=" + nroItemPedido + ", articulo=" + articulo + ", cantidad=" + cantidad
-				+ "]";
+				+ ", pedido=" + pedido + "]";
 	}
-	
 	
 }
