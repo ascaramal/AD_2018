@@ -15,6 +15,10 @@ public class Cliente {
 	private float limiteDeCredito;
 	private float saldo;
 
+	public Cliente() {
+		
+	}
+	
 	public Cliente(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
 			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
 		this.nroCliente = nroCliente;
@@ -111,7 +115,17 @@ public class Cliente {
 
 	public ClienteDTO toDTO() {
 		ClienteDTO res = new ClienteDTO();
-		//falta terminar
+		res.setNroCliente(this.nroCliente);
+		res.setRazonSocial(this.razonSocial);
+		res.setDireccion(this.direccion);
+		res.setLocalidad(this.localidad);
+		res.setCodPostal(this.codPostal);
+		res.setCuit(this.cuit);
+		res.setCondIVA(this.condIVA);
+		res.setTelefono(this.telefono);
+		res.setSaldo(this.saldo);
+		res.setLimiteDeCredito(this.limiteDeCredito);
+		
 		return res; 
 	}
 

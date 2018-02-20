@@ -19,12 +19,10 @@ public class ClienteEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cliente_id")
 	private Integer nroCliente;
 	private String razonSocial;
 	private String direccion;
 	private String localidad;
-	@Column(name="codigoPostal")
 	private Integer codPostal;
 	private String telefono;
 	private String cuit;

@@ -51,7 +51,7 @@ public class BusinessDelegate {
 		return lst;
 	}
 	
-	public List<PedidoDTO> recuperarListaPedidosAceptado() throws SistemaException, PedidoException {
+	/*public List<PedidoDTO> recuperarListaPedidosAceptado() throws SistemaException, PedidoException {
 		List<PedidoDTO> lst = null;
 		try {
 			lst = negocioRemoto.recuperarListaPedidoAceptado();
@@ -59,6 +59,6 @@ public class BusinessDelegate {
 			throw new PedidoException("No se puede listar los pedidos aceptados");
 		}
 		return lst;
-	}
+	}*/
 
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List,dto.ClienteDTO,java.util.Iterator"%>
+<%@ page import="java.util.List"%>
+<%@ page import="dto.ClienteDTO"%>
+<%@ page import="java.util.Iterator"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -63,15 +65,16 @@
                   <th>Telefono</th>
                   <th>CUIT</th>
                   <th>Cond IVA </th>
-                  <th>Cta Cte</th>
                   <th>
                 </tr>
               </thead>
               <tbody>
                <%
 					ClienteDTO cliente;
-					List<ClienteDTO> clientes = (List<ClienteDTO>)request.getAttribute("clientes");
-					for(Iterator<ClienteDTO> i = clientes.iterator(); i.hasNext();) {
+					
+               		List<ClienteDTO> clientes = (List<ClienteDTO>)request.getAttribute("clientes");
+					System.out.println(clientes.toString());
+               		for(Iterator<ClienteDTO> i = clientes.iterator(); i.hasNext();) {
 						cliente = i.next();
 				%>
                 <tr>
@@ -83,7 +86,6 @@
                   <td><%=cliente.getTelefono() %></td>
                   <td><%=cliente.getCuit() %></td>
                   <td><%=cliente.getCondIVA() %></td>
-                  <td><%=cliente.getNroCtaCte() %></td>
                 </tr>
                 <%} %>
               </tbody>
