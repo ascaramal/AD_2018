@@ -11,7 +11,7 @@ import exceptions.SistemaException;
 public class Test {
 
 	public static void main(String[] args) {
-		//prueba para guido 20-2-18 15:47hs
+		//prueba para guido 20-2-18 16:11hs
 
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
