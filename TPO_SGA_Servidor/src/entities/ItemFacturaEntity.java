@@ -1,8 +1,19 @@
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="ItemsFactura")
 public class ItemFacturaEntity {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idItemFactura")
 	private int nroItemFactura;
 	private int cantidad;
 	private ArticuloEntity articulo;

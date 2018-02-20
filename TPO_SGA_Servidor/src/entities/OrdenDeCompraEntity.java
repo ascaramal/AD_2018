@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.EstadoOC;
+import javax.persistence.*;
 
+@Entity
+@Table(name="OrdenesCompra")
 public class OrdenDeCompraEntity {
 	
 	private int nroOrdenDeCompra;

@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FacturaEntity implements Serializable {
+import javax.persistence.*;
 
-	private static final long serialVersionUID = -6936396874193303401L;
+@Entity
+@Table(name="Facturas")
+public class FacturaEntity{
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroFactura")
 	private int numero;
 	private int prefijo;
 	private Date fechaEmision;

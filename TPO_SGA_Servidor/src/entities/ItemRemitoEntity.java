@@ -1,9 +1,22 @@
 package entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ItemsRemito")
 public class ItemRemitoEntity {
 	
+	@EmbeddedId
+    private ItemRemitoID id; 
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroItemRemito")
 	private int nroItemRemito;
+	
 	private ArticuloEntity articulo;
+	
+	@Column(name="cantidad")
 	private int cant;
 	
 	public ItemRemitoEntity() {

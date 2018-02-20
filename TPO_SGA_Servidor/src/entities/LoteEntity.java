@@ -3,9 +3,15 @@ package entities;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name="Lotes")
 public class LoteEntity  {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="codLote")
 	private int codLote;
 	private Date fechaVtoLote;
 	private List<UbicacionEntity> ubicaciones;

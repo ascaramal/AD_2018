@@ -1,11 +1,15 @@
 package entities;
 
-import java.io.Serializable;
 
-public class ItemOrdenDeCompraEntity implements Serializable {
+import javax.persistence.*;
 
-	private static final long serialVersionUID = -5799446753184265316L;
+@Entity
+@Table(name="ItemsOC")
+public class ItemOrdenDeCompraEntity  {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroOC")
 	private int nroOrdenDeCompra;
 	private int cantidad;
 	private ArticuloEntity articulo;

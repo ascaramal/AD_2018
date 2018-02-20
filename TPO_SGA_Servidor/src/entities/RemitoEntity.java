@@ -3,7 +3,10 @@ package entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="Remitos")
 public class RemitoEntity {
 
 	private int numero;

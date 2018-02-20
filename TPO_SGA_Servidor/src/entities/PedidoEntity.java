@@ -5,7 +5,10 @@ import java.util.List;
 
 import enumerations.EstadoPedido;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="Pedidos")
 public class PedidoEntity {
 	
 	private int nroPedido;

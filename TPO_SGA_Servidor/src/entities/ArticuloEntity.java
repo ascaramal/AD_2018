@@ -4,9 +4,15 @@ import java.util.List;
 
 import dto.ArticuloDTO;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="Articulos")
 public class ArticuloEntity {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="codArticulo")
 	private int codArticulo;
 	private String codigoBarras;
 	private String marca;

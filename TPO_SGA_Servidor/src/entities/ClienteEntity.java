@@ -13,12 +13,12 @@ import dto.ClienteDTO;
 
 @Entity
 @Table(name="Clientes")
-public class ClienteEntity implements Serializable {
+public class ClienteEntity {
 
-	private static final long serialVersionUID = 4654600082063806717L;
-
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroCliente")
 	private Integer nroCliente;
 	private String razonSocial;
 	private String direccion;
