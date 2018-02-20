@@ -1,11 +1,18 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 
 @Embeddable
-public class ItemRemitoID {
+public class ItemRemitoID implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9069280151211218073L;
+
 	@ManyToOne
     @JoinColumn(name="Articulos", referencedColumnName="codArticulo", nullable = false)
     private ArticuloEntity articuloEntity;

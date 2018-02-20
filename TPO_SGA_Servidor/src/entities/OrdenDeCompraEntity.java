@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Table(name="OrdenesCompra")
 public class OrdenDeCompraEntity {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroOC")
 	private int nroOrdenDeCompra;
 	private int nroProveedor;
 	private EstadoOC estado;

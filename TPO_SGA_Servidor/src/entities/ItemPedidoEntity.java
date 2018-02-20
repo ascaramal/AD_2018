@@ -15,7 +15,9 @@ public class ItemPedidoEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="nroItemPedido")
 	private int nroItemPedido;
+	
 	private ArticuloEntity articulo;
+	
 	private int cantidad;
 
 	public ItemPedidoEntity() {

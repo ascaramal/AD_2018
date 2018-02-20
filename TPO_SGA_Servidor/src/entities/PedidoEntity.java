@@ -11,6 +11,9 @@ import javax.persistence.*;
 @Table(name="Pedidos")
 public class PedidoEntity {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroPedido")
 	private int nroPedido;
 	private ClienteEntity cliente;
 	private EstadoPedido estadoPedido;

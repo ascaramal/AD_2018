@@ -13,24 +13,50 @@ public class ArticuloEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codArticulo")
 	private int codArticulo;
-	private String codigoBarras;
-	private String marca;
-	private String tipo;
-	private String descripcion;
-	private String presentacion;
-	private String tamano;
-	private int unidad;
-	private int cantAComprar;
-	private int cantReservada;
-	private int cantReal;
-	private int cantFuturoDisponible;
-	private float precio;
-	private List<MovimientoEntity> movimientos;
-	private List<LoteEntity> lotes;
 	
-	public ArticuloEntity() {
-		
-	}
+	@Column(name = "codigoBarras")
+	private String codigoBarras;
+	
+	@Column(name = "marca")
+	private String marca;
+	
+	@Column(name = "tipo")
+	private String tipo;
+	
+	@Column(name = "descripcion")
+	private String descripcion;
+	
+	@Column(name = "presentacion")
+	private String presentacion;
+	
+	@Column(name = "tamano")
+	private String tamano;
+	
+	@Column(name = "unidad")
+	private int unidad;
+	
+	@Column(name = "cantidadAComprar")
+	private int cantAComprar;
+	
+	@Column(name = "cantReservada")
+	private int cantReservada;
+	
+	@Column(name = "cantReal")
+	private int cantReal;
+	
+	@Column(name = "cantFuturoDisponible")
+	private int cantFuturoDisponible;
+	
+	@Column(name = "precio")
+	private float precio;
+	
+	@OneToMany
+    @JoinColumn(name = "codArticulo")
+	private List<MovimientoEntity> movimientos;
+	
+	@OneToMany
+    @JoinColumn(name = "codArticulo")
+	private List<LoteEntity> lotes;
 
 	public int getCodArticulo() {
 		return codArticulo;
@@ -151,5 +177,11 @@ public class ArticuloEntity {
 	public void setLotes(List<LoteEntity> lotes) {
 		this.lotes = lotes;
 	}
+
+	public ArticuloEntity() {
+		super();
+	}
+	
+	
 	
 }

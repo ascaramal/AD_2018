@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Table(name="Remitos")
 public class RemitoEntity {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="nroRemito")
 	private int numero;
 	private int prefijo;
 	private Date fecha;
