@@ -11,14 +11,17 @@ public class ControladorCompra {
 		return instancia;
 	}
 	
-	public void generarCobranza(int cliente, float monto)
+	public void generarCobranza(int nro, float platita)
 	{
-		//Busca el Cliente (en base de datos?)
+		//Creo un cliente Clase
 		Cliente cl = new Cliente ();
-		
-		
+		//Busca el Cliente (en base de datos?)
+		//que contenga el ID = nro
+				
 		//Si existe modifica el Saldo
-		cl.setSaldo(cl.getSaldo() + monto);
-		//Si no, devuelve Error al buscar el Cliente.
+			cl.setSaldo(cl.getSaldo() + platita);
+			
+		//Si no, devuelve Error al buscar el Cliente. (Exception??)
+			//Lanzo Exception de cliente no encontrado
 	}
 }
