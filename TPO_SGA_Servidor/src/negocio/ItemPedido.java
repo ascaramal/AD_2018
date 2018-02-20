@@ -2,7 +2,7 @@ package negocio;
 
 import dto.ItemPedidoDTO;
 
-public class ItemPedido {
+public class ItemPedido {  
 	
 	private int nroItemPedido;
 	private Articulo articulo;

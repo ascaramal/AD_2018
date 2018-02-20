@@ -39,7 +39,7 @@ public class SrvCliente extends HttpServlet {
 	}
 
 	protected void dispatch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("listadoCliente.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("solicitarPedidoCliente.jsp");
 		rd.forward(request, response);
 	}
 	/**

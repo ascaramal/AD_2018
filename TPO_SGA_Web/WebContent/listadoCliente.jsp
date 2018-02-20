@@ -1,3 +1,4 @@
+<%@page import="javafx.scene.control.Alert"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
@@ -73,8 +74,7 @@
 					ClienteDTO cliente;
 					
                		List<ClienteDTO> clientes = (List<ClienteDTO>)request.getAttribute("clientes");
-					System.out.println(clientes.toString());
-               		for(Iterator<ClienteDTO> i = clientes.iterator(); i.hasNext();) {
+               		 for(Iterator<ClienteDTO> i = clientes.iterator(); i.hasNext();) {
 						cliente = i.next();
 				%>
                 <tr>
@@ -87,7 +87,7 @@
                   <td><%=cliente.getCuit() %></td>
                   <td><%=cliente.getCondIVA() %></td>
                 </tr>
-                <%} %>
+                <% } %>
               </tbody>
             </table>
           </div>

@@ -171,7 +171,7 @@ public class Articulo {
 		this.lotes = lotes;
 	}
 
-	/*public ArticuloDTO toDTO() {
+	public ArticuloDTO toDTO() {
 		ArticuloDTO res = new ArticuloDTO();
 		res.setCodArticulo(this.codArticulo);
 		res.setCodigoBarras(this.codigoBarras);
@@ -198,7 +198,7 @@ public class Articulo {
 		}
 		
 		return res;
-	}*/
+	}
 
 	// metodos
 

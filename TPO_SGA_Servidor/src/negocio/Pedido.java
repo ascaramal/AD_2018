@@ -92,7 +92,6 @@ public class Pedido {
 	public void setTotal(float total) {
 		this.total = total;
 	}
-	
 
 	/*public PedidoDTO toDTO() {
 		

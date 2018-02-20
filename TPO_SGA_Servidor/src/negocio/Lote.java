@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.LoteDTO;
+import dto.UbicacionDTO;
+
 
 
 public class Lote {
@@ -54,7 +57,7 @@ public class Lote {
 	}
 
 
-	/*public LoteDTO toDTO() {
+	public LoteDTO toDTO() {
 		LoteDTO res = new LoteDTO();
 		res.setCodLote(this.codLote);
 		res.setFechaVtoLote(this.fechaVtoLote);
@@ -66,7 +69,7 @@ public class Lote {
 		}
 		
 		return res;	
-	}*/
+	}
 }
 
 
