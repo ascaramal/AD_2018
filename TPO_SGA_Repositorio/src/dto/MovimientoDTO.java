@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class MovimientoDTO implements Serializable {
@@ -15,6 +16,7 @@ public class MovimientoDTO implements Serializable {
 	private int cant;
 	private String empleado;
 	private ArticuloDTO articulo;
+	private List<LoteDTO> lotes;
 	
 	
 	public MovimientoDTO() {
@@ -85,13 +87,19 @@ public class MovimientoDTO implements Serializable {
 		this.articulo = articulo;
 	}
 
+	public List<LoteDTO> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<LoteDTO> lotes) {
+		this.lotes = lotes;
+	}
+	
 	@Override
 	public String toString() {
 		return "MovimientoDTO [nroMovimiento=" + nroMovimiento + ", tipoMovimiento=" + tipoMovimiento + ", nroPedido="
 				+ nroPedido + ", nroOrdenDeCompra=" + nroOrdenDeCompra + ", motivoAjuste=" + motivoAjuste + ", cant="
 				+ cant + ", empleado=" + empleado + ", articulo=" + articulo + "]";
 	}
-
-	
 
 }

@@ -10,16 +10,12 @@ public class UbicacionDTO implements Serializable {
 	private ArticuloDTO articulo;
 	private String codigoUbicacion;
 	private int cantLibre;
+	private LoteDTO lote;
 	
-	
-
-	public UbicacionDTO(int nroUbicacion, ArticuloDTO articulo, String codigoUbicacion, int cantLibre) {
-		super();
-		this.nroUbicacion = nroUbicacion;
-		this.articulo = articulo;
-		this.codigoUbicacion = codigoUbicacion;
-		this.cantLibre = cantLibre;
+	public UbicacionDTO() {
+		
 	}
+
 
 	public int getNroUbicacion() {
 		return nroUbicacion;
@@ -54,12 +50,23 @@ public class UbicacionDTO implements Serializable {
 	}
 
 	
+	public LoteDTO getLote() {
+		return lote;
+	}
+
+
+	public void setLote(LoteDTO lote) {
+		this.lote = lote;
+	}
+
 	@Override
 	public String toString() {
 		return "UbicacionDTO [nroUbicacion=" + nroUbicacion + ", articulo=" + articulo + ", codigoUbicacion="
-				+ codigoUbicacion + ", cantLibre=" + cantLibre + "]";
+				+ codigoUbicacion + ", cantLibre=" + cantLibre + ", lote=" + lote + "]";
 	}
 
+
+	//Metodos
 	public boolean sosUbicacion() {
 		return false;
 	}

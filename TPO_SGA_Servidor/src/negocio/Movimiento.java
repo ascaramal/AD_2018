@@ -1,5 +1,9 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.LoteDTO;
 import dto.MovimientoDTO;
 
 public class Movimiento {
@@ -12,10 +16,10 @@ public class Movimiento {
 	private int cant;
 	private String empleado;
 	private Articulo articulo;
+	private List<Lote> lotes;
 
 	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
-			String motivoAjuste, int cant, String empleado, Articulo articulo) {
-		super();
+			String motivoAjuste, int cant, String empleado, Articulo articulo, List<Lote> lotes) {
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
 		this.nroPedido = nroPedido;
@@ -24,6 +28,7 @@ public class Movimiento {
 		this.cant = cant;
 		this.empleado = empleado;
 		this.articulo = articulo;
+		this.lotes = new ArrayList<Lote>();
 	}
 
 	public int getNroMovimiento() {
@@ -90,6 +95,14 @@ public class Movimiento {
 		this.articulo = articulo;
 	}
 
+	public List<Lote> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<Lote> lotes) {
+		this.lotes = lotes;
+	}
+
 	public MovimientoDTO toDTO() {
 		MovimientoDTO res = new MovimientoDTO();
 		res.setNroMovimiento(this.nroMovimiento);
@@ -100,6 +113,12 @@ public class Movimiento {
 		res.setNroPedido(this.nroPedido);
 		res.setTipoMovimiento(this.tipoMovimiento);
 		res.setArticulo(this.articulo.toDTO());
+		
+		for(Lote loteAux : this.getLotes()) {
+			LoteDTO loteDTO = loteAux.toDTO();
+			loteDTO.setMovimiento(res);
+			res.getLotes().add(loteDTO);
+		}
 
 		return res;
 	}

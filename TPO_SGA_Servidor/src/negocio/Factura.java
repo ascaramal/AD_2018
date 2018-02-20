@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.FacturaDTO;
+import dto.ItemFacturaDTO;
+
 
 public class Factura {
 
@@ -74,8 +77,24 @@ public class Factura {
 		this.itemsFactura = itemsFactura;
 	}
 
-
 	
+	public FacturaDTO toDTO() {
+		FacturaDTO res = new FacturaDTO();
+		res.setNumero(this.numero);
+		res.setPrefijo(this.prefijo);
+		res.setFechaEmision(this.fechaEmision);
+		res.setCliente(this.cliente.toDTO());
+		res.setTotal(this.total);
+		
+		for(ItemFactura itemFacAux : this.getItemsFactura()) {
+			ItemFacturaDTO itemFacDTO = itemFacAux.toDTO();
+			itemFacDTO.setFactura(res);
+			res.getItemsFactura().add(itemFacDTO);
+		}
+		
+		return res; 
+	}
+
 	//metodos 
 	public float calcularTotal() {
 		return 0;	

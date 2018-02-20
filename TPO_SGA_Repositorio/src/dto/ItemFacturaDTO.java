@@ -10,6 +10,7 @@ public class ItemFacturaDTO implements Serializable {
 	private int cantidad;
 	private ArticuloDTO articulo;
 	private float precio;
+	private FacturaDTO factura;
 
 	//Constructor
 	public ItemFacturaDTO() {
@@ -49,10 +50,19 @@ public class ItemFacturaDTO implements Serializable {
 	}
 
 
+	public FacturaDTO getFactura() {
+		return factura;
+	}
+
+	public void setFactura(FacturaDTO factura) {
+		this.factura = factura;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "ItemFacturaDTO [nroItemFactura=" + nroItemFactura + ", cantidad=" + cantidad + ", articulo=" + articulo
-				+ ", precio=" + precio + "]";
+				+ ", precio=" + precio + ", factura=" + factura + "]";
 	}
 
 	//metodos
