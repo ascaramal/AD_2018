@@ -8,7 +8,6 @@ import dto.PedidoDTO;
 import exceptions.ClienteException;
 import exceptions.PedidoException;
 import exceptions.SistemaException;
-//prueba euge
 public class Test {
 
 	public static void main(String[] args) {
