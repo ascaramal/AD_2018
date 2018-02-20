@@ -12,6 +12,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		//prueba euge2
+		//prueba euge 3
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
 			List<ClienteDTO> clientes = bd.getClientes();
