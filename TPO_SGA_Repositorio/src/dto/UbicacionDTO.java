@@ -11,6 +11,7 @@ public class UbicacionDTO implements Serializable {
 	private String codigoUbicacion;
 	private int cantLibre;
 	
+	
 
 	public UbicacionDTO(int nroUbicacion, ArticuloDTO articulo, String codigoUbicacion, int cantLibre) {
 		super();

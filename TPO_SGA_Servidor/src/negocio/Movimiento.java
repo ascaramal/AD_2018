@@ -11,15 +11,19 @@ public class Movimiento {
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
+	private Articulo articulo;
 
-	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOCompra, String motivoAjuste,
-			int cant) {
+	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
+			String motivoAjuste, int cant, String empleado, Articulo articulo) {
+		super();
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
 		this.nroPedido = nroPedido;
-		this.nroOrdenDeCompra = nroOCompra;
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
 		this.motivoAjuste = motivoAjuste;
 		this.cant = cant;
+		this.empleado = empleado;
+		this.articulo = articulo;
 	}
 
 	public int getNroMovimiento() {
@@ -78,10 +82,25 @@ public class Movimiento {
 		this.empleado = empleado;
 	}
 
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+
 	public MovimientoDTO toDTO() {
 		MovimientoDTO res = new MovimientoDTO();
 		res.setNroMovimiento(this.nroMovimiento);
-		
-		return null;
+		res.setCant(this.cant);
+		res.setEmpleado(this.empleado);
+		res.setMotivoAjuste(this.motivoAjuste);
+		res.setNroOrdenDeCompra(this.nroOrdenDeCompra);
+		res.setNroPedido(this.nroPedido);
+		res.setTipoMovimiento(this.tipoMovimiento);
+		res.setArticulo(this.articulo.toDTO());
+
+		return res;
 	}
 }

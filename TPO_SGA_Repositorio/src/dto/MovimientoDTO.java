@@ -14,6 +14,8 @@ public class MovimientoDTO implements Serializable {
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
+	private ArticuloDTO articulo;
+	
 	
 	public MovimientoDTO() {
 		
@@ -75,11 +77,21 @@ public class MovimientoDTO implements Serializable {
 		this.empleado = empleado;
 	}
 
+	public ArticuloDTO getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(ArticuloDTO articulo) {
+		this.articulo = articulo;
+	}
+
 	@Override
 	public String toString() {
 		return "MovimientoDTO [nroMovimiento=" + nroMovimiento + ", tipoMovimiento=" + tipoMovimiento + ", nroPedido="
 				+ nroPedido + ", nroOrdenDeCompra=" + nroOrdenDeCompra + ", motivoAjuste=" + motivoAjuste + ", cant="
-				+ cant + ", empleado=" + empleado + "]";
+				+ cant + ", empleado=" + empleado + ", articulo=" + articulo + "]";
 	}
+
+	
 
 }
