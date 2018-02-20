@@ -9,6 +9,7 @@ public class OrdenDeTrabajoDTO implements Serializable {
 	private ArticuloDTO articulo;
 	private int cantidad;
 	private UbicacionDTO Ubicacion;
+	private OrdenDeCompraDTO ordenDeCompra;
 	
 	public OrdenDeTrabajoDTO() {
 		
@@ -36,6 +37,14 @@ public class OrdenDeTrabajoDTO implements Serializable {
 
 	public void setUbicacion(UbicacionDTO ubicacion) {
 		Ubicacion = ubicacion;
+	}
+
+	public OrdenDeCompraDTO getOrdenDeCompra() {
+		return ordenDeCompra;
+	}
+
+	public void setOrdenDeCompra(OrdenDeCompraDTO ordenDeCompra) {
+		this.ordenDeCompra = ordenDeCompra;
 	}
 	
 }
