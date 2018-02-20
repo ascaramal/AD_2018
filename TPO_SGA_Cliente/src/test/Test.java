@@ -24,7 +24,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		
-		try {
+		/*try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
 			List<PedidoDTO> pedidos = bd.recuperarListaPedidosAceptado();
 			System.out.println("Listado de Pedidos Aceptados: ");
@@ -32,7 +32,7 @@ public class Test {
 				System.out.println(pedido.toString());
 		} catch (SistemaException | PedidoException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
