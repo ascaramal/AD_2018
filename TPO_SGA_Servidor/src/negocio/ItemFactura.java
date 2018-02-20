@@ -1,5 +1,6 @@
 package negocio;
 
+import dto.ItemFacturaDTO;
 import negocio.Articulo;
 
 public class ItemFactura {
@@ -49,6 +50,17 @@ public class ItemFactura {
 		this.precio = precio;
 	}
 
+	public ItemFacturaDTO toDTO() {
+		ItemFacturaDTO res = new ItemFacturaDTO();
+		res.setNroItemFactura(this.nroItemFactura);
+		res.setCantidad(this.cantidad);
+		res.setArticulo(this.articulo.toDTO());
+		res.setPrecio(this.precio);
+		
+		return res;
+		
+	}
+	
 	// metodos
 	public float getSubtotal() {
 		return this.precio * this.cantidad;

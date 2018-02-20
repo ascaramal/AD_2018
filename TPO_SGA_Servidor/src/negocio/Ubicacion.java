@@ -8,14 +8,14 @@ public class Ubicacion {
 	private Articulo articulo;
 	private String codigoUbicacion;
 	private int cantLibre;
-	
+	private Lote lote;
 
-	public Ubicacion(int nroUbicacion, Articulo articulo, String codigoUbicacion, int cantLibre) {
-		super();
+	public Ubicacion(int nroUbicacion, Articulo articulo, String codigoUbicacion, int cantLibre, Lote lote) {
 		this.nroUbicacion = nroUbicacion;
 		this.articulo = articulo;
 		this.codigoUbicacion = codigoUbicacion;
 		this.cantLibre = cantLibre;
+		this.lote = lote;
 	}
 
 	public int getNroUbicacion() {
@@ -53,9 +53,22 @@ public class Ubicacion {
 	public boolean sosUbicacion() {
 		return false;
 	}
-	
+
+	public Lote getLote() {
+		return lote;
+	}
+
+	public void setLote(Lote lote) {
+		this.lote = lote;
+	}
+
 	public UbicacionDTO toDTO() {
-		UbicacionDTO resultado = new UbicacionDTO(nroUbicacion, articulo.toDTO(), codigoUbicacion, cantLibre);
-		return resultado;
+		UbicacionDTO res = new UbicacionDTO();
+		res.setNroUbicacion(this.nroUbicacion);
+		res.setCodigoUbicacion(this.codigoUbicacion);
+		res.setArticulo(this.articulo.toDTO());
+		res.setCantLibre(this.cantLibre);
+		res.setLote(this.lote.toDTO());
+		return res;
 	}
 }

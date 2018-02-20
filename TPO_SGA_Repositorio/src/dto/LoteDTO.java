@@ -14,6 +14,7 @@ public class LoteDTO implements Serializable {
 	private Date fechaVtoLote;
 	private List<UbicacionDTO> ubicaciones;
 	private ArticuloDTO articulo;
+	private MovimientoDTO movimiento;
 	
 	public LoteDTO() {
 		this.ubicaciones = new ArrayList<UbicacionDTO>();
@@ -51,11 +52,18 @@ public class LoteDTO implements Serializable {
 		this.articulo = articulo;
 	}
 
+	public MovimientoDTO getMovimiento() {
+		return movimiento;
+	}
+
+	public void setMovimiento(MovimientoDTO movimiento) {
+		this.movimiento = movimiento;
+	}
+
 	@Override
 	public String toString() {
 		return "LoteDTO [codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote + ", ubicaciones=" + ubicaciones
-				+ ", articulo=" + articulo + "]";
+				+ ", articulo=" + articulo + ", movimiento=" + movimiento + "]";
 	}
 	
-		
 }

@@ -2,7 +2,6 @@ package entities;
 
 import java.util.List;
 
-import dto.ArticuloDTO;
 
 
 public class ArticuloEntity {
@@ -147,10 +146,4 @@ public class ArticuloEntity {
 		this.lotes = lotes;
 	}
 	
-	
-	public ArticuloDTO toDTO() {
-		ArticuloDTO res = new ArticuloDTO();
-		//falta terminar
-		return res;
-	}
 }

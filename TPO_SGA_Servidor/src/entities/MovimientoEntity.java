@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 public class MovimientoEntity {
 
 	private int nroMovimiento;
@@ -9,6 +11,7 @@ public class MovimientoEntity {
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
+	private List<LoteEntity> lotes;
 
 	public MovimientoEntity() {
 
@@ -72,6 +75,14 @@ public class MovimientoEntity {
 
 	public void agregarMovimiento() {
 
+	}
+
+	public List<LoteEntity> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<LoteEntity> lotes) {
+		this.lotes = lotes;
 	}
 
 }
