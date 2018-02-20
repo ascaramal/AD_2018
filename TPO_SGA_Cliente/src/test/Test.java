@@ -11,10 +11,6 @@ import exceptions.SistemaException;
 public class Test {
 
 	public static void main(String[] args) {
-		//prueba euge2
-		//prueba euge 3
-		//prueba euge 4
-		//prueba euge 5
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
 			List<ClienteDTO> clientes = bd.getClientes();

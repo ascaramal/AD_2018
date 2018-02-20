@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.ItemPedidoDTO;
+import dto.OrdenDeTrabajoDTO;
+import dto.PedidoDTO;
 import enumerations.EstadoPedido;
 
 public class Pedido {
@@ -93,10 +96,27 @@ public class Pedido {
 		this.total = total;
 	}
 
-	/*public PedidoDTO toDTO() {
+	public PedidoDTO toDTO() {
+		PedidoDTO res = new PedidoDTO();
+		res.setNroPedido(this.nroPedido);
+		res.setCliente(this.cliente.toDTO());
+		res.setEstadoPedido(this.estadoPedido);
+		res.setFechaGeneracion(this.getFechaGeneracion());
+		res.setFechaDespacho(this.fechaDespacho);
+		res.setTotal(this.total);
 		
-		return resultado;
-	}*/
-	
+		for(ItemPedido iPedidoAux : this.getItemsPedido()) {
+			ItemPedidoDTO itemPDTO = iPedidoAux.toDTO();
+			itemPDTO.setPedido(res);
+			
+		}
+		
+		for(OrdenDeTrabajo oDeTAux : this.getOrdenesDeTrabajo()) {
+			OrdenDeTrabajoDTO oDeTDTO = oDeTAux.toDTO();
+			oDeTDTO.setPedido(res);
+		}
+		
+		return res;
+	}
 	
 }
