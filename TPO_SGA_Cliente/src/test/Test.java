@@ -21,7 +21,7 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*
+		
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
 			List<PedidoDTO> pedidos = bd.recuperarListaPedidosAceptado();
@@ -30,7 +30,7 @@ public class Test {
 				System.out.println(pedido.toString());
 		} catch (SistemaException | PedidoException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 }
