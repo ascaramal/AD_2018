@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,10 @@ public class ItemFacturaEntity {
 	private int cantidad;
 	private ArticuloEntity articulo;
 	private float precio;
-
+	@ManyToOne
+	@JoinColumn(name="nroFactura")
+	private FacturaEntity facturaEntity;
+	
 	//Constructor
 	public ItemFacturaEntity() {
 		
@@ -61,6 +66,14 @@ public class ItemFacturaEntity {
     public float getSubtotal() {
         return this.precio * this.cantidad;
     }
+
+	public FacturaEntity getFacturaEntity() {
+		return facturaEntity;
+	}
+
+	public void setFacturaEntity(FacturaEntity facturaEntity) {
+		this.facturaEntity = facturaEntity;
+	}
 	
 	
 }

@@ -3,7 +3,19 @@ package hbt;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import entities.ArticuloEntity;
 import entities.ClienteEntity;
+import entities.FacturaEntity;
+import entities.ItemFacturaEntity;
+import entities.ItemOrdenDeCompraEntity;
+import entities.ItemPedidoEntity;
+import entities.LoteEntity;
+import entities.MovimientoEntity;
+import entities.OrdenDeCompraEntity;
+import entities.PedidoEntity;
+import entities.RemitoEntity;
+import entities.UbicacionEntity;
+import negocio.ItemRemito;
 
 
 public class HibernateUtil {
@@ -12,21 +24,18 @@ public class HibernateUtil {
         try {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
              // config.addAnnotatedClass(ArticuloEntity.class);
-             config.addAnnotatedClass(ClienteEntity.class);
-             // config.addAnnotatedClass(ComprobanteEntity.class);
-             /*config.addAnnotatedClass(FacturaEntity.class);
-             config.addAnnotatedClass(ItemFacturaEntity.class);
-             config.addAnnotatedClass(ItemOrdenDeCompraEntity.class);
-             config.addAnnotatedClass(ItemPedidoEntity.class);
-             config.addAnnotatedClass(LoteEntity.class);
-             config.addAnnotatedClass(MovimientoEntity.class);
-             config.addAnnotatedClass(MovimientoAutomaticoEntity.class);
-             config.addAnnotatedClass(MovimientoPorAjusteEntity.class); 
-             config.addAnnotatedClass(OrdenDeCompraEntity.class);
-             config.addAnnotatedClass(PedidoEntity.class);
-             config.addAnnotatedClass(RemitoEntity.class);
-             config.addAnnotatedClass(StockEntity.class);
-             config.addAnnotatedClass(UbicacionEntity.class);*/
+             	config.addAnnotatedClass(ClienteEntity.class);
+             // config.addAnnotatedClass(FacturaEntity.class);
+        	 // config.addAnnotatedClass(ItemFacturaEntity.class);
+        	 // config.addAnnotatedClass(ItemOrdenDeCompraEntity.class);
+        	 // config.addAnnotatedClass(ItemPedidoEntity.class);
+             	config.addAnnotatedClass(ItemRemito.class);
+          	 // config.addAnnotatedClass(LoteEntity.class);
+             // config.addAnnotatedClass(MovimientoEntity.class);
+             // config.addAnnotatedClass(OrdenDeCompraEntity.class);
+             // config.addAnnotatedClass(PedidoEntity.class);
+             	config.addAnnotatedClass(RemitoEntity.class);
+             // config.addAnnotatedClass(UbicacionEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex) {

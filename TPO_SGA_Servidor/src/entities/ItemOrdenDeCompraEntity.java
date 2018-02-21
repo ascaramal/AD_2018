@@ -1,7 +1,14 @@
 package entities;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="ItemsOC")
@@ -10,9 +17,16 @@ public class ItemOrdenDeCompraEntity  {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="nroOC")
-	private int nroOrdenDeCompra;
+	private int nroItemOrdenDeCompra;
+	@Column(name="cant")
 	private int cantidad;
+	@ManyToOne
+	@JoinColumn(name="codArticulo")
 	private ArticuloEntity articulo;
+	@ManyToOne
+	@JoinColumn(name="nroOC")
+	private OrdenDeCompraEntity ordenDeCompraEntity;
+	
 	
 	//Constructor
 	public ItemOrdenDeCompraEntity() {
@@ -35,12 +49,12 @@ public class ItemOrdenDeCompraEntity  {
 		this.articulo = articulo;
 	}
 
-	public int getNroOrdenDeCompra() {
-		return nroOrdenDeCompra;
+	public int getNroItemOrdenDeCompra() {
+		return nroItemOrdenDeCompra;
 	}
 
-	public void setNroOrdenDeCompra(int nroOrdenDeCompra) {
-		this.nroOrdenDeCompra = nroOrdenDeCompra;
+	public void setNroItemOrdenDeCompra(int nroItemOrdenDeCompra) {
+		this.nroItemOrdenDeCompra = nroItemOrdenDeCompra;
 	}
 	
 	

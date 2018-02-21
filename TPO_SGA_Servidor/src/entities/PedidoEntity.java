@@ -13,13 +13,20 @@ public class PedidoEntity {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroPedido")
 	private int nroPedido;
+	
+	@ManyToOne
+	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
+	
 	private EstadoPedido estadoPedido;
 	private Date fechaGeneracion;
 	private Date fechaDespacho;
+	
+	@OneToMany
+	@JoinColumn(name="nroPedido")
 	private List<ItemPedidoEntity> itemsPedido;
+	
 	private float total;
 	
 	public PedidoEntity() {

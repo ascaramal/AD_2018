@@ -1,12 +1,15 @@
 package entities;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dto.ClienteDTO;
@@ -18,7 +21,6 @@ public class ClienteEntity {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroCliente")
 	private Integer nroCliente;
 	private String razonSocial;
 	private String direccion;
@@ -30,7 +32,41 @@ public class ClienteEntity {
 	private String condIVA;
 	private float limiteDeCredito;
 	private float saldo;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="nroCliente")
+	private List<RemitoEntity> remitos;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="nroCliente")
+	private FacturaEntity facturaEntity;
+	
+	public List<RemitoEntity> getRemitos() {
+		return remitos;
+	}
 
+	public void setRemitos(List<RemitoEntity> remitos) {
+		this.remitos = remitos;
+	}
+
+	public FacturaEntity getFacturaEntity() {
+		return facturaEntity;
+	}
+
+	public void setFacturaEntity(FacturaEntity facturaEntity) {
+		this.facturaEntity = facturaEntity;
+	}
+
+	public PedidoEntity getPedidoEntity() {
+		return pedidoEntity;
+	}
+
+	public void setPedidoEntity(PedidoEntity pedidoEntity) {
+		this.pedidoEntity = pedidoEntity;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="nroCliente")
+	private PedidoEntity pedidoEntity;
 	
 	public ClienteEntity() {
 	

@@ -5,17 +5,33 @@ import dto.UbicacionDTO;
 public class Ubicacion {
 
 	private int nroUbicacion;
-	private Articulo articulo;
 	private String codigoUbicacion;
-	private int cantOcupada;
+	private int cantLibre;
 	private Lote lote;
+	private int capacidadMax;
 
-	public Ubicacion(int nroUbicacion, Articulo articulo, String codigoUbicacion, int cantOcupada, Lote lote) {
+	public int getCantLibre() {
+		return cantLibre;
+	}
+
+	public void setCantLibre(int cantLibre) {
+		this.cantLibre = cantLibre;
+	}
+
+	public int getCapacidadMax() {
+		return capacidadMax;
+	}
+
+	public void setCapacidadMax(int capacidadMax) {
+		this.capacidadMax = capacidadMax;
+	}
+
+	public Ubicacion(int nroUbicacion, String codigoUbicacion, int cantLibre, Lote lote, int capacidadMax) {
 		this.nroUbicacion = nroUbicacion;
-		this.articulo = articulo;
 		this.codigoUbicacion = codigoUbicacion;
-		this.cantOcupada = cantOcupada;
+		this.cantLibre = cantLibre;
 		this.lote = lote;
+		this.capacidadMax = capacidadMax;
 	}
 
 	public int getNroUbicacion() {
@@ -26,32 +42,12 @@ public class Ubicacion {
 		this.nroUbicacion = nroUbicacion;
 	}
 
-	public Articulo getArticulo() {
-		return articulo;
-	}
-
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
-
 	public String getCodigoUbicacion() {
 		return codigoUbicacion;
 	}
 
 	public void setCodigoUbicacion(String codigoUbicacion) {
 		this.codigoUbicacion = codigoUbicacion;
-	}
-
-	public int getCantOcupada() {
-		return cantOcupada;
-	}
-
-	public void setCantOcupada(int cantOcupada) {
-		this.cantOcupada = cantOcupada;
-	}
-
-	public boolean sosUbicacion() {
-		return false;
 	}
 
 	public Lote getLote() {
@@ -62,12 +58,15 @@ public class Ubicacion {
 		this.lote = lote;
 	}
 
+	public boolean sosUbicacion() {
+		return false;
+	}
+
 	public UbicacionDTO toDTO() {
 		UbicacionDTO res = new UbicacionDTO();
 		res.setNroUbicacion(this.nroUbicacion);
 		res.setCodigoUbicacion(this.codigoUbicacion);
-		res.setArticulo(this.articulo.toDTO());
-		res.setCantLibre(this.cantOcupada);
+		res.setCantLibre(this.cantLibre);
 		res.setLote(this.lote.toDTO());
 		return res;
 	}

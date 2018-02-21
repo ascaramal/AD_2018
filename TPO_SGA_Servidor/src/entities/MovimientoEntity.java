@@ -3,6 +3,9 @@ package entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -17,8 +20,25 @@ public class MovimientoEntity {
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
+	
+	@ManyToOne
+	@JoinColumn(name="codArticulo")
+	private ArticuloEntity articuloEntity;
+	
+	@ManyToMany
 	private List<LoteEntity> lotes;
 
+	
+	
+	public ArticuloEntity getArticuloEntity() {
+		return articuloEntity;
+	}
+
+	public void setArticuloEntity(ArticuloEntity articuloEntity) {
+		this.articuloEntity = articuloEntity;
+	}
+
+	//Constructor
 	public MovimientoEntity() {
 
 	}

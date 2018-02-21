@@ -11,13 +11,22 @@ public class LoteEntity  {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codLote")
 	private int codLote;
 	private Date fechaVtoLote;
+	
+	@OneToMany
+	@JoinColumn(name="codLote")
 	private List<UbicacionEntity> ubicaciones;
+	
+	@ManyToOne
+	@JoinColumn(name="codArticulo")
 	private ArticuloEntity articulo;
 
+	@ManyToMany
+	@J
 	
+
+	//Constructor
 	public LoteEntity() {
 		this.ubicaciones = new ArrayList<UbicacionEntity>();
 	}

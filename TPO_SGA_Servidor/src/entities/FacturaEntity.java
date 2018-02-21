@@ -1,6 +1,5 @@
 package entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,10 +14,18 @@ public class FacturaEntity{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="nroFactura")
 	private int numero;
+	
 	private int prefijo;
 	private Date fechaEmision;
+	
+	@ManyToOne
+	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
+	
 	private float total;
+	
+	@OneToMany
+	@JoinColumn(name="nroFactura")
 	private List<ItemFacturaEntity> itemsFactura;
 	
 	

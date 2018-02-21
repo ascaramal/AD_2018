@@ -32,17 +32,17 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 		return instancia;
 	}
 	
-	public ClienteDTO recuperarCliente(Integer nroCliente) throws RemoteException {
+	/*public ClienteDTO recuperarCliente(Integer nroCliente) throws RemoteException {
 		return ControladorDespacho.getInstancia().recuperarCliente(nroCliente);
-	}
+	}*/
 
 	@Override
 	public List<ClienteDTO> getClientes() throws RemoteException {
 		return ControladorTest.getInstancia().getClientes();
 	}
 
-	@Override
+	/*@Override
 	public List<PedidoDTO> recuperarListaPedidos() throws RemoteException {
 		return ControladorTest.getInstancia().recuperarListaPedidosAceptado();
-	}
+	}*/
 }
