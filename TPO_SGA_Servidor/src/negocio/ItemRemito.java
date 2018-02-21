@@ -1,5 +1,10 @@
 package negocio;
 
+import java.util.ArrayList;
+
+import dto.ClienteDTO;
+import dto.ItemRemitoDTO;
+
 public class ItemRemito {
 
 	private int nroItemRemito;
@@ -34,6 +39,17 @@ public class ItemRemito {
 	
 	public void setCant(int cant) {
 		this.cant = cant;
+	}
+
+	public ItemRemitoDTO toDTO() {
+		ItemRemitoDTO res = new ItemRemitoDTO();
+		res.setCant(cant);
+
+		res.setNroItemRemito(this.nroItemRemito);
+		//res.setArticulo(this.getArticulo());
+		res.setCant(this.cant);
+		
+		return res; 
 	}
 	
 	
