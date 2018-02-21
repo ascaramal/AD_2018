@@ -1,5 +1,6 @@
 package entities;	
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RemitoEntity {
 	private Date fecha;
 	
 	@ManyToOne
-	@JoinColumn(name="nroRemito")
+	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
 	
 	@OneToMany
@@ -29,7 +30,7 @@ public class RemitoEntity {
 	
 	//Constructor
 	public RemitoEntity() {
-		
+		this.items = new ArrayList<ItemRemitoEntity>();
 	}
 
 	public int getNumero() {

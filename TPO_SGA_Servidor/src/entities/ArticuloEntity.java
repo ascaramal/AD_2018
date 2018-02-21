@@ -58,6 +58,9 @@ public class ArticuloEntity {
     @JoinColumn(name = "codLote")
 	private List<LoteEntity> lotes;
 
+	
+	
+	
 	public int getCodArticulo() {
 		return codArticulo;
 	}

@@ -10,23 +10,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ItemsFactura")
+@Table(name = "ItemsFactura")
 public class ItemFacturaEntity {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idItemFactura")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idItemFactura")
 	private int nroItemFactura;
 	private int cantidad;
-	private ArticuloEntity articulo;
-	private float precio;
+
 	@ManyToOne
-	@JoinColumn(name="nroFactura")
-	private FacturaEntity facturaEntity;
+	@JoinColumn(name = "codArticulo")
+	private ArticuloEntity articulo;
 	
-	//Constructor
+	private float precio;
+
+	@ManyToOne
+	@JoinColumn(name = "nroFactura")
+	private FacturaEntity facturaEntity;
+
+	// Constructor
 	public ItemFacturaEntity() {
-		
+
 	}
 
 	public int getNroItemFactura() {
@@ -61,12 +66,6 @@ public class ItemFacturaEntity {
 		this.precio = precio;
 	}
 
-
-	//metodos
-    public float getSubtotal() {
-        return this.precio * this.cantidad;
-    }
-
 	public FacturaEntity getFacturaEntity() {
 		return facturaEntity;
 	}
@@ -74,6 +73,5 @@ public class ItemFacturaEntity {
 	public void setFacturaEntity(FacturaEntity facturaEntity) {
 		this.facturaEntity = facturaEntity;
 	}
-	
-	
+
 }

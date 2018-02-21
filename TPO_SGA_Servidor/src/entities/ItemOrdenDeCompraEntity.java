@@ -16,13 +16,15 @@ public class ItemOrdenDeCompraEntity  {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroOC")
+	@Column(name="idItemOC")
 	private int nroItemOrdenDeCompra;
 	@Column(name="cant")
 	private int cantidad;
+	
 	@ManyToOne
 	@JoinColumn(name="codArticulo")
 	private ArticuloEntity articulo;
+	
 	@ManyToOne
 	@JoinColumn(name="nroOC")
 	private OrdenDeCompraEntity ordenDeCompraEntity;

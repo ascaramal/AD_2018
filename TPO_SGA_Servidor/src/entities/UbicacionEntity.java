@@ -9,26 +9,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Ubicaciones")
+@Table(name = "Ubicaciones")
 public class UbicacionEntity {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroUbicacion;
 	private String codigoUbicacion;
 	private int cantLibre;
 	private int capacidadMax;
-	
+
 	@ManyToOne
-	@JoinColumn(name="codLote")
-	private int codLote;
+	@JoinColumn(name = "codLote")
+	private LoteEntity lote;
+
 	
 	
-	public UbicacionEntity(int nroUbicacion, String codigoUbicacion, int cantLibre, int capacidadMax) {
-		this.nroUbicacion = nroUbicacion;
-		this.codigoUbicacion = codigoUbicacion;
-		this.cantLibre = cantLibre;
-		this.capacidadMax = capacidadMax;
+	//Constructor
+	public UbicacionEntity() {
+
 	}
 
 	public int getNroUbicacion() {
@@ -63,7 +62,12 @@ public class UbicacionEntity {
 		this.capacidadMax = capacidadMax;
 	}
 
-	public boolean sosUbicacion() {
-		return false;
+	public LoteEntity getLote() {
+		return lote;
 	}
+
+	public void setLote(LoteEntity lote) {
+		this.lote = lote;
+	}
+
 }
