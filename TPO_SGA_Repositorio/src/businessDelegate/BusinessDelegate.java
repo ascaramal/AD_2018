@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import dto.PedidoDTO;
 import exceptions.ClienteException;
@@ -49,6 +50,17 @@ public class BusinessDelegate {
 			throw new ClienteException("No se pudo listar clientes");
 		}		
 		return lst;
+	}
+	
+
+	public ClienteDTO findCliente(ClienteDTO cliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArticuloDTO findArticulo(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	/*public List<PedidoDTO> recuperarListaPedidos() throws SistemaException, PedidoException {

@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class PedidoDTO implements Serializable {
 	private float total;
 	
 	public PedidoDTO() {
-		
+		this.itemsPedido = new ArrayList<ItemPedidoDTO>();
 	}
 
 	public int getNroPedido() {
@@ -84,5 +85,12 @@ public class PedidoDTO implements Serializable {
 				+ ", fechaGeneracion=" + fechaGeneracion + ", fechaDespacho=" + fechaDespacho + ", itemsPedido="
 				+ itemsPedido + ", total=" + total + "]";
 	}
+
+	
+	//Metodo
+	public void agregarItemPedido(ItemPedidoDTO iPedido) {
+		itemsPedido.add(iPedido);
+	}
+
 
 }

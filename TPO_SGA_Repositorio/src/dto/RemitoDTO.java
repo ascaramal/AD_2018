@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,16 +16,9 @@ public class RemitoDTO implements Serializable {
 	private List<ItemRemitoDTO> items;
 
 	public RemitoDTO() {
-	
+		this.items = new ArrayList<ItemRemitoDTO>();
 	}
 
-	public RemitoDTO(int numero, int prefijo, Date fecha, ClienteDTO cliente, List<ItemRemitoDTO> items) {
-		this.numero = numero;
-		this.prefijo = prefijo;
-		this.fecha = fecha;
-		this.cliente = cliente;
-		this.items = items;
-	}
 
 	public int getNumero() {
 		return numero;

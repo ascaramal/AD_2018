@@ -137,70 +137,69 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <h1>
         Datos Cliente
       </h1>
-
     </section>
 
     <!-- Main content -->
-<!--     <section class="content container-fluid"> -->
-<!--       	<div class="row"> -->
-<!--       		<div class="col-md-12"> -->
-<!--       			<div class="box box-primary"> -->
-<!--       				<div class="box-body"> -->
-<!-- 	      				<div role="form"> -->
-<!-- 	      					<div class="form-group"> -->
-<!-- 					      		<form class="form-horizontal"> -->
-<!-- 					              <div class="box-body"> -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputRS" class="col-lg-2 control-label">Razón Social</label> -->
-<!-- 					                  <div class="col-sm-4"> -->
-<!-- 					                  	<input type="text" class="form-control" id="inputRazonSocial" placeholder="Super Chino" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div> -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label> -->
-<!-- 					                  <div class="col-sm-4"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputDireccion" placeholder="Av. Directorio 2651" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div> -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputLocalidad" class="col-lg-2 control-label">Localidad</label> -->
-<!-- 					                  <div class="col-sm-2"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputLocalidad" placeholder="CABA" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div> -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputCP" class="col-lg-2 control-label">Código Postal</label> -->
-<!-- 					                  <div class="col-sm-2"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputCP" placeholder="1424" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div>                    -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputTel" class="col-lg-2 control-label">Teléfono</label> -->
-<!-- 					                  <div class="col-sm-2"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputTel" placeholder="4444-4444" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div> -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputCUIT" class="col-lg-2 control-label">CUIT</label> -->
-<!-- 					                  <div class="col-sm-2"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputCUIT" placeholder="20-1234567-3" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div>   -->
-<!-- 					                <div class="form-group"> -->
-<!-- 					                  <label for="inputIVA" class="col-lg-2 control-label">Condición IVA</label> -->
-<!-- 					                  <div class="col-sm-4"> -->
-<!-- 					                    <input type="text" class="form-control" id="inputIVA" placeholder="Inscripto" disabled> -->
-<!-- 					                  </div> -->
-<!-- 					                </div>                        -->
-<!-- 					              </div> -->
-<!-- 					            </form> -->
-<!-- 	      					</div> -->
-<!-- 	      				</div> -->
-<!--       				</div> -->
-<!--       			</div> -->
-<!--       		</div> -->
-<!--       	</div>	 -->
-
+    <section class="content container-fluid">
+      	<div class="row">
+      		<div class="col-md-12">
+      			<div class="box box-primary">
+      				<div class="box-body">
+	      				<div role="form">
+	      					<div class="form-group">
+					      		<form class="form-horizontal">
+					              <div class="box-body">
+					                <div class="form-group">
+					                  <label for="inputRS" class="col-lg-2 control-label">Razón Social</label>
+					                  <div class="col-sm-4">
+					                  	<input type="text" class="form-control" id="inputRazonSocial" placeholder="Super Chino" disabled>
+					                  </div>
+					                </div>
+					                <div class="form-group">
+					                  <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
+					                  <div class="col-sm-4">
+					                    <input type="text" class="form-control" id="inputDireccion" placeholder="Av. Directorio 2651" disabled>
+					                  </div>
+					                </div>
+					                <div class="form-group">
+					                  <label for="inputLocalidad" class="col-lg-2 control-label">Localidad</label>
+					                  <div class="col-sm-2">
+					                    <input type="text" class="form-control" id="inputLocalidad" placeholder="CABA" disabled>
+					                  </div>
+					                </div>
+					                <div class="form-group">
+					                  <label for="inputCP" class="col-lg-2 control-label">Código Postal</label>
+					                  <div class="col-sm-2">
+					                    <input type="text" class="form-control" id="inputCP" placeholder="1424" disabled>
+					                  </div>
+					                </div>                   
+					                <div class="form-group">
+					                  <label for="inputTel" class="col-lg-2 control-label">Teléfono</label>
+					                  <div class="col-sm-2">
+					                    <input type="text" class="form-control" id="inputTel" placeholder="4444-4444" disabled>
+					                  </div>
+					                </div>
+					                <div class="form-group">
+					                  <label for="inputCUIT" class="col-lg-2 control-label">CUIT</label>
+					                  <div class="col-sm-2">
+					                    <input type="text" class="form-control" id="inputCUIT" placeholder="20-1234567-3" disabled>
+					                  </div>
+					                </div>  
+					                <div class="form-group">
+					                  <label for="inputIVA" class="col-lg-2 control-label">Condición IVA</label>
+					                  <div class="col-sm-4">
+					                    <input type="text" class="form-control" id="inputIVA" placeholder="Inscripto" disabled>
+					                  </div>
+					                </div>                       
+					              </div>
+					            </form>
+	      					</div>
+	      				</div>
+      				</div>
+      			</div>
+      		</div>
+      	</div>	
+      	</section>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -240,10 +239,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </div>
     </div>
+    
     	<section class="content-header">
      		<h3>Pedido Articulos</h3>
 		</section>
-    </section>
     <!-- /.Datos Cliente -->
     <section class="content container-fluid">
       	<div class="row">
@@ -263,7 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					            		<td><input type="text" style="width:60px" class="form-control" placeholder=""></td>
 					            		<td> 
 						                  <div class="form-group">
-						                 	<select class="form-control">
+						                 	<select class="form-control" name="">
 							                  <option>option 1</option>
 							                  <option>option 2</option>
 							                  <option>option 3</option>
