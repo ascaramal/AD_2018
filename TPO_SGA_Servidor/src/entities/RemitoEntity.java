@@ -1,5 +1,6 @@
-package entities;
+package entities;	
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,13 +14,23 @@ public class RemitoEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="nroRemito")
 	private int numero;
+	
 	private int prefijo;
 	private Date fecha;
+	
+	@ManyToOne
+	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
+	
+	@OneToMany
+	@JoinColumn(name="nroRemito")
 	private List<ItemRemitoEntity> items;
 	
+
+	
+	//Constructor
 	public RemitoEntity() {
-		
+		this.items = new ArrayList<ItemRemitoEntity>();
 	}
 
 	public int getNumero() {

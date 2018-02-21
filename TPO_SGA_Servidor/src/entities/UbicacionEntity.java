@@ -1,30 +1,33 @@
 package entities;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Ubicaciones")
+@Table(name = "Ubicaciones")
 public class UbicacionEntity {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroUbicacion")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroUbicacion;
-	private ArticuloEntity articulo;
 	private String codigoUbicacion;
 	private int cantLibre;
-	
+	private int capacidadMax;
 
-	public UbicacionEntity(int nroUbicacion, ArticuloEntity articulo, String codigoUbicacion, int cantLibre) {
-		super();
-		this.nroUbicacion = nroUbicacion;
-		this.articulo = articulo;
-		this.codigoUbicacion = codigoUbicacion;
-		this.cantLibre = cantLibre;
+	@ManyToOne
+	@JoinColumn(name = "codLote")
+	private LoteEntity lote;
+
+	
+	
+	//Constructor
+	public UbicacionEntity() {
+
 	}
 
 	public int getNroUbicacion() {
@@ -33,14 +36,6 @@ public class UbicacionEntity {
 
 	public void setNroUbicacion(int nroUbicacion) {
 		this.nroUbicacion = nroUbicacion;
-	}
-
-	public ArticuloEntity getArticulo() {
-		return articulo;
-	}
-
-	public void setArticulo(ArticuloEntity articulo) {
-		this.articulo = articulo;
 	}
 
 	public String getCodigoUbicacion() {
@@ -59,7 +54,20 @@ public class UbicacionEntity {
 		this.cantLibre = cantLibre;
 	}
 
-	public boolean sosUbicacion() {
-		return false;
+	public int getCapacidadMax() {
+		return capacidadMax;
 	}
+
+	public void setCapacidadMax(int capacidadMax) {
+		this.capacidadMax = capacidadMax;
+	}
+
+	public LoteEntity getLote() {
+		return lote;
+	}
+
+	public void setLote(LoteEntity lote) {
+		this.lote = lote;
+	}
+
 }

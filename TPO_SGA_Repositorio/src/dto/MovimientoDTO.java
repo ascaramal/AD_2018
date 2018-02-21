@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,7 +21,7 @@ public class MovimientoDTO implements Serializable {
 	
 	
 	public MovimientoDTO() {
-		
+		this.lotes = new ArrayList<LoteDTO>();  
 	}
 
 	public int getNroMovimiento() {

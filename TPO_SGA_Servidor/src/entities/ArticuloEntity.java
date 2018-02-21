@@ -51,13 +51,16 @@ public class ArticuloEntity {
 	private float precio;
 	
 	@OneToMany
-    @JoinColumn(name = "codArticulo")
+    @JoinColumn(name = "nroMovimiento")
 	private List<MovimientoEntity> movimientos;
 	
 	@OneToMany
-    @JoinColumn(name = "codArticulo")
+    @JoinColumn(name = "codLote")
 	private List<LoteEntity> lotes;
 
+	
+	
+	
 	public int getCodArticulo() {
 		return codArticulo;
 	}

@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import dto.PedidoDTO;
 import exceptions.ClienteException;
@@ -51,7 +52,18 @@ public class BusinessDelegate {
 		return lst;
 	}
 	
-	public List<PedidoDTO> recuperarListaPedidos() throws SistemaException, PedidoException {
+
+	public ClienteDTO findCliente(ClienteDTO cliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArticuloDTO findArticulo(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/*public List<PedidoDTO> recuperarListaPedidos() throws SistemaException, PedidoException {
 		List<PedidoDTO> lst = null;
 		try {
 			lst = negocioRemoto.recuperarListaPedidos();
@@ -59,6 +71,6 @@ public class BusinessDelegate {
 			throw new PedidoException("No se puede listar los pedidos aceptados");
 		}
 		return lst;
-	}
+	}*/
 
 }

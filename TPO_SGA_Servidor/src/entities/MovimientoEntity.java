@@ -2,23 +2,53 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Movimientos")
+@Table(name = "Movimientos")
 public class MovimientoEntity {
 
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroMovimiento;
 	private String tipoMovimiento;
 	private int nroPedido;
+	@Column(name="nroOCompra")
 	private int nroOrdenDeCompra;
+	@Column(name="motivoDeAjuste")
 	private String motivoAjuste;
+	@Column(name="cantidad")
 	private int cant;
 	private String empleado;
+
+	@ManyToOne
+	@JoinColumn(name = "codArticulo")
+	private ArticuloEntity articuloEntity;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "LotesMovimientos")
 	private List<LoteEntity> lotes;
 
+	public ArticuloEntity getArticuloEntity() {
+		return articuloEntity;
+	}
+
+	public void setArticuloEntity(ArticuloEntity articuloEntity) {
+		this.articuloEntity = articuloEntity;
+	}
+
+	// Constructor
 	public MovimientoEntity() {
 
 	}

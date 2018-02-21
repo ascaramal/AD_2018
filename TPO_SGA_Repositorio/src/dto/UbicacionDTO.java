@@ -5,17 +5,16 @@ import java.io.Serializable;
 public class UbicacionDTO implements Serializable {
 
 	private static final long serialVersionUID = -2608850933342264753L;
-	
+
 	private int nroUbicacion;
-	private ArticuloDTO articulo;
 	private String codigoUbicacion;
 	private int cantLibre;
 	private LoteDTO lote;
-	
-	public UbicacionDTO() {
-		
-	}
+	private int capacidadMax;
 
+	public UbicacionDTO() {
+
+	}
 
 	public int getNroUbicacion() {
 		return nroUbicacion;
@@ -23,14 +22,6 @@ public class UbicacionDTO implements Serializable {
 
 	public void setNroUbicacion(int nroUbicacion) {
 		this.nroUbicacion = nroUbicacion;
-	}
-
-	public ArticuloDTO getArticulo() {
-		return articulo;
-	}
-
-	public void setArticulo(ArticuloDTO articulo) {
-		this.articulo = articulo;
 	}
 
 	public String getCodigoUbicacion() {
@@ -49,11 +40,17 @@ public class UbicacionDTO implements Serializable {
 		this.cantLibre = cantLibre;
 	}
 
-	
 	public LoteDTO getLote() {
 		return lote;
 	}
 
+	public int getCapacidadMax() {
+		return capacidadMax;
+	}
+
+	public void setCapacidadMax(int capacidadMax) {
+		this.capacidadMax = capacidadMax;
+	}
 
 	public void setLote(LoteDTO lote) {
 		this.lote = lote;
@@ -61,12 +58,11 @@ public class UbicacionDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UbicacionDTO [nroUbicacion=" + nroUbicacion + ", articulo=" + articulo + ", codigoUbicacion="
-				+ codigoUbicacion + ", cantLibre=" + cantLibre + ", lote=" + lote + "]";
+		return "UbicacionDTO [nroUbicacion=" + nroUbicacion + ", codigoUbicacion=" + codigoUbicacion + ", cantLibre="
+				+ cantLibre + ", lote=" + lote + ", capacidadMax=" + capacidadMax + "]";
 	}
 
-
-	//Metodos
+	// Metodos
 	public boolean sosUbicacion() {
 		return false;
 	}

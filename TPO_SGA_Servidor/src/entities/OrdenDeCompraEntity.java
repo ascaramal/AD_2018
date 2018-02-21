@@ -16,9 +16,13 @@ public class OrdenDeCompraEntity {
 	private int nroOrdenDeCompra;
 	private int nroProveedor;
 	private EstadoOC estado;
+	
+	@OneToMany
+	@JoinColumn(name="nroOC")
 	private List<ItemOrdenDeCompraEntity> itemsOC;
 	
 	
+	//Constructor
 	public OrdenDeCompraEntity() {
 		this.itemsOC = new ArrayList<ItemOrdenDeCompraEntity>();
 	}

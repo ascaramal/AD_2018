@@ -6,21 +6,34 @@ import javax.persistence.*;
 @Table(name="ItemsRemito")
 public class ItemRemitoEntity {
 	
-	@EmbeddedId
-    private ItemRemitoID id; 
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroItemRemito")
 	private int nroItemRemito;
-	
+
+	@ManyToOne
+	@JoinColumn(name="codArticulo")
 	private ArticuloEntity articulo;
 	
 	@Column(name="cantidad")
 	private int cant;
 	
+	@ManyToOne
+	@JoinColumn(name="nroRemito")
+	private RemitoEntity remitoEntity;
+	
+	
+	//Constructor
 	public ItemRemitoEntity() {
 		
+	}
+
+	public RemitoEntity getRemitoEntity() {
+		return remitoEntity;
+	}
+
+	public void setRemitoEntity(RemitoEntity remitoEntity) {
+		this.remitoEntity = remitoEntity;
 	}
 
 	public int getNroItemRemito() {

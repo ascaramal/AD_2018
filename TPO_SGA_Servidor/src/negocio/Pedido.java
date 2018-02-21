@@ -100,6 +100,12 @@ public class Pedido {
 		this.total = total;
 	}
 
+	
+	//Metodos
+	public void agregarItemPedido(ItemPedido itemP) {
+		itemsPedido.add(itemP);
+	}
+	
 	public PedidoDTO toDTO() {
 		PedidoDTO res = new PedidoDTO();
 		res.setNroPedido(this.nroPedido);

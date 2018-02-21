@@ -1,24 +1,25 @@
 package entities;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dto.ClienteDTO;
 
 @Entity
-@Table(name="Clientes")
+@Table(name = "Clientes")
 public class ClienteEntity {
 
-	
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroCliente")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer nroCliente;
 	private String razonSocial;
 	private String direccion;
@@ -26,15 +27,26 @@ public class ClienteEntity {
 	private Integer codPostal;
 	private String telefono;
 	private String cuit;
-	@Column(name="condicionIVA")
+	@Column(name = "condicionIVA")
 	private String condIVA;
 	private float limiteDeCredito;
 	private float saldo;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nroCliente")
+	private List<RemitoEntity> remitos;
 
-	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nroCliente")
+	private List<FacturaEntity> facturaEntity;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nroCliente")
+	private List<PedidoEntity> pedidoEntity;
+
+	// Constructor
 	public ClienteEntity() {
-	
-	}	
+
+	}
 
 	public Integer getNroCliente() {
 		return nroCliente;
@@ -114,6 +126,30 @@ public class ClienteEntity {
 
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
+	}
+
+	public List<RemitoEntity> getRemitos() {
+		return remitos;
+	}
+
+	public void setRemitos(List<RemitoEntity> remitos) {
+		this.remitos = remitos;
+	}
+
+	public List<FacturaEntity> getFacturaEntity() {
+		return facturaEntity;
+	}
+
+	public void setFacturaEntity(List<FacturaEntity> facturaEntity) {
+		this.facturaEntity = facturaEntity;
+	}
+
+	public List<PedidoEntity> getPedidoEntity() {
+		return pedidoEntity;
+	}
+
+	public void setPedidoEntity(List<PedidoEntity> pedidoEntity) {
+		this.pedidoEntity = pedidoEntity;
 	}
 
 	public ClienteDTO toDTO() {
