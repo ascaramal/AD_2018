@@ -51,10 +51,8 @@ public class AltaPedido {
 				pedido.setCliente(clienteVuelta);
 				
 
-				pedido = Controlador.getInstancia().altaPedido(pedido);
+				pedido = BusinessDelegate.getInstance().altaPedido(pedido);
 
-				System.out.println(pedido.getMensaje());
-				System.out.println(pedido.getCodigoPedido());
 
 			}
 		else{

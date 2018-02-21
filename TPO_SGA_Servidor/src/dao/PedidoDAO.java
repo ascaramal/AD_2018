@@ -60,6 +60,21 @@ public class PedidoDAO {
 		}
 		return null;
 	}
+	
+	public int altaPedido(PedidoEntity pedido) {
+		try {
+			Session session = sf.openSession();
+			session.beginTransaction();
+			int idGenerado = (int) session.save(pedido);
+			session.getTransaction().commit();
+			session.close();
+			return idGenerado;
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO. AltaPedidoe");
+		}
+		return -1;
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<PedidoEntity> recuperarListaPedidosCliente(long nrocliente) {
