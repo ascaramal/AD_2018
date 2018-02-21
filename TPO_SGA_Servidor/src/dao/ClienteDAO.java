@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ClienteEntity;
+import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Cliente;
 
@@ -44,6 +45,7 @@ public class ClienteDAO {
 		return null;
 	}
 	
+<<<<<<< HEAD
     public Cliente buscarPorCodigo(int codigo) {
         
         Cliente cl = null;
@@ -79,6 +81,25 @@ public class ClienteDAO {
         //Devuelvo el Cliente encontrado con ese Nro de Cliente.
         return cl;        
     }
+=======
+	public Cliente findCliente(int nroCliente) throws DAOException {
+		Cliente cli = null;
+		try {
+			Session s = sf.openSession();
+			s.beginTransaction();
+			ClienteEntity clienteE = (ClienteEntity) s.createQuery("from ClienteEntity c where c.nroCliente = :nroCliente ")
+					.setParameter("nroCliente", nroCliente).uniqueResult();
+			s.getTransaction().commit();
+			s.close();	
+			cli = this.toNegocio(clienteE);
+			return cli;
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Error ClienteDAO.findCliente");
+		}
+		return null;
+	}
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 	
     
 	public Cliente toNegocio(ClienteEntity cliente) {

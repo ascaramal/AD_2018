@@ -16,7 +16,6 @@ public class Cliente {
 	private float saldo;
 
 	public Cliente() {
-		
 	}
 	
 	public Cliente(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
@@ -128,15 +127,4 @@ public class Cliente {
 		
 		return res; 
 	}
-	
-	//Busca un cliente por medio de su numero
-	public boolean soyCliente (int nro)
-	{
-		if (nro == this.getNroCliente())
-		{
-			return true;
-		}
-		return false;	
-	}
-
 }
