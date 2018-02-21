@@ -18,12 +18,14 @@ public class Lote {
 	private Movimiento movimiento;
 
 	public Lote(int codLote, Date fechaVtoLote, List<Ubicacion> ubicaciones, Articulo articulo, Movimiento movimiento) {
-		super();
 		this.codLote = codLote;
 		this.fechaVtoLote = fechaVtoLote;
 		this.ubicaciones = new ArrayList<Ubicacion>();
 		this.articulo = articulo;
 		this.movimiento = movimiento;
+	}
+
+	public Lote() {
 	}
 
 	public int getCodLote() {

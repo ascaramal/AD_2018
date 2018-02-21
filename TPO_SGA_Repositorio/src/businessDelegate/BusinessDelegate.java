@@ -8,9 +8,8 @@ import java.util.List;
 
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
-import dto.PedidoDTO;
+import exceptions.ArticuloException;
 import exceptions.ClienteException;
-import exceptions.PedidoException;
 import exceptions.SistemaException;
 import interfaces.INegocio;
 
@@ -53,14 +52,22 @@ public class BusinessDelegate {
 	}
 	
 
-	public ClienteDTO findCliente(ClienteDTO cliente) {
-		// TODO Auto-generated method stub
-		return null;
+	public ClienteDTO findCliente(int nroCliente) throws SistemaException, ClienteException {
+		try {
+			ClienteDTO cli = negocioRemoto.findCliente(nroCliente);
+			return cli;
+		} catch (RemoteException e) {
+			throw new ClienteException("No se pudo encontrar el cliente");
+		}
 	}
 
-	public ArticuloDTO findArticulo(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticuloDTO findArticulo(int nroArticulo) throws SistemaException, ArticuloException {
+		try {
+			ArticuloDTO art = negocioRemoto.findArticulo(nroArticulo);
+			return art;
+		} catch (RemoteException e) {
+			throw new ArticuloException("No se pudo encontrar el articulo");
+		}
 	}
 	
 	/*public List<PedidoDTO> recuperarListaPedidos() throws SistemaException, PedidoException {

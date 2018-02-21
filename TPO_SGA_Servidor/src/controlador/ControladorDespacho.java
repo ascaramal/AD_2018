@@ -1,8 +1,10 @@
 package controlador;
 
+import dao.ArticuloDAO;
 import dao.ClienteDAO;
 import dto.ClienteDTO;
-import entities.ClienteEntity;
+import exceptions.DAOException;
+
 
 public class ControladorDespacho {
 
@@ -14,16 +16,28 @@ public class ControladorDespacho {
 		return instancia;
 	}
 	
-	public ClienteDTO recuperarCliente(Integer nroCliente) {
-		ClienteEntity clienteBusqueda;
-		clienteBusqueda=ClienteDAO.getInstancia().recuperarCliente(nroCliente);
-		if (clienteBusqueda!= null){
-			return clienteBusqueda.toDTO();
+	public ClienteDTO findCliente(int nroCliente) {
+		ClienteDTO cliente = new ClienteDTO();
+		try {
+			cliente = ClienteDAO.getInstancia().findCliente(nroCliente).toDTO();
+		} catch (DAOException e) {
+			e.printStackTrace();
 		}
-		else{
-			return null;
-		}
+		
+		return cliente;
 	}
+
+	public ArticuloDTO findArticulo(Integer nroArticulo) {
+		ArticuloDTO articulo = new ArticuloDTO();
+		try {
+			articulo = ArticuloDAO.getInstancia().findCliente(nroArticulo).toDTO();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 
 	
 }

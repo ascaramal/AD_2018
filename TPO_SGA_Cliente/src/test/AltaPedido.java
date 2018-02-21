@@ -17,7 +17,7 @@ public class AltaPedido {
 		ClienteDTO cliente = new ClienteDTO();
 		cliente.setNroCliente(1);
 		ClienteDTO clienteVuelta = new ClienteDTO();
-		clienteVuelta = BusinessDelegate.getInstance().findCliente(cliente);
+		clienteVuelta = BusinessDelegate.getInstance().findCliente(cliente.getNroCliente());
 
 		if (clienteVuelta != null) {
 			PedidoDTO pedido = new PedidoDTO();
