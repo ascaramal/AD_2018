@@ -1,6 +1,4 @@
 package controlador;
-import java.util.List;
-
 import dao.ClienteDAO;
 import negocio.Cliente;
 
