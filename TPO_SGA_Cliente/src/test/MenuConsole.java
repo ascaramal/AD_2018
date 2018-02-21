@@ -54,11 +54,11 @@ public class MenuConsole {
 		        //Si es mayor a cero
 		        if (opCantMod > 0)
 		        {	
-		        //	modificarStockPorAjusteSalida(int opCodArt, int opCantMod, int opLegajo, String opMotivo, int nroUbic, int nroLote);
+		        //	modificarStockPorAjusteEntrada(int opCodArt, int opCantMod, int opLegajo, String opMotivo, int nroUbic, int nroLote);
 		        	break;
 		        }
 		        else
-		        	//modificarStockPorAjusteEntrada(int opCodArt, int opCantMod, int opLegajo, String opMotivo, int nroUbic, int nroLote);
+		        	//modificarStockPorAjusteSalida(int opCodArt, int opCantMod, int opLegajo, String opMotivo, int nroUbic, int nroLote);
 		            break;
 			    
 		    case "4":
