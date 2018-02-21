@@ -44,7 +44,43 @@ public class ClienteDAO {
 		return null;
 	}
 	
+    public Cliente buscarPorCodigo(int codigo) {
+        
+        Cliente cl = null;
+        
+        Session session = null;
+        
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            ClienteEntity ClienteEntity = (ClienteEntity) session.load(ClienteEntity.class, codigo);
+                
+            cl = new Cliente();
+            cl.setNroCliente(ClienteEntity.getNroCliente());
+    		cl.setRazonSocial(ClienteEntity.getRazonSocial()); 
+    		cl.setDireccion(ClienteEntity.getDireccion());
+    		cl.setLocalidad(ClienteEntity.getLocalidad());
+    		cl.setCodPostal(ClienteEntity.getCodPostal()); 
+    		cl.setTelefono(ClienteEntity.getTelefono());
+    		cl.setCuit(ClienteEntity.getCuit());
+    		cl.setCondIVA(ClienteEntity.getCondIVA());
+    		cl.setLimiteDeCredito(ClienteEntity.getLimiteDeCredito());
+    		cl.setSaldo(ClienteEntity.getSaldo());
+        }
+        
+        //Exception o HibernateException???
+        catch(Exception e) {
+        	System.out.println("Error ClienteDAO.recuperarClientePorCodigo");
+            
+        } finally {
+            if(session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        //Devuelvo el Cliente encontrado con ese Nro de Cliente.
+        return cl;        
+    }
 	
+    
 	public Cliente toNegocio(ClienteEntity cliente) {
 		Cliente res = new Cliente();
 		res.setNroCliente(cliente.getNroCliente());

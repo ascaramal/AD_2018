@@ -1,4 +1,7 @@
 package controlador;
+import java.util.List;
+
+import dao.ClienteDAO;
 import negocio.Cliente;
 
 public class ControladorCompra {
@@ -14,14 +17,10 @@ public class ControladorCompra {
 	public void generarCobranza(int nro, float platita)
 	{
 		//Creo un cliente Clase
-		Cliente cl = new Cliente ();
-		//Busca el Cliente (en base de datos?)
-		//que contenga el ID = nro
-				
+		Cliente cl = ClienteDAO.getInstancia().buscarPorCodigo(nro);
 		//Si existe modifica el Saldo
-			cl.setSaldo(cl.getSaldo() + platita);
-			
-		//Si no, devuelve Error al buscar el Cliente. (Exception??)
-			//Lanzo Exception de cliente no encontrado
+		float actual = cl.getSaldo() + platita;
+		cl.setSaldo(actual);
+		//Persistencia?
 	}
 }
