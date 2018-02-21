@@ -12,6 +12,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		//prueba para guido 20-2-18 16:11hs
+		//test x
 
 		try {
 			BusinessDelegate bd = BusinessDelegate.getInstance();
