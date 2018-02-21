@@ -10,9 +10,15 @@ delete from clientes
 DBCC CHECKIDENT (clientes, RESEED, 0) --resetear autoincrement a 1
 select * from clientes
 
-select * from articulos
-select * From ubicaciones
-select * from lotes
+delete from ubicaciones
+DBCC CHECKIDENT (ubicaciones, RESEED, 0) --resetear autoincrement a 1
+select * from ubicaciones
+
+
+
+select * from articulos;
+select * from ubicaciones;
+select * from lotes;
 
 -- Ubicacaciones de los 3 lotes del articulo 1
 update ubicaciones set cantLibre=800, codLote = 1 where nroUbicacion = 1 
