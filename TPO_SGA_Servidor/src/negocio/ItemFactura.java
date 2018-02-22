@@ -18,6 +18,10 @@ public class ItemFactura {
 	}
 
 
+	public ItemFactura() {
+	}
+
+
 	public int getNroItemFactura() {
 		return nroItemFactura;
 	}

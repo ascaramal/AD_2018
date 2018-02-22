@@ -12,6 +12,9 @@ public class ItemOrdenDeCompra {
 		this.articulo = articulo;
 	}
 
+	public ItemOrdenDeCompra() {
+	}
+
 	public int getCantidad() {
 		return cantidad;
 	}

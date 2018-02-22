@@ -42,9 +42,6 @@ public class RemitoDAO {
 				remito.agregarItem(ir);
 				
 			}
-			
-	
-			
 		}
 				/*
 		ir.setCant(irE.getCant());
@@ -52,10 +49,6 @@ public class RemitoDAO {
 		ir.setNroItemRemito(irE.getNroItemRemito());*/
 		
 		return remito;
-	}
-
-		
-		
-	}
-
+	}		
+	
 }

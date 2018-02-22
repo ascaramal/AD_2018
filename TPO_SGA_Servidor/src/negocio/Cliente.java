@@ -128,9 +128,4 @@ public class Cliente {
 		
 		return res; 
 	}
-<<<<<<< HEAD
 }
-=======
-	
-}
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git

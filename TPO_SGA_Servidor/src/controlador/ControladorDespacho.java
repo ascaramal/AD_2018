@@ -49,13 +49,9 @@ public class ControladorDespacho {
 	public ArticuloDTO findArticulo(int nroArticulo) throws ArticuloException {
 		ArticuloDTO articulo = new ArticuloDTO();
 		try {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
-=======
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO(); 
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
-=======
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
 		} catch (DAOException e) {
 			throw new ArticuloException("No se encontro el articulo");
@@ -85,7 +81,6 @@ public class ControladorDespacho {
 //			}
 			//se comento para verificar si genera el pedido desde cliente.
 			dao.altaPedido(dao.toEntity(pe));
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}

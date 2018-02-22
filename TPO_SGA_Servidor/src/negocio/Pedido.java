@@ -106,7 +106,6 @@ public class Pedido {
 		itemsPedido.add(itemP);
 	}
 	
-<<<<<<< HEAD
 	public boolean controlarLimiteCredito()
 	{
 		//Saldo disponible del Cliente:
@@ -123,7 +122,6 @@ public class Pedido {
 			return false;
 		else
 			return true;
-=======
 	public EstadoPedido controlarLimiteCredito() {
 	
 		if(this.getCliente().getSaldo() >= getTotalPedido())
@@ -151,7 +149,6 @@ public class Pedido {
 					articulosFaltantes.add(itemPedido.getArticulo());
 		}
 		return articulosFaltantes;
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 	}
 	
 	public PedidoDTO toDTO() {

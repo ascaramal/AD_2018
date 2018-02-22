@@ -29,6 +29,11 @@ public class Factura {
 	}
 	
 	
+	public Factura() {
+		
+	}
+
+
 	public int getNumero() {
 		return numero;
 	}
