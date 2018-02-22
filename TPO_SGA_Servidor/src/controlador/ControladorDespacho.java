@@ -2,6 +2,7 @@ package controlador;
 
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
+import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import exceptions.DAOException;
 
@@ -30,7 +31,11 @@ public class ControladorDespacho {
 	public ArticuloDTO findArticulo(Integer nroArticulo) {
 		ArticuloDTO articulo = new ArticuloDTO();
 		try {
+<<<<<<< HEAD
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
+=======
+			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO(); 
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}

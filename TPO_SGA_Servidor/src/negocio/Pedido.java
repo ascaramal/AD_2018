@@ -106,6 +106,24 @@ public class Pedido {
 		itemsPedido.add(itemP);
 	}
 	
+	public boolean controlarLimiteCredito()
+	{
+		//Saldo disponible del Cliente:
+		float maxC = this.cliente.getLimiteDeCredito();
+		float totalP = 0;
+		//Total de los pedidos:
+		for (int i = 0; i < this.itemsPedido.size(); i++)
+		{
+			totalP = totalP + itemsPedido.get(i).calcularSubtotal();
+		}
+		
+		//Comparo y devuelvo;
+		if(totalP > maxC) //si el pedio es mayor al saldo disponible
+			return false;
+		else
+			return true;
+	}
+	
 	public PedidoDTO toDTO() {
 		PedidoDTO res = new PedidoDTO();
 		res.setNroPedido(this.nroPedido);
