@@ -39,6 +39,11 @@ public class ItemPedido {
 		this.cantidad = cantidad;
 	}
 	
+	public float calcularSubtotal()
+	{
+		return (this.articulo.getPrecio() * this.cantidad);
+	}
+	
 	public ItemPedidoDTO toDTO() {
 		ItemPedidoDTO resultado = new ItemPedidoDTO();
 		resultado.setNroItemPedido(this.nroItemPedido);
