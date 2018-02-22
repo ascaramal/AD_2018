@@ -55,7 +55,7 @@ public class BusinessDelegate {
 	}
 	
 
-	public ClienteDTO findCliente(int nroCliente) throws SistemaException, ClienteException, ArticuloException {
+	public ClienteDTO findCliente(int nroCliente) throws SistemaException, ClienteException {
 		try {
 			ClienteDTO cli = negocioRemoto.findCliente(nroCliente);
 			return cli;

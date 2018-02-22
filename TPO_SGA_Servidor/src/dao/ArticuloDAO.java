@@ -5,10 +5,10 @@ import org.hibernate.classic.Session;
 
 import entities.ArticuloEntity;
 import entities.LoteEntity;
+import exceptions.ArticuloException;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Articulo;
-import negocio.Cliente;
 import negocio.Lote;
 
 public class ArticuloDAO {
@@ -26,7 +26,7 @@ public class ArticuloDAO {
 		return instancia;
 	}
 
-	public Articulo findArticulo(int nroArticulo) throws DAOException {
+	public Articulo findArticulo(int nroArticulo) throws DAOException, ArticuloException {
 		Articulo art = null;
 		try {
 			Session s = sf.openSession();
@@ -35,12 +35,14 @@ public class ArticuloDAO {
 					.setParameter("nroArticulo", nroArticulo).uniqueResult();
 			s.getTransaction().commit();
 			s.close();	
-			art = this.toNegocio(articuloE);
-			return art;
+			if(articuloE != null) { 
+				art = this.toNegocio(articuloE);
+				return art;
+			} 
 		} catch (Exception e) {
-			System.out.println(e);
 			System.out.println("Error ArticuloDAO.findArticulo");
 		}
+		
 		return null;
 	}
 
@@ -74,6 +76,7 @@ public class ArticuloDAO {
 	public Articulo toNegocio(ArticuloEntity articulo) {
 		Articulo res = new Articulo();
 		res.setCodArticulo(articulo.getCodArticulo());
+		res.setDescripcion(articulo.getDescripcion());
 		res.setPrecio(articulo.getPrecio());
 		res.setCantReal(articulo.getCantReal());
 		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
@@ -82,9 +85,16 @@ public class ArticuloDAO {
 		return res;
 	}
 
-	public Cliente findCliente(Integer nroArticulo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticuloEntity toEntity(Articulo articulo) {
+		ArticuloEntity res = new ArticuloEntity();
+		res.setCodArticulo(articulo.getCodArticulo());
+		res.setDescripcion(articulo.getDescripcion());
+		res.setPrecio(articulo.getPrecio());
+		res.setCantReal(articulo.getCantReal());
+		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
+		res.setCantReservada(articulo.getCantReservada());
+	
+		return res;
 	}
 	
 }

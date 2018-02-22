@@ -38,17 +38,17 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 	}
 	
 	
-	public ClienteDTO findCliente(int nroCliente) throws RemoteException {
+	public ClienteDTO findCliente(int nroCliente) throws RemoteException, ClienteException {
 		return ControladorDespacho.getInstancia().findCliente(nroCliente);
-	}
-
-	@Override
-	public List<ClienteDTO> getClientes() throws RemoteException {
-		return ControladorTest.getInstancia().getClientes();
 	}
 
 	public ArticuloDTO findArticulo(int nroArticulo) throws RemoteException, ArticuloException {
 		return ControladorDespacho.getInstancia().findArticulo(nroArticulo);
+	}
+	
+	@Override
+	public List<ClienteDTO> getClientes() throws RemoteException {
+		return ControladorTest.getInstancia().getClientes();
 	}
 
 	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws RemoteException, ClienteException, PedidoException {

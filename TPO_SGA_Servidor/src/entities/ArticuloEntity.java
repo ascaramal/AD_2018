@@ -1,72 +1,43 @@
 package entities;
 
 import java.util.List;
-
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="Articulos")
+@Table(name = "Articulos")
 public class ArticuloEntity {
-	
+
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codArticulo")
-	private int codArticulo;
-	
-	@Column(name = "codigoBarras")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer codArticulo;
 	private String codigoBarras;
-	
-	@Column(name = "marca")
 	private String marca;
-	
-	@Column(name = "tipo")
 	private String tipo;
-	
-	@Column(name = "descripcion")
 	private String descripcion;
-	
-	@Column(name = "presentacion")
 	private String presentacion;
-	
-	@Column(name = "tamano")
 	private String tamano;
-	
-	@Column(name = "unidad")
-	private int unidad;
-	
+	private Integer unidad;
 	@Column(name = "cantidadAComprar")
-	private int cantAComprar;
-	
-	@Column(name = "cantReservada")
-	private int cantReservada;
-	
-	@Column(name = "cantReal")
-	private int cantReal;
-	
-	@Column(name = "cantFuturoDisponible")
-	private int cantFuturoDisponible;
-	
-	@Column(name = "precio")
+	private Integer cantAComprar;
+	private Integer cantReservada;
+	private Integer cantReal;
+	private Integer cantFuturoDisponible;
 	private float precio;
-	
-	@OneToMany
-    @JoinColumn(name = "nroMovimiento")
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nroMovimiento")
 	private List<MovimientoEntity> movimientos;
-	
-	@OneToMany
-    @JoinColumn(name = "codLote")
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "codLote")
 	private List<LoteEntity> lotes;
 
-	
-	
-	
-	public int getCodArticulo() {
-		return codArticulo;
+	// Constructor
+	public ArticuloEntity() {
 	}
 
-	public void setCodArticulo(int codArticulo) {
-		this.codArticulo = codArticulo;
+	public Integer getCodArticulo() {
+		return codArticulo;
 	}
 
 	public String getCodigoBarras() {
@@ -117,44 +88,48 @@ public class ArticuloEntity {
 		this.tamano = tamano;
 	}
 
-	public int getUnidad() {
+	public Integer getUnidad() {
 		return unidad;
 	}
 
-	public void setUnidad(int unidad) {
+	public void setUnidad(Integer unidad) {
 		this.unidad = unidad;
 	}
 
-	public int getCantAComprar() {
+	public Integer getCantAComprar() {
 		return cantAComprar;
 	}
 
-	public void setCantAComprar(int cantAComprar) {
+	public void setCantAComprar(Integer cantAComprar) {
 		this.cantAComprar = cantAComprar;
 	}
 
-	public int getCantReservada() {
+	public Integer getCantReservada() {
 		return cantReservada;
 	}
 
-	public void setCantReservada(int cantReservada) {
+	public void setCantReservada(Integer cantReservada) {
 		this.cantReservada = cantReservada;
 	}
 
-	public int getCantReal() {
+	public Integer getCantReal() {
 		return cantReal;
 	}
 
-	public void setCantReal(int cantReal) {
+	public void setCantReal(Integer cantReal) {
 		this.cantReal = cantReal;
 	}
 
-	public int getCantFuturoDisponible() {
+	public Integer getCantFuturoDisponible() {
 		return cantFuturoDisponible;
 	}
 
-	public void setCantFuturoDisponible(int cantFuturoDisponible) {
+	public void setCantFuturoDisponible(Integer cantFuturoDisponible) {
 		this.cantFuturoDisponible = cantFuturoDisponible;
+	}
+
+	public void setCodArticulo(Integer codArticulo) {
+		this.codArticulo = codArticulo;
 	}
 
 	public float getPrecio() {
@@ -181,10 +156,4 @@ public class ArticuloEntity {
 		this.lotes = lotes;
 	}
 
-	public ArticuloEntity() {
-		super();
-	}
-	
-	
-	
 }

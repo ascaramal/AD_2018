@@ -7,9 +7,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import dto.PedidoDTO;
+import entities.ItemPedidoEntity;
+import entities.LoteEntity;
 import entities.PedidoEntity;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
+import negocio.ItemPedido;
+import negocio.Lote;
 import negocio.Pedido;
 
 public class PedidoDAO {
@@ -63,14 +67,14 @@ public class PedidoDAO {
 		return null;
 	}
 	
-	public int altaPedido(PedidoEntity pedido) throws DAOException {
+	public void altaPedido(PedidoEntity pedido) throws DAOException {
 		try {
-			Session session = sf.openSession();
-			session.beginTransaction();
-			int idGenerado = (int) session.save(pedido);
-			session.getTransaction().commit();
-			session.close();
-			return idGenerado;
+			Session s = sf.openSession();
+			pedido.setCliente(ClienteDAO.getInstancia().findCliente(pedido.getCliente().getNroCliente()));
+			s.beginTransaction();
+			s.save(pedido);
+			s.getTransaction().commit();
+			s.close();
 		} catch (Exception e) {
 			throw new DAOException("Error PedidoDAO. AltaPedido");
 		}
@@ -119,12 +123,21 @@ public class PedidoDAO {
 
 	public PedidoEntity toEntity(Pedido pedido) {
 		PedidoEntity res = new PedidoEntity();
-		res.setNroPedido(res.getNroPedido());
-		res.setCliente(res.getCliente());
-		res.setEstadoPedido(res.getEstadoPedido());
-		res.setFechaGeneracion(res.getFechaGeneracion());
-		res.setFechaDespacho(res.getFechaDespacho());
-		res.setTotal(res.getTotal());
+		res.setNroPedido(pedido.getNroPedido());
+		res.setCliente(ClienteDAO.getInstancia().toEntity(pedido.getCliente()));
+		res.setEstadoPedido(pedido.getEstadoPedido());
+		res.setFechaGeneracion(pedido.getFechaGeneracion());
+		res.setFechaDespacho(pedido.getFechaDespacho());
+		res.setTotal(pedido.getTotal());
+		
+		if (pedido.getItemsPedido() != null) {
+			for(ItemPedido itemPAux : pedido.getItemsPedido()) {
+				ItemPedidoEntity item = new ItemPedidoEntity();
+				item.setArticulo(ArticuloDAO.getInstancia().toEntity(itemPAux.getArticulo()));
+				item.setCantidad(itemPAux.getCantidad());
+				item.setNroItemPedido(itemPAux.getNroItemPedido());
+			}	
+		}
 		
 		return res;
 	}

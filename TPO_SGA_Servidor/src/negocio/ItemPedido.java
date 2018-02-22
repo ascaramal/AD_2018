@@ -15,6 +15,10 @@ public class ItemPedido {
 		this.cantidad = cantidad;
 	}
 
+	public ItemPedido() {
+		
+	}
+
 	public int getNroItemPedido() {
 		return nroItemPedido;
 	}

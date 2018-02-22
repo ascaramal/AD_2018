@@ -32,23 +32,23 @@ public class ControladorDespacho {
 		return instancia;
 	}
 	
-	public ClienteDTO findCliente(int nroCliente) {
+	public ClienteDTO findCliente(int nroCliente) throws ClienteException {
 		ClienteDTO cliente = new ClienteDTO();
 		try {
 			cliente = ClienteDAO.getInstancia().findCliente(nroCliente).toDTO();
 		} catch (DAOException e) {
-			e.printStackTrace();
+			throw new ClienteException("No se encontro el cliente");
 		}
 		
 		return cliente;
 	}
 
-	public ArticuloDTO findArticulo(Integer nroArticulo) throws ArticuloException {
-		ArticuloDTO articulo = null;
+	public ArticuloDTO findArticulo(int nroArticulo) throws ArticuloException {
+		ArticuloDTO articulo = new ArticuloDTO();
 		try {
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
 		} catch (DAOException e) {
-			e.printStackTrace();
+			throw new ArticuloException("No se encontro el articulo");
 		}
 		return articulo;
 	}
@@ -59,15 +59,15 @@ public class ControladorDespacho {
 		Pedido pe = dao.toNegocio(pedido);
 		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
 		try {
-			//Se verifica el limite de credito 
-			if(pe.controlarLimiteCredito() == EstadoPedido.Rechazado) {
-				return EstadoPedido.Rechazado;
-			}
-			//Se modifica el saldo del cliente
-			Cliente cli = pe.getCliente();
-			cli.setSaldo(cli.getSaldo() - pe.getTotalPedido());
-			ClienteDAO.getInstancia().guardarCliente(ClienteDAO.getInstancia().toEntity(cli));
-			//Se verifica la existencia de stock del pedido
+//			//Se verifica el limite de credito 
+//			if(pe.controlarLimiteCredito() == EstadoPedido.Rechazado) {
+//				return EstadoPedido.Rechazado;
+//			}
+//			//Se modifica el saldo del cliente
+//			Cliente cli = pe.getCliente();
+//			cli.setSaldo(cli.getSaldo() - pe.getTotalPedido());
+//			ClienteDAO.getInstancia().guardarCliente(ClienteDAO.getInstancia().toEntity(cli));
+//			//Se verifica la existencia de stock del pedido
 //			if(articulosFaltantes.size() != 0) {
 //				ControladorCompra.getInstancia().generarOrdenDeCompra(pe.controlarStockPedido());
 //			}else {

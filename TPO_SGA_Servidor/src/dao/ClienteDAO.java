@@ -46,7 +46,7 @@ public class ClienteDAO {
 		return null;
 	}
 	
-	public Cliente findCliente(int nroCliente) throws DAOException {
+	public Cliente findCliente(int nroCliente) throws DAOException, ClienteException {
 		Cliente cli = null;
 		try {
 			Session s = sf.openSession();
@@ -55,10 +55,11 @@ public class ClienteDAO {
 					.setParameter("nroCliente", nroCliente).uniqueResult();
 			s.getTransaction().commit();
 			s.close();	
-			cli = this.toNegocio(clienteE);
-			return cli;
+			if(clienteE != null) { 
+				cli = this.toNegocio(clienteE);
+				return cli;
+			}
 		} catch (Exception e) {
-			System.out.println(e);
 			System.out.println("Error ClienteDAO.findCliente");
 		}
 		return null;

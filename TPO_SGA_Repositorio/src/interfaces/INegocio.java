@@ -18,7 +18,7 @@ public interface INegocio extends Remote {
 
 	//public List<PedidoDTO> recuperarListaPedidos() throws RemoteException;
 	public ArticuloDTO findArticulo(int nroArticulo) throws RemoteException, ArticuloException;
-	public ClienteDTO findCliente(int nroCLiente) throws RemoteException, ArticuloException;
+	public ClienteDTO findCliente(int nroCLiente) throws RemoteException, ClienteException;
 	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws RemoteException, ClienteException, PedidoException;
 
 

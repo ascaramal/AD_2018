@@ -129,5 +129,9 @@ public class ClienteDTO implements Serializable {
 				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
 				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
 	}
+	
+	public String toString2() {
+		return "nroCliente=" + nroCliente;
+	}
 
 }
