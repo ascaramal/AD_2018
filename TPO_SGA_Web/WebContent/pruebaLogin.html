@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo Validacion</title>
+<script type="text/javascript">
+ function Validar(user,pwd)
+  {
+   user=document.getElementById(user);
+   pwd=document.getElementById(pwd);
+   if(user.value=="")
+    {
+     alert("El campo Nombre esta vacio");
+     user.focus();
+     return false;
+    }
+   else
+    {
+     if(pwd.value=="")
+      {
+       alert("El campo Passwd esta vacio");
+       pwd.focus();
+       return false;
+      }
+     else
+      {
+       return true;
+      }
+    }
+  }
+</script>
+</head>
+<body>
+ <form name="formu" method="post" action="" onSubmit="return Validar('nombre','passwd')">
+  <table>
+   <tr><td>Nombre: </td><td><input type="text" name="nombre" id="nombre" /></td></tr>
+   <tr><td>Passwd: </td><td><input type="password" name="passwd" id="passwd" /></td></tr>
+   <tr><td colspan="2"><input type="submit" name="Conectate" value="Conectate" /></td></tr>
+  </table>
+ </form>
+</body>
+</html> 

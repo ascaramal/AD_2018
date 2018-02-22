@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ClienteEntity;
+import exceptions.ClienteException;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Cliente;
@@ -77,6 +78,35 @@ public class ClienteDAO {
 		res.setSaldo(cliente.getSaldo());
 		
 		return res;
+	}
+
+	public ClienteEntity toEntity(Cliente cliente) {
+		ClienteEntity res = new ClienteEntity();
+		res.setNroCliente(cliente.getNroCliente());
+		res.setRazonSocial(cliente.getRazonSocial()); 
+		res.setDireccion(cliente.getDireccion());
+		res.setLocalidad(cliente.getLocalidad());
+		res.setCodPostal(cliente.getCodPostal()); 
+		res.setTelefono(cliente.getTelefono());
+		res.setCuit(cliente.getCuit());
+		res.setCondIVA(cliente.getCondIVA());
+		res.setLimiteDeCredito(cliente.getLimiteDeCredito());
+		res.setSaldo(cliente.getSaldo());
+		
+		return res;
+	}
+
+	public void guardarCliente(ClienteEntity cliente) throws ClienteException{
+		try {
+			Session session=sf.openSession();
+			session.beginTransaction();
+			session.save(cliente);
+			session.getTransaction().commit();
+			session.close();
+			}
+		catch(Exception e){
+				throw new ClienteException ("Error al Grabar");
+		}
 	}
 
 }

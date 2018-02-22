@@ -4,7 +4,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ArticuloEntity;
-import entities.ClienteEntity;
 import entities.LoteEntity;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
@@ -32,7 +31,7 @@ public class ArticuloDAO {
 		try {
 			Session s = sf.openSession();
 			s.beginTransaction();
-			ArticuloEntity articuloE = (ArticuloEntity) s.createQuery("from ArticuloEntity a where a.nroArticulo = :nroArticulo")
+			ArticuloEntity articuloE = (ArticuloEntity) s.createQuery("from ArticuloEntity a where a.codArticulo = :nroArticulo")
 					.setParameter("nroArticulo", nroArticulo).uniqueResult();
 			s.getTransaction().commit();
 			s.close();	
@@ -45,7 +44,7 @@ public class ArticuloDAO {
 		return null;
 	}
 
-	public Articulo toNegocio(ArticuloEntity articulo) {
+	public Articulo toNegocio2(ArticuloEntity articulo) {
 		Articulo res = new Articulo();
 		res.setCodArticulo(articulo.getCodArticulo());
 		res.setCodigoBarras(articulo.getCodigoBarras());
@@ -61,13 +60,31 @@ public class ArticuloDAO {
 		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
 		res.setCantReservada(articulo.getCantReservada());
 		
-		for(LoteEntity loteAux : articulo.getLotes()) {
-			Lote lote = new Lote();
-			lote.setCodLote(loteAux.getCodLote());
-			lote.setMovimiento(lote.getMovimiento());
-			lote.
+		if (articulo.getLotes() != null) {
+			for(LoteEntity loteAux : articulo.getLotes()) {
+				Lote lote = new Lote();
+				lote.setCodLote(loteAux.getCodLote());
+				lote.setMovimiento(lote.getMovimiento());
+				//lote.
+			}	
 		}
+		return res;
+	}
 		
+	public Articulo toNegocio(ArticuloEntity articulo) {
+		Articulo res = new Articulo();
+		res.setCodArticulo(articulo.getCodArticulo());
+		res.setPrecio(articulo.getPrecio());
+		res.setCantReal(articulo.getCantReal());
+		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
+		res.setCantReservada(articulo.getCantReservada());
+	
+		return res;
+	}
+
+	public Cliente findCliente(Integer nroArticulo) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }

@@ -1,9 +1,25 @@
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
+import dao.PedidoDAO;
+import dto.ArticuloDTO;
 import dto.ClienteDTO;
+
+import dto.PedidoDTO;
+
+import enumerations.EstadoPedido;
+import exceptions.ArticuloException;
+import exceptions.ClienteException;
 import exceptions.DAOException;
+import exceptions.PedidoException;
+import negocio.Articulo;
+import negocio.Cliente;
+
+import negocio.Pedido;
 
 
 public class ControladorDespacho {
@@ -27,17 +43,45 @@ public class ControladorDespacho {
 		return cliente;
 	}
 
-	public ArticuloDTO findArticulo(Integer nroArticulo) {
-		ArticuloDTO articulo = new ArticuloDTO();
+	public ArticuloDTO findArticulo(Integer nroArticulo) throws ArticuloException {
+		ArticuloDTO articulo = null;
 		try {
-			articulo = ArticuloDAO.getInstancia().findCliente(nroArticulo).toDTO();
+			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
-		
-		return null;
+		return articulo;
+	}
+
+	
+	public EstadoPedido altaPedido(PedidoDTO pedido) throws ClienteException, PedidoException{
+		PedidoDAO dao = PedidoDAO.getInstancia();
+		Pedido pe = dao.toNegocio(pedido);
+		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
+		try {
+			//Se verifica el limite de credito 
+			if(pe.controlarLimiteCredito() == EstadoPedido.Rechazado) {
+				return EstadoPedido.Rechazado;
+			}
+			//Se modifica el saldo del cliente
+			Cliente cli = pe.getCliente();
+			cli.setSaldo(cli.getSaldo() - pe.getTotalPedido());
+			ClienteDAO.getInstancia().guardarCliente(ClienteDAO.getInstancia().toEntity(cli));
+			//Se verifica la existencia de stock del pedido
+//			if(articulosFaltantes.size() != 0) {
+//				ControladorCompra.getInstancia().generarOrdenDeCompra(pe.controlarStockPedido());
+//			}else {
+//				pe.setEstadoPedido(EstadoPedido.Completado);
+//			}
+			//se comento para verificar si genera el pedido desde cliente.
+			dao.altaPedido(dao.toEntity(pe));
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return EstadoPedido.Pendiente;
 	}
 	
 
+	
 	
 }

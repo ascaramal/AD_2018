@@ -92,5 +92,4 @@ public class PedidoDTO implements Serializable {
 		itemsPedido.add(iPedido);
 	}
 
-
 }

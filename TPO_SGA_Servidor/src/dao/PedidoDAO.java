@@ -6,7 +6,9 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
+import dto.PedidoDTO;
 import entities.PedidoEntity;
+import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Pedido;
 
@@ -61,7 +63,7 @@ public class PedidoDAO {
 		return null;
 	}
 	
-	public int altaPedido(PedidoEntity pedido) {
+	public int altaPedido(PedidoEntity pedido) throws DAOException {
 		try {
 			Session session = sf.openSession();
 			session.beginTransaction();
@@ -70,12 +72,10 @@ public class PedidoDAO {
 			session.close();
 			return idGenerado;
 		} catch (Exception e) {
-			System.out.println(e);
-			System.out.println("Error PedidoDAO. AltaPedidoe");
+			throw new DAOException("Error PedidoDAO. AltaPedido");
 		}
-		return -1;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<PedidoEntity> recuperarListaPedidosCliente(long nrocliente) {
 		try {
@@ -102,9 +102,32 @@ public class PedidoDAO {
 		res.setFechaDespacho(res.getFechaDespacho());
 		res.setTotal(res.getTotal());
 		
-		for()
+		return res;
+	}
+
+	public Pedido toNegocio(PedidoDTO pedido) {
+		Pedido res = new Pedido();
+		res.setNroPedido(res.getNroPedido());
+		res.setCliente(res.getCliente());
+		res.setEstadoPedido(res.getEstadoPedido());
+		res.setFechaGeneracion(res.getFechaGeneracion());
+		res.setFechaDespacho(res.getFechaDespacho());
+		res.setTotal(res.getTotal());
 		
 		return res;
-
 	}
+
+	public PedidoEntity toEntity(Pedido pedido) {
+		PedidoEntity res = new PedidoEntity();
+		res.setNroPedido(res.getNroPedido());
+		res.setCliente(res.getCliente());
+		res.setEstadoPedido(res.getEstadoPedido());
+		res.setFechaGeneracion(res.getFechaGeneracion());
+		res.setFechaDespacho(res.getFechaDespacho());
+		res.setTotal(res.getTotal());
+		
+		return res;
+	}
+	
+	
 }
