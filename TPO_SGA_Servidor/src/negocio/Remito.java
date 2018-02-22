@@ -23,6 +23,10 @@ public class Remito {
 		this.items = new ArrayList<ItemRemito>();
 	}
 
+	public Remito() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getNumero() {
 		return numero;
 	}
@@ -77,6 +81,10 @@ public class Remito {
 		}
 		
 		return res;
+	}
+
+	public void agregarItem(ItemRemito ir) {
+		items.add(ir);		
 	}
 	
 		

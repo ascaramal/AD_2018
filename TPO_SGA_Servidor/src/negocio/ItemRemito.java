@@ -17,6 +17,10 @@ public class ItemRemito {
 		this.cant = cant;
 	}
 	
+	public ItemRemito() {
+
+	}
+	
 	public int getNroItemRemito() {
 		return nroItemRemito;
 	}

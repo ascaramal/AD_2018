@@ -60,14 +60,21 @@ public class ArticuloDAO {
 		res.setCantReal(articulo.getCantReal());
 		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
 		res.setCantReservada(articulo.getCantReservada());
+
 		
-		for(LoteEntity loteAux : articulo.getLotes()) {
-			Lote lote = new Lote();
-			lote.setCodLote(loteAux.getCodLote());
-			lote.setMovimiento(lote.getMovimiento());
-			lote.
+		if (articulo.getLotes() !=null){
+		
+			for(LoteEntity loteAux : articulo.getLotes()) {
+				Lote lote = new Lote();
+				lote.setCodLote(loteAux.getCodLote());
+				lote.setMovimiento(lote.getMovimiento());
+				lote.set
+			
+				
+			}
+			
+			
 		}
-		
 		return null;
 	}
 }

@@ -30,7 +30,7 @@ public class ControladorDespacho {
 	public ArticuloDTO findArticulo(Integer nroArticulo) {
 		ArticuloDTO articulo = new ArticuloDTO();
 		try {
-			articulo = ArticuloDAO.getInstancia().findCliente(nroArticulo).toDTO();
+			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
