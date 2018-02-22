@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ClienteEntity;
+import exceptions.ClienteException;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Cliente;
@@ -46,6 +47,7 @@ public class ClienteDAO {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Cliente buscarPorCodigo(int codigo) {
         
         Cliente cl = null;
@@ -83,6 +85,9 @@ public class ClienteDAO {
     }
 =======
 	public Cliente findCliente(int nroCliente) throws DAOException {
+=======
+	public Cliente findCliente(int nroCliente) throws DAOException, ClienteException {
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 		Cliente cli = null;
 		try {
 			Session s = sf.openSession();
@@ -91,10 +96,11 @@ public class ClienteDAO {
 					.setParameter("nroCliente", nroCliente).uniqueResult();
 			s.getTransaction().commit();
 			s.close();	
-			cli = this.toNegocio(clienteE);
-			return cli;
+			if(clienteE != null) { 
+				cli = this.toNegocio(clienteE);
+				return cli;
+			}
 		} catch (Exception e) {
-			System.out.println(e);
 			System.out.println("Error ClienteDAO.findCliente");
 		}
 		return null;
@@ -116,6 +122,35 @@ public class ClienteDAO {
 		res.setSaldo(cliente.getSaldo());
 		
 		return res;
+	}
+
+	public ClienteEntity toEntity(Cliente cliente) {
+		ClienteEntity res = new ClienteEntity();
+		res.setNroCliente(cliente.getNroCliente());
+		res.setRazonSocial(cliente.getRazonSocial()); 
+		res.setDireccion(cliente.getDireccion());
+		res.setLocalidad(cliente.getLocalidad());
+		res.setCodPostal(cliente.getCodPostal()); 
+		res.setTelefono(cliente.getTelefono());
+		res.setCuit(cliente.getCuit());
+		res.setCondIVA(cliente.getCondIVA());
+		res.setLimiteDeCredito(cliente.getLimiteDeCredito());
+		res.setSaldo(cliente.getSaldo());
+		
+		return res;
+	}
+
+	public void guardarCliente(ClienteEntity cliente) throws ClienteException{
+		try {
+			Session session=sf.openSession();
+			session.beginTransaction();
+			session.save(cliente);
+			session.getTransaction().commit();
+			session.close();
+			}
+		catch(Exception e){
+				throw new ClienteException ("Error al Grabar");
+		}
 	}
 
 }

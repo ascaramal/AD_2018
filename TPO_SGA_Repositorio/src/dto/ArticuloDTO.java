@@ -31,6 +31,27 @@ public class ArticuloDTO implements Serializable {
 		this.lotes = new ArrayList<LoteDTO>();
 	}
 
+	public ArticuloDTO(int codArticulo, String codigoBarras, String marca, String tipo, String descripcion,
+			String presentacion, String tamano, int unidad, int cantAComprar, int cantReservada, int cantReal,
+			int cantFuturoDisponible, float precio, List<MovimientoDTO> movimientos, List<LoteDTO> lotes) {
+		super();
+		this.codArticulo = codArticulo;
+		this.codigoBarras = codigoBarras;
+		this.marca = marca;
+		this.tipo = tipo;
+		this.descripcion = descripcion;
+		this.presentacion = presentacion;
+		this.tamano = tamano;
+		this.unidad = unidad;
+		this.cantAComprar = cantAComprar;
+		this.cantReservada = cantReservada;
+		this.cantReal = cantReal;
+		this.cantFuturoDisponible = cantFuturoDisponible;
+		this.precio = precio;
+		this.movimientos = movimientos;
+		this.lotes = lotes;
+	}
+
 
 	public int getCodArticulo() {
 		return codArticulo;
@@ -150,6 +171,16 @@ public class ArticuloDTO implements Serializable {
 
 	public void setLotes(List<LoteDTO> lotes) {
 		this.lotes = lotes;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ArticuloDTO [codArticulo=" + codArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
+				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
+				+ tamano + ", unidad=" + unidad + ", cantAComprar=" + cantAComprar + ", cantReservada=" + cantReservada
+				+ ", cantReal=" + cantReal + ", cantFuturoDisponible=" + cantFuturoDisponible + ", precio=" + precio
+				+ ", movimientos=" + movimientos + ", lotes=" + lotes + "]";
 	}
 	
 }

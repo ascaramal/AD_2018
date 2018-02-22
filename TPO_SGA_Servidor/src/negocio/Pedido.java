@@ -106,6 +106,7 @@ public class Pedido {
 		itemsPedido.add(itemP);
 	}
 	
+<<<<<<< HEAD
 	public boolean controlarLimiteCredito()
 	{
 		//Saldo disponible del Cliente:
@@ -122,6 +123,35 @@ public class Pedido {
 			return false;
 		else
 			return true;
+=======
+	public EstadoPedido controlarLimiteCredito() {
+	
+		if(this.getCliente().getSaldo() >= getTotalPedido())
+			return EstadoPedido.Pendiente;
+		return EstadoPedido.Rechazado;
+	}
+	
+	public float getTotalPedido() {
+		float totalPedido = 0;
+		for(ItemPedido i : this.getItemsPedido()) {
+			totalPedido += i.getArticulo().getPrecio()*i.getCantidad();
+		}
+		return totalPedido;
+	}
+	
+	//Devuleve una lista de articulos faltantes que luego generará la orden de compra.
+	public List<Articulo> controlarStockPedido() {
+		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
+		
+		for(ItemPedido itemPedido : this.getItemsPedido()) {
+			if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() - itemPedido.getArticulo().getCantReservada())) 
+				if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() 
+						+ itemPedido.getArticulo().getCantFuturoDisponible() 
+						- itemPedido.getArticulo().getCantReservada()))
+					articulosFaltantes.add(itemPedido.getArticulo());
+		}
+		return articulosFaltantes;
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 	}
 	
 	public PedidoDTO toDTO() {

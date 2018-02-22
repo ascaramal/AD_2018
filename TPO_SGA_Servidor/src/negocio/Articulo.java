@@ -185,17 +185,17 @@ public class Articulo {
 		res.setCantReservada(this.cantReservada);
 		res.setPrecio(this.precio);
 
-		for(Lote loteAux : this.getLotes()) {
-			LoteDTO loteDTO = loteAux.toDTO();
-			loteDTO.setArticulo(res);
-			res.getLotes().add(loteDTO);
-		}
-		
-		for(Movimiento movAux : this.getMovimientos()) {
-			MovimientoDTO movimientoDTO = movAux.toDTO();
-			movimientoDTO.setArticulo(res);
-			res.getMovimientos().add(movimientoDTO);
-		}
+//		for(Lote loteAux : this.getLotes()) {
+//			LoteDTO loteDTO = loteAux.toDTO();
+//			loteDTO.setArticulo(res);
+//			res.getLotes().add(loteDTO);
+//		}
+//		
+//		for(Movimiento movAux : this.getMovimientos()) {
+//			MovimientoDTO movimientoDTO = movAux.toDTO();
+//			movimientoDTO.setArticulo(res);
+//			res.getMovimientos().add(movimientoDTO);
+//		}
 		
 		return res;
 	}

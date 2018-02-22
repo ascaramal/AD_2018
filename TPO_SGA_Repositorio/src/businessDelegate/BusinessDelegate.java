@@ -8,8 +8,11 @@ import java.util.List;
 
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
+import dto.PedidoDTO;
+import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
+import exceptions.PedidoException;
 import exceptions.SistemaException;
 import interfaces.INegocio;
 
@@ -69,6 +72,15 @@ public class BusinessDelegate {
 			throw new ArticuloException("No se pudo encontrar el articulo");
 		}
 	}
+
+	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws SistemaException, PedidoException {
+		try {
+			return negocioRemoto.nuevoPedido(pedido);
+		} catch (Exception e) {
+			throw new PedidoException("No se pudo crear el pedido");
+		}
+	}
+
 	
 	/*public List<PedidoDTO> recuperarListaPedidos() throws SistemaException, PedidoException {
 		List<PedidoDTO> lst = null;

@@ -2,15 +2,20 @@ package controlador;
 import dao.ClienteDAO;
 import negocio.Cliente;
 
+import java.util.List;
+
+import negocio.Articulo;
+
 public class ControladorCompra {
 
 	private static ControladorCompra instancia;
 	
-	private static ControladorCompra getInstancia() {
+	public static ControladorCompra getInstancia() {
 		if(instancia == null)
 			instancia = new ControladorCompra();
 		return instancia;
 	}
+<<<<<<< HEAD
 	
 	public void generarCobranza(int nro, float platita)
 	{
@@ -20,5 +25,11 @@ public class ControladorCompra {
 		float actual = cl.getSaldo() + platita;
 		cl.setSaldo(actual);
 		//Persistencia?
+=======
+
+	public void generarOrdenDeCompra(List<Articulo> controlarStockPedido) {
+		// TODO Auto-generated method stub
+		
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 	}
 }

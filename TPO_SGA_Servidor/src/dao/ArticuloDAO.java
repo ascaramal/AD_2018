@@ -4,12 +4,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
 import entities.ArticuloEntity;
-import entities.ClienteEntity;
 import entities.LoteEntity;
+import exceptions.ArticuloException;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Articulo;
-import negocio.Cliente;
 import negocio.Lote;
 
 public class ArticuloDAO {
@@ -27,25 +26,27 @@ public class ArticuloDAO {
 		return instancia;
 	}
 
-	public Articulo findArticulo(int nroArticulo) throws DAOException {
+	public Articulo findArticulo(int nroArticulo) throws DAOException, ArticuloException {
 		Articulo art = null;
 		try {
 			Session s = sf.openSession();
 			s.beginTransaction();
-			ArticuloEntity articuloE = (ArticuloEntity) s.createQuery("from ArticuloEntity a where a.nroArticulo = :nroArticulo")
+			ArticuloEntity articuloE = (ArticuloEntity) s.createQuery("from ArticuloEntity a where a.codArticulo = :nroArticulo")
 					.setParameter("nroArticulo", nroArticulo).uniqueResult();
 			s.getTransaction().commit();
 			s.close();	
-			art = this.toNegocio(articuloE);
-			return art;
+			if(articuloE != null) { 
+				art = this.toNegocio(articuloE);
+				return art;
+			} 
 		} catch (Exception e) {
-			System.out.println(e);
 			System.out.println("Error ArticuloDAO.findArticulo");
 		}
+		
 		return null;
 	}
 
-	public Articulo toNegocio(ArticuloEntity articulo) {
+	public Articulo toNegocio2(ArticuloEntity articulo) {
 		Articulo res = new Articulo();
 		res.setCodArticulo(articulo.getCodArticulo());
 		res.setCodigoBarras(articulo.getCodigoBarras());
@@ -62,6 +63,7 @@ public class ArticuloDAO {
 		res.setCantReservada(articulo.getCantReservada());
 
 		
+<<<<<<< HEAD
 		if (articulo.getLotes() !=null){
 		
 			for(LoteEntity loteAux : articulo.getLotes()) {
@@ -74,7 +76,45 @@ public class ArticuloDAO {
 			}
 			
 			
+=======
+		if (articulo.getLotes() != null) {
+			for(LoteEntity loteAux : articulo.getLotes()) {
+				Lote lote = new Lote();
+				lote.setCodLote(loteAux.getCodLote());
+				lote.setMovimiento(lote.getMovimiento());
+				//lote.
+			}	
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 		}
+<<<<<<< HEAD
 		return null;
+=======
+		return res;
+>>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 	}
+		
+	public Articulo toNegocio(ArticuloEntity articulo) {
+		Articulo res = new Articulo();
+		res.setCodArticulo(articulo.getCodArticulo());
+		res.setDescripcion(articulo.getDescripcion());
+		res.setPrecio(articulo.getPrecio());
+		res.setCantReal(articulo.getCantReal());
+		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
+		res.setCantReservada(articulo.getCantReservada());
+	
+		return res;
+	}
+
+	public ArticuloEntity toEntity(Articulo articulo) {
+		ArticuloEntity res = new ArticuloEntity();
+		res.setCodArticulo(articulo.getCodArticulo());
+		res.setDescripcion(articulo.getDescripcion());
+		res.setPrecio(articulo.getPrecio());
+		res.setCantReal(articulo.getCantReal());
+		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
+		res.setCantReservada(articulo.getCantReservada());
+	
+		return res;
+	}
+	
 }

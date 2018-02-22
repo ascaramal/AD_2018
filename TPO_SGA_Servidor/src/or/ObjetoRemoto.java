@@ -6,7 +6,13 @@ import java.util.List;
 
 import controlador.ControladorTest;
 import controlador.ControladorDespacho;
+import dto.ArticuloDTO;
 import dto.ClienteDTO;
+import dto.PedidoDTO;
+import enumerations.EstadoPedido;
+import exceptions.ArticuloException;
+import exceptions.ClienteException;
+import exceptions.PedidoException;
 import interfaces.INegocio;
 import or.ObjetoRemoto;
 
@@ -32,19 +38,21 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 	}
 	
 	
-	public ClienteDTO findCliente(Integer nroCliente) throws RemoteException {
+	public ClienteDTO findCliente(int nroCliente) throws RemoteException, ClienteException {
 		return ControladorDespacho.getInstancia().findCliente(nroCliente);
 	}
 
+	public ArticuloDTO findArticulo(int nroArticulo) throws RemoteException, ArticuloException {
+		return ControladorDespacho.getInstancia().findArticulo(nroArticulo);
+	}
+	
 	@Override
 	public List<ClienteDTO> getClientes() throws RemoteException {
 		return ControladorTest.getInstancia().getClientes();
 	}
 
-	@Override
-	public ArticuloDTO findArticulo(Integer nroArticulo) throws RemoteException {
-		return ControladorDespacho.getInstancia().findArticulo(nroArticulo);
+	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws RemoteException, ClienteException, PedidoException {
+		return ControladorDespacho.getInstancia().altaPedido(pedido);
 	}
 
-	
 }
