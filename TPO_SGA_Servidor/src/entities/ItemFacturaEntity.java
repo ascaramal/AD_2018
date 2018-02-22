@@ -23,6 +23,7 @@ public class ItemFacturaEntity {
 	@JoinColumn(name = "codArticulo")
 	private ArticuloEntity articulo;
 	
+	@Column(name = "precioUnitario")
 	private float precio;
 
 	@ManyToOne
