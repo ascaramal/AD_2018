@@ -24,7 +24,7 @@ public class ControladorCompra {
 		float actual = cl.getSaldo() + platita;
 		cl.setSaldo(actual);
 		//Persistencia?
-
+	}
 
 	public void generarOrdenDeCompra(List<Articulo> controlarStockPedido) {
 		// TODO Auto-generated method stub

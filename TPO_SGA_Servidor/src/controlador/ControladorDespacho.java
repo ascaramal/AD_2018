@@ -5,10 +5,7 @@ import java.util.List;
 
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
-<<<<<<< HEAD
-=======
 import dao.PedidoDAO;
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
 
@@ -85,9 +82,5 @@ public class ControladorDespacho {
 			e.printStackTrace();
 		}
 		return EstadoPedido.Pendiente;
-	}
-	
-
-	
-	
+	}	
 }
