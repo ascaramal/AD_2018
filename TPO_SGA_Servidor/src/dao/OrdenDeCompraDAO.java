@@ -2,10 +2,10 @@ package dao;
 
 import org.hibernate.SessionFactory;
 
-import entities.FacturaEntity;
-import entities.ItemFacturaEntity;
+import entities.ItemOrdenDeCompraEntity;
 import entities.OrdenDeCompraEntity;
 import hbt.HibernateUtil;
+import negocio.ItemOrdenDeCompra;
 import negocio.OrdenDeCompra;
 
 public class OrdenDeCompraDAO {
@@ -23,25 +23,26 @@ public class OrdenDeCompraDAO {
 		return instancia;
 	}
 	
-	private OrdenDeCompra toNegocio(OrdenDeCompraEntity odc) {
+	private OrdenDeCompra toNegocio(OrdenDeCompraEntity odcE) {
 		OrdenDeCompra ordenDeCompra = new OrdenDeCompra();
 		
-		ordenDeCompra.setNroOrdenDeCompra(odc.getNroOrdenDeCompra());
-		ordenDeCompra.setNroProveedor(odc.getNroProveedor());
+		ordenDeCompra.setNroOrdenDeCompra(odcE.getNroOrdenDeCompra());
+		ordenDeCompra.setNroProveedor(odcE.getNroProveedor());
 		
+		//estado - Check
+		ordenDeCompra.setEstado(odcE.getEstado());
 		
-//		if (facE.getItemsFactura() != null) {
-//			
-//			for(ItemFacturaEntity itemAux : facE.getItemsFactura()) {
-//				ItemFactura ifa = new ItemFactura();
-//				ifa.setArticulo(ArticuloDAO.getInstancia().toNegocio(itemAux.getArticulo()));
-//				ifa.setCantidad(itemAux.getCantidad());
-//				ifa.setNroItemFactura(itemAux.getNroItemFactura());
-//				factura.agregarItemFactura(ifa);
-//			}	
-//		}
+		if (odcE.getItemsOC() != null) {
+			
+			for(ItemOrdenDeCompraEntity itemAux : odcE.getItemsOC()) {
+				ItemOrdenDeCompra iodc = new ItemOrdenDeCompra();
+				iodc.setArticulo(ArticuloDAO.getInstancia().toNegocio(itemAux.getArticulo()));
+				iodc.setCantidad(itemAux.getCantidad());
+				iodc.setNroItemOrdenDeCompra(itemAux.getNroItemOrdenDeCompra());
+				ordenDeCompra.agregarItemOC(iodc);
+			}	
+		}
 		
 		return ordenDeCompra;
 	}
-	
 }

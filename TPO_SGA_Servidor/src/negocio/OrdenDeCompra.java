@@ -58,5 +58,7 @@ public class OrdenDeCompra {
 		
 	}
 	
-	//falta toDTO()
+	public void agregarItemOC(ItemOrdenDeCompra itemOC) {
+		itemsOC.add(itemOC);
+	}
 }

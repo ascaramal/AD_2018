@@ -45,9 +45,7 @@ public class ClienteDAO {
 		}
 		return null;
 	}
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     public Cliente buscarPorCodigo(int codigo) {
         
         Cliente cl = null;
@@ -83,11 +81,8 @@ public class ClienteDAO {
         //Devuelvo el Cliente encontrado con ese Nro de Cliente.
         return cl;        
     }
-=======
-	public Cliente findCliente(int nroCliente) throws DAOException {
-=======
+
 	public Cliente findCliente(int nroCliente) throws DAOException, ClienteException {
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
 		Cliente cli = null;
 		try {
 			Session s = sf.openSession();
@@ -105,9 +100,7 @@ public class ClienteDAO {
 		}
 		return null;
 	}
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
-	
-    
+
 	public Cliente toNegocio(ClienteEntity cliente) {
 		Cliente res = new Cliente();
 		res.setNroCliente(cliente.getNroCliente());
@@ -152,5 +145,4 @@ public class ClienteDAO {
 				throw new ClienteException ("Error al Grabar");
 		}
 	}
-
 }

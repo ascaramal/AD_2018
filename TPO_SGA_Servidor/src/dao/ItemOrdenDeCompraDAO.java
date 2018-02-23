@@ -45,9 +45,9 @@ public class ItemOrdenDeCompraDAO {
 	private ItemOrdenDeCompra toNegocio(ItemOrdenDeCompraEntity iocE) {
 		ItemOrdenDeCompra ioc = new ItemOrdenDeCompra();
 		ioc.setCantidad(iocE.getCantidad());
-		ioc.setArticulo(ArticuloDAO.getInstancia().toNegocio(iocE.getArticulo()));
 		ioc.setNroItemOrdenDeCompra(iocE.getNroItemOrdenDeCompra());
-		
+		ioc.setArticulo(ArticuloDAO.getInstancia().toNegocio(iocE.getArticulo()));
+	
 		return ioc;
 	}
 	

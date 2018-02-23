@@ -62,35 +62,29 @@ public class ArticuloDAO {
 		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
 		res.setCantReservada(articulo.getCantReservada());
 
-		
-<<<<<<< HEAD
+	
 		if (articulo.getLotes() !=null){
 		
 			for(LoteEntity loteAux : articulo.getLotes()) {
 				Lote lote = new Lote();
 				lote.setCodLote(loteAux.getCodLote());
 				lote.setMovimiento(lote.getMovimiento());
-				lote.set
-			
-				
+				//lote.set
+
 			}
-			
-			
-=======
+
 		if (articulo.getLotes() != null) {
 			for(LoteEntity loteAux : articulo.getLotes()) {
 				Lote lote = new Lote();
 				lote.setCodLote(loteAux.getCodLote());
 				lote.setMovimiento(lote.getMovimiento());
-				//lote.
-			}	
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
+				//lote
+			}
 		}
-<<<<<<< HEAD
+
 		return null;
-=======
 		return res;
->>>>>>> branch 'master' of https://github.com/ascaramal/AD_2018.git
+
 	}
 		
 	public Articulo toNegocio(ArticuloEntity articulo) {
@@ -115,6 +109,5 @@ public class ArticuloDAO {
 		res.setCantReservada(articulo.getCantReservada());
 	
 		return res;
-	}
-	
+	}	
 }
