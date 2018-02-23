@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dao.PedidoDAO;
 import dto.ItemPedidoDTO;
 import dto.OrdenDeTrabajoDTO;
 import dto.PedidoDTO;
@@ -172,6 +173,10 @@ public class Pedido {
 		}
 		
 		return res;
+	}
+	
+	public void save() {
+		PedidoDAO.getInstancia().guardarPedido(this);
 	}
 	
 }

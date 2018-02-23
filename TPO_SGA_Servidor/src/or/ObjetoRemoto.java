@@ -51,8 +51,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 		return ControladorTest.getInstancia().getClientes();
 	}
 
-	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws RemoteException, ClienteException, PedidoException {
-		return ControladorDespacho.getInstancia().altaPedido(pedido);
+	public EstadoPedido nuevoPedido(PedidoDTO pedidoDTO) throws RemoteException, ClienteException, PedidoException {
+		return ControladorDespacho.getInstancia().altaPedido(pedidoDTO);
 	}
 
 }

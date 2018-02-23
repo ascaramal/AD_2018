@@ -1,7 +1,6 @@
 package controlador;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JOptionPane;
 
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
@@ -16,9 +15,6 @@ import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.DAOException;
 import exceptions.PedidoException;
-import negocio.Articulo;
-import negocio.Cliente;
-
 import negocio.Pedido;
 
 
@@ -57,10 +53,11 @@ public class ControladorDespacho {
 	}
 
 	
-	public EstadoPedido altaPedido(PedidoDTO pedido) throws ClienteException, PedidoException{
-		PedidoDAO dao = PedidoDAO.getInstancia();
-		Pedido pe = dao.toNegocio(pedido);
-		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
+	public EstadoPedido altaPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException{
+		//PedidoDAO dao = PedidoDAO.getInstancia();
+		
+		//Pedido pe = dao.toNegocio(pedido);
+		//List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
 		try {
 //			//Se verifica el limite de credito 
 //			if(pe.controlarLimiteCredito() == EstadoPedido.Rechazado) {
@@ -77,8 +74,16 @@ public class ControladorDespacho {
 //				pe.setEstadoPedido(EstadoPedido.Completado);
 //			}
 			//se comento para verificar si genera el pedido desde cliente.
-			dao.altaPedido(dao.toEntity(pe));
-		} catch (DAOException e) {
+			
+			Pedido pedi = new Pedido();
+			JOptionPane.showMessageDialog(null, pedi.getNroPedido());
+			pedi = PedidoDAO.getInstancia().toNegocio(pedidoDTO);
+			//JOptionPane.showMessageDialog(null, pedi.getNroPedido());
+			pedi.save();
+			//PedidoDAO.getInstancia().altaPedidoConNegocio(pedi);
+			return EstadoPedido.Pendiente;
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return EstadoPedido.Pendiente;

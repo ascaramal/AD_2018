@@ -6,6 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import dto.PedidoDTO;
@@ -55,7 +57,7 @@ public class BusinessDelegate {
 	}
 	
 
-	public ClienteDTO findCliente(int nroCliente) throws SistemaException, ClienteException {
+	public ClienteDTO findCliente(int nroCliente) throws ClienteException {
 		try {
 			ClienteDTO cli = negocioRemoto.findCliente(nroCliente);
 			return cli;
@@ -64,7 +66,7 @@ public class BusinessDelegate {
 		}
 	}
 
-	public ArticuloDTO findArticulo(int nroArticulo) throws SistemaException, ArticuloException {
+	public ArticuloDTO findArticulo(int nroArticulo) throws ArticuloException {
 		try {
 			ArticuloDTO art = negocioRemoto.findArticulo(nroArticulo);
 			return art;
@@ -73,10 +75,11 @@ public class BusinessDelegate {
 		}
 	}
 
-	public EstadoPedido nuevoPedido(PedidoDTO pedido) throws SistemaException, PedidoException {
+	public EstadoPedido nuevoPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException {
 		try {
-			return negocioRemoto.nuevoPedido(pedido);
-		} catch (Exception e) {
+			return negocioRemoto.nuevoPedido(pedidoDTO);
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			throw new PedidoException("No se pudo crear el pedido");
 		}
 	}
