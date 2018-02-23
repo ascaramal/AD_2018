@@ -75,9 +75,9 @@ public class BusinessDelegate {
 		}
 	}
 
-	public EstadoPedido nuevoPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException {
+	public void nuevoPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException {
 		try {
-			return negocioRemoto.nuevoPedido(pedidoDTO);
+			negocioRemoto.nuevoPedido(pedidoDTO);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			throw new PedidoException("No se pudo crear el pedido");

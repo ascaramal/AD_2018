@@ -72,7 +72,7 @@ public class ArticuloDAO {
 				//lote.set
 
 			}
-
+		}
 		if (articulo.getLotes() != null) {
 			for(LoteEntity loteAux : articulo.getLotes()) {
 				Lote lote = new Lote();
@@ -81,10 +81,7 @@ public class ArticuloDAO {
 				//lote
 			}
 		}
-
-		return null;
 		return res;
-
 	}
 		
 	public Articulo toNegocio(ArticuloEntity articulo) {

@@ -72,19 +72,31 @@ public class PedidoDAO {
 		return null;
 	}
 	
-	public int altaPedido(PedidoEntity pedido) throws DAOException, PedidoException {
+//	public int altaPedido(PedidoEntity pedido) throws DAOException, PedidoException {
+//		try {
+//			Session s = sf.openSession();
+//			s.beginTransaction();
+//			int idGenerado = (int) s.save(pedido);
+//			s.getTransaction().commit();
+//			s.close();
+//			return idGenerado;
+//		} catch (Exception e) {
+//			throw new PedidoException("Error al dar de alta PedidoDAO");
+//		}
+//	}
+
+	public void altaPedido(Pedido pedido) throws DAOException {
 		try {
-			Session s = sf.openSession();
-			s.beginTransaction();
-			int idGenerado = (int) s.save(pedido);
-			s.getTransaction().commit();
-			s.close();
-			return idGenerado;
+			Session session = sf.openSession();
+			session.beginTransaction();
+			session.save(this.toEntity(pedido));
+			session.getTransaction().commit();
+			session.close();
 		} catch (Exception e) {
-			throw new PedidoException("Error al dar de alta PedidoDAO");
+			throw new DAOException("Error PedidoDAO. AltaPedido");
 		}
 	}
-
+	
 	public void altaPedidoConNegocio(Pedido pedido) throws DAOException {
 		JOptionPane.showMessageDialog(null, pedido.getNroPedido());
 		PedidoEntity pedidoE = new PedidoEntity();
@@ -156,17 +168,32 @@ public class PedidoDAO {
 		return res;
 	}
 
-	public PedidoEntity toEntity(Pedido pedido) {
-		PedidoEntity res = new PedidoEntity();
-		ClienteEntity cli = new ClienteEntity();
-		//res.setNroPedido(pedido.getNroPedido());
-		//res.setCliente(new ClienteEntity().setNroCliente(pedido.getCliente().getNroCliente()));
-		cli.setNroCliente(pedido.getCliente().getNroCliente());
-		res.setCliente(cli);
-		res.setEstadoPedido(pedido.getEstadoPedido());
-		res.setFechaGeneracion(pedido.getFechaGeneracion());
-		res.setFechaDespacho(pedido.getFechaDespacho());
-		res.setTotal(pedido.getTotal());
+//	public PedidoEntity toEntity(Pedido pedido) {
+//		PedidoEntity res = new PedidoEntity();
+//		ClienteEntity cli = new ClienteEntity();
+//		//res.setNroPedido(pedido.getNroPedido());
+//		//res.setCliente(new ClienteEntity().setNroCliente(pedido.getCliente().getNroCliente()));
+//		cli.setNroCliente(pedido.getCliente().getNroCliente());
+//		res.setCliente(cli);
+//		res.setEstadoPedido(pedido.getEstadoPedido());
+//		res.setFechaGeneracion(pedido.getFechaGeneracion());
+//		res.setFechaDespacho(pedido.getFechaDespacho());
+//		res.setTotal(pedido.getTotal());
+//	}
+	
+	
+		public PedidoEntity toEntity(Pedido pedido) {
+			PedidoEntity res = new PedidoEntity();
+			res.setNroPedido(res.getNroPedido());
+			res.setCliente(res.getCliente());
+			res.setEstadoPedido(res.getEstadoPedido());
+			res.setFechaGeneracion(res.getFechaGeneracion());
+			res.setFechaDespacho(res.getFechaDespacho());
+			res.setTotal(res.getTotal());
+			
+			return res;
+		}
+		
 		
 //		List<ItemPedidoEntity> itemList = new ArrayList<ItemPedidoEntity>();
 //		if (pedido.getItemsPedido() != null) {
@@ -181,8 +208,8 @@ public class PedidoDAO {
 //			}	
 //		}
 //		res.setItemsPedido(itemList);
-		return res;
-	}
+//		return res;
+//	}
 
 	public void guardarPedido(Pedido pedido) {
 		PedidoEntity pedidoE = new PedidoEntity(); 

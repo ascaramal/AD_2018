@@ -9,6 +9,7 @@ import dto.ItemPedidoDTO;
 import dto.OrdenDeTrabajoDTO;
 import dto.PedidoDTO;
 import enumerations.EstadoPedido;
+import exceptions.DAOException;
 
 public class Pedido {
 
@@ -107,50 +108,50 @@ public class Pedido {
 		itemsPedido.add(itemP);
 	}
 	
-	public boolean controlarLimiteCredito()
-	{
-		//Saldo disponible del Cliente:
-		float maxC = this.cliente.getLimiteDeCredito();
-		float totalP = 0;
-		//Total de los pedidos:
-		for (int i = 0; i < this.itemsPedido.size(); i++)
-		{
-			totalP = totalP + itemsPedido.get(i).calcularSubtotal();
-		}
-		
-		//Comparo y devuelvo;
-		if(totalP > maxC) //si el pedio es mayor al saldo disponible
-			return false;
-		else
-			return true;
-	public EstadoPedido controlarLimiteCredito() {
-	
-		if(this.getCliente().getSaldo() >= getTotalPedido())
-			return EstadoPedido.Pendiente;
-		return EstadoPedido.Rechazado;
-	}
-	
-	public float getTotalPedido() {
-		float totalPedido = 0;
-		for(ItemPedido i : this.getItemsPedido()) {
-			totalPedido += i.getArticulo().getPrecio()*i.getCantidad();
-		}
-		return totalPedido;
-	}
+//	public boolean controlarLimiteCredito()
+//	{
+//		//Saldo disponible del Cliente:
+//		float maxC = this.cliente.getLimiteDeCredito();
+//		float totalP = 0;
+//		//Total de los pedidos:
+//		for (int i = 0; i < this.itemsPedido.size(); i++)
+//		{
+//			totalP = totalP + itemsPedido.get(i).calcularSubtotal();
+//		}
+//		
+//		//Comparo y devuelvo;
+//		if(totalP > maxC) //si el pedio es mayor al saldo disponible
+//			return false;
+//		else
+//			return true;
+//	public EstadoPedido controlarLimiteCredito() {
+//	
+//		if(this.getCliente().getSaldo() >= getTotalPedido())
+//			return EstadoPedido.Pendiente;
+//		return EstadoPedido.Rechazado;
+//	}
+//	
+//	public float getTotalPedido() {
+//		float totalPedido = 0;
+//		for(ItemPedido i : this.getItemsPedido()) {
+//			totalPedido += i.getArticulo().getPrecio()*i.getCantidad();
+//		}
+//		return totalPedido;
+//	}
 	
 	//Devuleve una lista de articulos faltantes que luego generará la orden de compra.
-	public List<Articulo> controlarStockPedido() {
-		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
-		
-		for(ItemPedido itemPedido : this.getItemsPedido()) {
-			if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() - itemPedido.getArticulo().getCantReservada())) 
-				if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() 
-						+ itemPedido.getArticulo().getCantFuturoDisponible() 
-						- itemPedido.getArticulo().getCantReservada()))
-					articulosFaltantes.add(itemPedido.getArticulo());
-		}
-		return articulosFaltantes;
-	}
+//	public List<Articulo> controlarStockPedido() {
+//		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
+//		
+//		for(ItemPedido itemPedido : this.getItemsPedido()) {
+//			if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() - itemPedido.getArticulo().getCantReservada())) 
+//				if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() 
+//						+ itemPedido.getArticulo().getCantFuturoDisponible() 
+//						- itemPedido.getArticulo().getCantReservada()))
+//					articulosFaltantes.add(itemPedido.getArticulo());
+//		}
+//		return articulosFaltantes;
+//	}
 	
 	public PedidoDTO toDTO() {
 		PedidoDTO res = new PedidoDTO();
@@ -176,7 +177,13 @@ public class Pedido {
 	}
 	
 	public void save() {
-		PedidoDAO.getInstancia().guardarPedido(this);
+		try {
+			PedidoDAO.getInstancia().altaPedido(this);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

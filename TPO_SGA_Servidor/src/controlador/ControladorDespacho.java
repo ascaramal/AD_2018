@@ -1,16 +1,11 @@
 package controlador;
 
-import javax.swing.JOptionPane;
-
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
-import dao.PedidoDAO;
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
 
 import dto.PedidoDTO;
-
-import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.DAOException;
@@ -53,7 +48,7 @@ public class ControladorDespacho {
 	}
 
 	
-	public EstadoPedido altaPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException{
+	public void altaPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException{
 		//PedidoDAO dao = PedidoDAO.getInstancia();
 		
 		//Pedido pe = dao.toNegocio(pedido);
@@ -76,16 +71,10 @@ public class ControladorDespacho {
 			//se comento para verificar si genera el pedido desde cliente.
 			
 			Pedido pedi = new Pedido();
-			JOptionPane.showMessageDialog(null, pedi.getNroPedido());
-			pedi = PedidoDAO.getInstancia().toNegocio(pedidoDTO);
-			//JOptionPane.showMessageDialog(null, pedi.getNroPedido());
 			pedi.save();
-			//PedidoDAO.getInstancia().altaPedidoConNegocio(pedi);
-			return EstadoPedido.Pendiente;
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return EstadoPedido.Pendiente;
-	}	
+	}
+		
 }

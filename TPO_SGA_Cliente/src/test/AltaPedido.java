@@ -61,8 +61,8 @@ public class AltaPedido {
 			System.out.println("Cliente vuelta: " + clienteVuelta);
 			System.out.println(pedidoDTO.toString());
 			System.out.println(pedidoDTO.getCliente());
-			EstadoPedido mensaje = BusinessDelegate.getInstance().nuevoPedido(pedidoDTO);
-			System.out.println(mensaje);
+			BusinessDelegate.getInstance().nuevoPedido(pedidoDTO);
+			
 		} else {
 			System.out.println("Cliente Inexistente");
 		}
