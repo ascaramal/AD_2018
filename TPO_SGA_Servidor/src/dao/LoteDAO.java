@@ -7,7 +7,6 @@ import entities.UbicacionEntity;
 import negocio.Lote;
 import negocio.Ubicacion;
 
-//LoteDAO
 public class LoteDAO {
 
 	private static LoteDAO instance;
