@@ -4,6 +4,7 @@ import businessDelegate.BusinessDelegate;
 import dto.ClienteDTO;
 import dto.ItemPedidoDTO;
 import dto.PedidoDTO;
+import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.PedidoException;
@@ -11,9 +12,22 @@ import exceptions.SistemaException;
 
 public class AltaPedido {
 
-	public static void main(String[] args)
-			throws SistemaException, ArticuloException, PedidoException, ClienteException {
-		generarPedido();
+	public static void main(String[] args){
+		try {
+			generarPedido();
+		} catch (SistemaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ArticuloException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PedidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void generarPedido() throws SistemaException, ArticuloException, PedidoException, ClienteException {
@@ -23,43 +37,32 @@ public class AltaPedido {
 		clienteVuelta = BusinessDelegate.getInstance().findCliente(cliente.getNroCliente());
 
 		if (clienteVuelta != null) {
-			PedidoDTO pedido = new PedidoDTO();
+			PedidoDTO pedidoDTO = new PedidoDTO();
 			ItemPedidoDTO iPedido = new ItemPedidoDTO();
 			ItemPedidoDTO iPedido2 = new ItemPedidoDTO();
 			ItemPedidoDTO iPedido3 = new ItemPedidoDTO();
-			ItemPedidoDTO iPedido4 = new ItemPedidoDTO();
-			ItemPedidoDTO iPedido5 = new ItemPedidoDTO();
 
-			pedido.setCliente(clienteVuelta);
+
+			pedidoDTO.setCliente(clienteVuelta);
 			
 			iPedido.setArticulo(BusinessDelegate.getInstance().findArticulo(1));
 			iPedido.setCantidad(100);
-			pedido.agregarItemPedido(iPedido);
+			pedidoDTO.agregarItemPedido(iPedido);
 	
 			iPedido2.setArticulo(BusinessDelegate.getInstance().findArticulo(2));
 			iPedido2.setCantidad(100);
-			pedido.agregarItemPedido(iPedido2);
+			pedidoDTO.agregarItemPedido(iPedido2);
 
 			iPedido.setArticulo(BusinessDelegate.getInstance().findArticulo(3));
 			iPedido.setCantidad(100);
-			pedido.agregarItemPedido(iPedido3);
-
-			iPedido2.setArticulo(BusinessDelegate.getInstance().findArticulo(4));
-			iPedido2.setCantidad(100);
-			pedido.agregarItemPedido(iPedido4);
-
-			iPedido2.setArticulo(BusinessDelegate.getInstance().findArticulo(5));
-			iPedido2.setCantidad(100);
-			pedido.agregarItemPedido(iPedido5);
+			pedidoDTO.agregarItemPedido(iPedido3);
 
 			
 			System.out.println("Cliente vuelta: " + clienteVuelta);
-			System.out.println(pedido.toString());
-			System.out.println(pedido.getCliente());
-			
-			
-			System.out.println(BusinessDelegate.getInstance().nuevoPedido(pedido));
-
+			System.out.println(pedidoDTO.toString());
+			System.out.println(pedidoDTO.getCliente());
+			EstadoPedido mensaje = BusinessDelegate.getInstance().nuevoPedido(pedidoDTO);
+			System.out.println(mensaje);
 		} else {
 			System.out.println("Cliente Inexistente");
 		}
