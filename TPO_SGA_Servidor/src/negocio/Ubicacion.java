@@ -34,6 +34,10 @@ public class Ubicacion {
 		this.capacidadMax = capacidadMax;
 	}
 
+	public Ubicacion() {
+
+	}
+
 	public int getNroUbicacion() {
 		return nroUbicacion;
 	}

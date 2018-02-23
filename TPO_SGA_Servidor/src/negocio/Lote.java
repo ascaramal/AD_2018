@@ -83,6 +83,11 @@ public class Lote {
 		
 		return res;	
 	}
+
+	public void agregarUbicaciones(Ubicacion ubic) {
+		ubicaciones.add(ubic);
+		
+	}
 }
 
 
