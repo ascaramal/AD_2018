@@ -1,5 +1,7 @@
 package negocio;
 
+import dto.OrdenDeTrabajoDTO;
+
 public class OrdenDeTrabajo {
 
 	private Articulo articulo;
