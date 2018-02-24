@@ -31,7 +31,7 @@ public class PedidoDTO implements Serializable {
 			float total) {
 		this.nroPedido = nroPedido;
 		this.cliente = cliente;
-		this.estadoPedido = estadoPedido;
+		this.estadoPedido = estadoPedido; 
 		this.fechaGeneracion = fechaGeneracion;
 		this.fechaDespacho = fechaDespacho;
 		this.itemsPedido = new ArrayList<ItemPedidoDTO>();
@@ -100,7 +100,7 @@ public class PedidoDTO implements Serializable {
 	}
 
 	public void setTotal(float total) {
-		this.total = total;
+		this.total = total; 
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class PedidoDTO implements Serializable {
 				+ ", fechaGeneracion=" + fechaGeneracion + ", fechaDespacho=" + fechaDespacho + ", itemsPedido="
 				+ itemsPedido + ", total=" + total + "]";
 	}
-
+ 
 	// Metodo
 	public void agregarItemPedido(ItemPedidoDTO iPedido) {
 		itemsPedido.add(iPedido);

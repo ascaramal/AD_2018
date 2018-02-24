@@ -1,11 +1,14 @@
 package entities;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,13 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.mapping.Array;
-
 import dto.ClienteDTO;
+import negocio.Cliente;
 
 @Entity
 @Table(name = "Clientes")
-public class ClienteEntity {
+public class ClienteEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,23 +38,24 @@ public class ClienteEntity {
 	private String condIVA;
 	private float limiteDeCredito;
 	private float saldo;
-	@OneToMany(cascade = CascadeType.ALL)
+/*	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nroCliente")
 	private List<RemitoEntity> remitos;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nroCliente")
-	private List<FacturaEntity> facturas;
+	private List<FacturaEntity> facturas;*/
 
-	@OneToMany(cascade = CascadeType.ALL)
+	//@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "nroCliente")
-	private List<PedidoEntity> pedidos;
+	private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
 
 	// Constructor
 	public ClienteEntity() {
-		this.remitos = new ArrayList<RemitoEntity>();
-		this.facturas = new ArrayList<FacturaEntity>();
-		this.pedidos = new ArrayList<PedidoEntity>();
+//		this.remitos = new ArrayList<RemitoEntity>();
+//		this.facturas = new ArrayList<FacturaEntity>();
+		//this.pedidos 
 
 	}
 
@@ -134,7 +139,7 @@ public class ClienteEntity {
 		this.saldo = saldo;
 	}
 
-	public List<RemitoEntity> getRemitos() {
+	/*public List<RemitoEntity> getRemitos() {
 		return remitos;
 	}
 
@@ -148,7 +153,7 @@ public class ClienteEntity {
 
 	public void setFacturas(List<FacturaEntity> facturas) {
 		this.facturas = facturas;
-	}
+	}*/
 
 	public List<PedidoEntity> getPedidos() {
 		return pedidos;
@@ -172,6 +177,32 @@ public class ClienteEntity {
 		cliente.setSaldo(this.saldo);
 
 		return cliente;
-
 	}
+
+	@Override
+	public String toString() {
+//		return "ClienteEntity [nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
+//				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
+//				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + ", pedidos="
+//				+ pedidos + "]";
+		return "";
+	}
+
+	public Cliente toNegocio() {
+		Cliente res = new Cliente();
+		res.setNroCliente(this.nroCliente);
+		res.setRazonSocial(this.razonSocial);
+		res.setDireccion(this.direccion);
+		res.setCondIVA(this.condIVA);
+		res.setSaldo(this.saldo);
+		res.setLocalidad(this.localidad);
+		res.setCuit(this.cuit);
+		res.setTelefono(this.telefono);
+		res.setLimiteDeCredito(this.limiteDeCredito);
+		res.setCodPostal(this.codPostal);
+		
+		return res;
+	}
+
+	
 }

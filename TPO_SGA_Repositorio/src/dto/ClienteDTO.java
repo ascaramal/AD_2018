@@ -15,7 +15,7 @@ public class ClienteDTO implements Serializable {
 	private String cuit;
 	private String condIVA;
 	private float limiteDeCredito;
-	private float saldo;
+	private float saldo; 
 
 	// Constructor
 	public ClienteDTO() {

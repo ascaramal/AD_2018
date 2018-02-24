@@ -1,27 +1,28 @@
 package dao;
 
 import org.hibernate.SessionFactory;
+
 import org.hibernate.classic.Session;
 
 import entities.ArticuloEntity;
-import entities.LoteEntity;
 import exceptions.ArticuloException;
 import exceptions.DAOException;
 import hbt.HibernateUtil;
 import negocio.Articulo;
-import negocio.Lote;
+
 
 public class ArticuloDAO {
 
 	private static ArticuloDAO instancia;
 	private static SessionFactory sf;
 	
-	private ArticuloDAO() {}
+	private ArticuloDAO() {
+		sf = HibernateUtil.getSessionFactory();
+	}
 
 	public static ArticuloDAO getInstancia() {		
 		if(instancia == null) {
 			instancia = new ArticuloDAO();
-			sf = HibernateUtil.getSessionFactory();
 		}
 		return instancia;
 	}
@@ -62,25 +63,30 @@ public class ArticuloDAO {
 		res.setCantFuturoDisponible(articulo.getCantFuturoDisponible());
 		res.setCantReservada(articulo.getCantReservada());
 
-	
-		if (articulo.getLotes() !=null){
-		
-			for(LoteEntity loteAux : articulo.getLotes()) {
-				Lote lote = new Lote();
-				lote.setCodLote(loteAux.getCodLote());
-				lote.setMovimiento(lote.getMovimiento());
-				//lote.set
-
-			}
-		}
-		if (articulo.getLotes() != null) {
-			for(LoteEntity loteAux : articulo.getLotes()) {
-				Lote lote = new Lote();
-				lote.setCodLote(loteAux.getCodLote());
-				lote.setMovimiento(lote.getMovimiento());
-				//lote
-			}
-		}
+//	
+//		if (articulo.getLotes() !=null){
+//		
+//			for(LoteEntity loteAux : articulo.getLotes()) {
+//				Lote lote = new Lote();
+//				lote.setCodLote(loteAux.getCodLote());
+//				lote.setFechaVtoLote(loteAux.getFechaVtoLote());
+//				
+//				for (UbicacionEntity ubiAux : lote.getUbicaciones()) {
+//					Ubicacion ubicacion = new Ubicacion();
+//					ubicacion.setCantOcupada(ubiAux.getCantOcupada());
+//					ubicacion.set
+//				}
+//
+//			}
+//		}
+//		if (articulo.getLotes() != null) {
+//			for(LoteEntity loteAux : articulo.getLotes()) {
+//				Lote lote = new Lote();
+//				lote.setCodLote(loteAux.getCodLote());
+//				lote.setMovimiento(lote.getMovimiento());
+//				//lote
+//			}
+//		}
 		return res;
 	}
 		

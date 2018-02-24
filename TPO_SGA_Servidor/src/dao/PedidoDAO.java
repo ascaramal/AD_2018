@@ -3,16 +3,16 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+
 import dto.ItemPedidoDTO;
 import dto.PedidoDTO;
 import entities.ArticuloEntity;
 import entities.ClienteEntity;
 import entities.ItemPedidoEntity;
 import entities.PedidoEntity;
+import exceptions.ArticuloException;
 import exceptions.DAOException;
 import exceptions.PedidoException;
 import hbt.HibernateUtil;
@@ -20,22 +20,39 @@ import negocio.Articulo;
 import negocio.Cliente;
 import negocio.ItemPedido;
 import negocio.Pedido;
+import test.$missing$;
 
 public class PedidoDAO {
 
 	private static PedidoDAO instancia;
 	private static SessionFactory sf;
 	
-	private PedidoDAO() {}
+	private PedidoDAO() {
+		sf = HibernateUtil.getSessionFactory();
+	}
 
 	public static PedidoDAO getInstancia() { 
 		if(instancia == null) {
 			instancia = new PedidoDAO();
-			sf = HibernateUtil.getSessionFactory();
 		}
 		return instancia;
 	}
 	
+	public PedidoEntity findPedidoEntity(int nroPedido) throws DAOException, PedidoException {
+		PedidoEntity ped= null;
+		try {
+			Session s = sf.openSession();
+			s.beginTransaction();
+			PedidoEntity pedidoE = (PedidoEntity) s.createQuery("from PedidoEntity p where p.nroPedido = :nroPedido")
+					.setParameter("nroPedido",  nroPedido).uniqueResult();
+			s.getTransaction().commit();
+			s.close();
+			return pedidoE;
+		} catch (Exception e) {
+			System.out.println("Error PedidoDAO.findPedido");
+		}
+		return null;
+	}
 //	@SuppressWarnings("unchecked")
 //	public List<Pedido> recuperarListaPedidos() {
 //		try {
@@ -55,6 +72,23 @@ public class PedidoDAO {
 //		return null;
 //	}
 
+	@SuppressWarnings("unchecked")
+	public List<PedidoEntity> recuperarListaPedidos() {
+		try {
+			Session session = sf.openSession();
+			session.beginTransaction();
+			List<PedidoEntity> Pedidos = session.createQuery("from PedidoEntity p")
+					.list();
+			session.getTransaction().commit();
+			session.close();
+			return Pedidos;
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.recuperarListaPedidosCompletos");
+		}
+		return null;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<PedidoEntity> recuperarListaPedidosCompletos() {
 		try {
@@ -85,15 +119,46 @@ public class PedidoDAO {
 //		}
 //	}
 
-	public void altaPedido(Pedido pedido)  {
-
-			Session session = sf.openSession();
-			PedidoEntity res = new PedidoEntity();  
+//	public void altaPedido(Pedido pedido) throws PedidoException  {
+//		//Session session = null;
+//		
+//		try {
+//			Session session = sf.openSession();
+//			PedidoEntity pedE = new PedidoEntity();  
+//			pedE.setCliente((ClienteEntity) session.load(ClienteEntity.class, pedido.getCliente().getNroCliente()));
+//			System.out.println(pedE.getCliente().getRazonSocial());
+//			pedE.setEstadoPedido(pedido.getEstadoPedido());
+//			pedE.setFechaDespacho(pedido.getFechaDespacho());
+//			pedE.setFechaGeneracion(pedido.getFechaGeneracion());
+//			pedE.setTotal(pedido.getTotal());
+//			
+//			for (ItemPedido ip : pedido.getItemsPedido()) {
+//				ItemPedidoEntity ipE = new ItemPedidoEntity();
+//				ipE.setArticulo((ArticuloEntity) session.load(ArticuloEntity.class, ip.getArticulo().getCodArticulo()));
+//				ipE.setCantidad(ip.getCantidad());
+//				pedE.getItemsPedido().add(ipE);
+//			}
+//			//System.out.println(pedE.toString());
+//			session.save(pedE);
+//			session.getTransaction().commit();
+////			session.persist(pedE);
+////			session.flush();
+//			session.close();
+//			
+//			ItemPedidoEntity iPE = new ItemPedidoEntity();
+//			iPE.setCantidad(200);
+//			res.getItemsPedido().add(iPE);
+//			session.save(res);
+//			
+//		} catch (Exception e) {
+//			throw new PedidoException("Error al generar pedido.");
+//		}
+//	}
 		
-			res.setEstadoPedido(pedido.getEstadoPedido());
-			res.setFechaGeneracion(pedido.getFechaGeneracion());
-			res.setFechaDespacho(pedido.getFechaDespacho());
-			res.setTotal(pedido.getTotal());
+//		res.setEstadoPedido(pedido.getEstadoPedido());
+//		res.setFechaGeneracion(pedido.getFechaGeneracion());
+//		res.setFechaDespacho(pedido.getFechaDespacho());
+//		res.setTotal(pedido.getTotal());
 			
 
 			
@@ -103,19 +168,14 @@ public class PedidoDAO {
 //				res.getItemsPedido().add(itemPEntity);
 //			}
 			
-			ItemPedidoEntity iPE = new ItemPedidoEntity();
-			iPE.setCantidad(200);
-			res.getItemsPedido().add(iPE);
-			session.save(res);
-			
-			session.close();
-		
-	}
+
 	
-	public void altaPedidoConNegocio(Pedido pedido) throws DAOException {
-		JOptionPane.showMessageDialog(null, pedido.getNroPedido());
+	public void altaPedido(Pedido pedido) throws DAOException {
+		//JOptionPane.showMessageDialog(null, pedido.getNroPedido());
 		PedidoEntity pedidoE = new PedidoEntity();
+		//System.out.println(pedido.toString());
 		pedidoE = this.toEntity(pedido);
+		
 		try {
 			Session s = sf.openSession();
 			s.beginTransaction();
@@ -123,10 +183,35 @@ public class PedidoDAO {
 			s.getTransaction().commit();
 			s.close();
 		} catch (Exception e) {
+			System.out.println(e.getStackTrace());
 			throw new DAOException("Error PedidoDAO. AltaPedido");
 		}
 	}
 	
+	public PedidoEntity toEntity(Pedido pedido) {
+		PedidoEntity res = new PedidoEntity();
+		res.setNroPedido(pedido.getNroPedido());
+		ClienteEntity cli = new ClienteEntity();
+		res.setCliente(cli);
+		cli.setNroCliente(pedido.getCliente().getNroCliente());
+		res.setEstadoPedido(pedido.getEstadoPedido());
+		res.setFechaGeneracion(pedido.getFechaGeneracion());
+		res.setFechaDespacho(pedido.getFechaDespacho());
+		res.setTotal(pedido.getTotal());
+		
+		for(ItemPedido itemPAux : pedido.getItemsPedido()) {
+			ItemPedidoEntity item = new ItemPedidoEntity();
+			ArticuloEntity art = new ArticuloEntity();
+//			System.out.println("Prueba desde Controlador negocio: " + itemPAuxDTO.getArticulo().toString());
+			art.setCodArticulo(itemPAux.getArticulo().getCodArticulo());
+			item.setArticulo(art);
+			item.setCantidad(itemPAux.getCantidad());
+			item.setNroItemPedido(itemPAux.getNroItemPedido());
+			res.getItemsPedido().add(item);
+		}
+		return res;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<PedidoEntity> recuperarListaPedidosCliente(long nrocliente) {
 		try {
@@ -158,28 +243,25 @@ public class PedidoDAO {
 
 	public Pedido toNegocio(PedidoDTO pedidoDTO) {
 		Pedido res = new Pedido();
-		//res.setNroPedido(pedidoDTO.getNroPedido());
+		res.setNroPedido(pedidoDTO.getNroPedido());
 		Cliente cli = new Cliente();
-		cli.setNroCliente(pedidoDTO.getCliente().getNroCliente());
 		res.setCliente(cli);
+		cli.setNroCliente(pedidoDTO.getCliente().getNroCliente());
 		res.setEstadoPedido(pedidoDTO.getEstadoPedido());
 		res.setFechaGeneracion(pedidoDTO.getFechaGeneracion());
 		res.setFechaDespacho(pedidoDTO.getFechaDespacho());
 		res.setTotal(pedidoDTO.getTotal());
 		
-//		List<ItemPedido> itemsList = new ArrayList<ItemPedido>();
-//		if (pedidoDTO.getItemsPedido() != null) {
-//			for(ItemPedidoDTO itemPAuxDTO : pedidoDTO.getItemsPedido()) {
-//				ItemPedido item = new ItemPedido();
-//				Articulo art = new Articulo();
-//				art.setCodArticulo(itemPAuxDTO.getArticulo().getCodArticulo());
-//				item.setArticulo(art);
-//				item.setCantidad(itemPAuxDTO.getCantidad());
-//				item.setNroItemPedido(itemPAuxDTO.getNroItemPedido());
-//				itemsList.add(item);
-//			}	
-//		}
-//		res.setItemsPedido(itemsList);
+		for(ItemPedidoDTO itemPAuxDTO : pedidoDTO.getItemsPedido()) {
+			ItemPedido item = new ItemPedido();
+			Articulo art = new Articulo();
+//			System.out.println("Prueba desde Controlador negocio: " + itemPAuxDTO.getArticulo().toString());
+			art.setCodArticulo(itemPAuxDTO.getArticulo().getCodArticulo());
+			item.setArticulo(art);
+			item.setCantidad(itemPAuxDTO.getCantidad());
+			item.setNroItemPedido(itemPAuxDTO.getNroItemPedido());
+			res.getItemsPedido().add(item);
+		}
 		return res;
 	}
 
@@ -197,17 +279,18 @@ public class PedidoDAO {
 //	}
 	
 	
-		public PedidoEntity toEntity(Pedido pedido) {
-			PedidoEntity res = new PedidoEntity();
-			res.setNroPedido(res.getNroPedido());
-			res.setCliente(res.getCliente());
-			res.setEstadoPedido(res.getEstadoPedido());
-			res.setFechaGeneracion(res.getFechaGeneracion());
-			res.setFechaDespacho(res.getFechaDespacho());
-			res.setTotal(res.getTotal());
-			
-			return res;
-		}
+//		public PedidoEntity toEntity(Pedido pedido) {
+//			PedidoEntity res = new PedidoEntity();
+//			res.setNroPedido(res.getNroPedido());
+//			res.setEstadoPedido(res.getEstadoPedido());
+//			res.setFechaGeneracion(res.getFechaGeneracion());
+//			res.setFechaDespacho(res.getFechaDespacho());
+//			res.setTotal(res.getTotal());
+//			
+//			if (ControladorDespacho.getInstancia().)
+//			
+//			return res;
+//		}
 		
 		
 //		List<ItemPedidoEntity> itemList = new ArrayList<ItemPedidoEntity>();
@@ -226,15 +309,15 @@ public class PedidoDAO {
 //		return res;
 //	}
 
-	public void guardarPedido(Pedido pedido) {
-		PedidoEntity pedidoE = new PedidoEntity(); 
-		pedidoE = this.toEntity(pedido);
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.save(pedidoE);
-		session.getTransaction().commit();
-		session.close();
-	}
+//	public void guardarPedido(Pedido pedido) {
+//		PedidoEntity pedidoE = new PedidoEntity(); 
+//		pedidoE = this.toEntity(pedido);
+//		Session session = HibernateUtil.getSessionFactory().openSession();
+//		session.beginTransaction();
+//		session.save(pedidoE);
+//		session.getTransaction().commit();
+//		session.close();
+//	}
 
 	//Listado de Pedidos Nuevos
 	@SuppressWarnings("unchecked")
@@ -263,8 +346,102 @@ public class PedidoDAO {
 		res.setTotal(pedido.getTotal());
 		res.setEstadoPedido(pedido.getEstadoPedido());
 		
+		if(pedido.getCliente() != null) {
+			res.setCliente(pedido.getCliente().toNegocio());
+		}
+		
 		return res;
+	}
+
+	public Pedido findPedido(int nroPedido) throws DAOException, PedidoException {
+		Pedido ped = null;
+		try {
+			Session s = sf.openSession();
+			s.beginTransaction();
+			PedidoEntity pedidoE = (PedidoEntity) s.createQuery("from PedidoEntity p where p.nroPedido = :nroPedido")
+					.setParameter("nroPedido",  nroPedido).uniqueResult();
+			s.getTransaction().commit();
+			s.close();
+			if(pedidoE != null) {
+				ped = this.toNegocio(pedidoE);
+				return ped;
+			}
+		} catch (Exception e) {
+			System.out.println("Error PedidoDAO.findPedido");
+		}
+		return null;
+	}
+
+	public void actualizarEstadoPedido(Pedido pedido) throws DAOException {
+		PedidoEntity pedidoE = new PedidoEntity();
+		//System.out.println(pedido.toString());
+		pedidoE = this.toEntity(pedido);
+		
+		try {
+			Session s = sf.openSession();
+			s.beginTransaction();
+			s.update(pedidoE);
+			s.getTransaction().commit();
+			s.close();
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace());
+			throw new DAOException("Error PedidoDAO. AltaPedido");
+		}
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public List<PedidoEntity> getPedidosEntity() {
+		try {
+			Session s = sf.openSession();
+			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("FROM PedidoEntity").list();
+			s.close();
+				
+			return aux;
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.getPedidos()");
+		}
+		return null;
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	public List<Pedido> getPedidos() {
+		try {
+			List<Pedido> res = new ArrayList<Pedido>();
+			Session s = sf.openSession();
+			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("FROM PedidoEntity").list();
+			s.close();
+			for(PedidoEntity pedido : aux) {
+				System.out.println(pedido.getCliente().getNroCliente());
+				res.add(this.toNegocio(pedido));
+			}
+				
+			return res;
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.getPedidos()");
+		}
+		return null;
+	}
+
+	
+	/*	//Listado de Clientes
+	@SuppressWarnings("unchecked")
+	public List<Cliente> getClientes() {
+		try {
+			List<Cliente> resultado = new ArrayList<Cliente>();
+			Session s = sf.openSession();
+			List<ClienteEntity> aux = (List<ClienteEntity>)s.createQuery("FROM ClienteEntity").list();
+			s.close();
+			for(ClienteEntity cliente : aux)
+				resultado.add(this.toNegocio(cliente));
+			return resultado;
+		} catch(Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.recuperarListaPedidosAceptado");
+		}
+		return null;
+	}*/
 }

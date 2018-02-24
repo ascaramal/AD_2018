@@ -1,26 +1,37 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import enumerations.EstadoPedido;
+import negocio.Articulo;
+import negocio.Cliente;
+import negocio.ItemPedido;
+import negocio.Pedido;
 
 import javax.persistence.*;
 
+import dto.ItemPedidoDTO;
+import dto.PedidoDTO;
+
 @Entity
 @Table(name="Pedidos")
-public class PedidoEntity {
+public class PedidoEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int nroPedido;
 	
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
 	
-	@Column(name="estadoPedido")
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="estadoPedido", columnDefinition = "int")
 	private EstadoPedido estadoPedido;
 	
 	@Column(name="fechaGeneracion")
@@ -29,15 +40,17 @@ public class PedidoEntity {
 	@Column(name="fechaDespacho")
 	private Date fechaDespacho;
 	
-	@OneToMany(cascade=CascadeType.ALL) 
-	@JoinColumn(name="nroPedido")
-	private List<ItemPedidoEntity> itemsPedido;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name ="nroPedido")
+	private List<ItemPedidoEntity> itemsPedido = new ArrayList<ItemPedidoEntity>();;
 	
 	@Column(name="total")
 	private float total;
 	
+	
+	//Constructor
 	public PedidoEntity() {
-		this.itemsPedido = new ArrayList<ItemPedidoEntity>();
+		
 	}
 
 	public int getNroPedido() {
@@ -94,6 +107,13 @@ public class PedidoEntity {
 
 	public void setTotal(float total) {
 		this.total = total;
+	}
+
+	@Override
+	public String toString() {
+		return "PedidoEntity [nroPedido=" + nroPedido + ", cliente=" + cliente + ", estadoPedido=" + estadoPedido
+				+ ", fechaGeneracion=" + fechaGeneracion + ", fechaDespacho=" + fechaDespacho + ", itemsPedido="
+				+ itemsPedido + ", total=" + total + "]";
 	}
 	
 	

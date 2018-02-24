@@ -19,10 +19,9 @@ public class Lote {
 	}
 
 	public Lote(int codLote, Date fechaVtoLote, List<Ubicacion> ubicaciones) {
-		super();
 		this.codLote = codLote;
 		this.fechaVtoLote = fechaVtoLote;
-		this.ubicaciones = ubicaciones;
+		this.ubicaciones = new ArrayList<Ubicacion>();
 	}
 
 	public int getCodLote() {
@@ -58,7 +57,9 @@ public class Lote {
 		
 		for (Ubicacion ubiAux : this.ubicaciones) {
 			UbicacionDTO ubicacionDTO = ubiAux.toDTO();
-			ubicacionDTO.setLote(res);
+			ubicacionDTO.setCantOcupada(ubiAux.getCantOcupada());
+			ubicacionDTO.setCapacidadMax(ubiAux.getCapacidadMax());
+			ubicacionDTO.setCodigoUbicacion(ubiAux.getCodigoUbicacion());
 		}
 		
 		return res;	

@@ -202,8 +202,19 @@ public class Articulo {
 		
 		return res;
 	}
+	
+	
 
 	// metodos
+
+	@Override
+	public String toString() {
+		return "Articulo [codArticulo=" + codArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
+				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
+				+ tamano + ", unidad=" + unidad + ", cantAComprar=" + cantAComprar + ", cantReservada=" + cantReservada
+				+ ", cantReal=" + cantReal + ", cantFuturoDisponible=" + cantFuturoDisponible + ", precio=" + precio
+				+ ", movimientos=" + movimientos + ", lotes=" + lotes + "]";
+	}
 
 	public Movimiento generarMovimientoVenta(int cantPedida, String tipoMovimiento, int nroPedido) {
 

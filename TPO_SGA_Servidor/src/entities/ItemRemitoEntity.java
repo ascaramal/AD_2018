@@ -1,10 +1,14 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ItemsRemito")
-public class ItemRemitoEntity {
+public class ItemRemitoEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

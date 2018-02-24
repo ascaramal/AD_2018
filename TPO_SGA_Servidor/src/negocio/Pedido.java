@@ -107,22 +107,22 @@ public class Pedido {
 		itemsPedido.add(itemP);
 	}
 
-	// public boolean controlarLimiteCredito()
-	// {
-	// //Saldo disponible del Cliente:
-	// float maxC = this.cliente.getLimiteDeCredito();
-	// float totalP = 0;
-	// //Total de los pedidos:
-	// for (int i = 0; i < this.itemsPedido.size(); i++)
-	// {
-	// totalP = totalP + itemsPedido.get(i).calcularSubtotal();
-	// }
-	//
-	// //Comparo y devuelvo;
-	// if(totalP > maxC) //si el pedio es mayor al saldo disponible
-	// return false;
-	// else
-	// return true;
+	public boolean controlarLimiteCredito() {
+		// Saldo disponible del Cliente:
+		float maxC = this.cliente.getLimiteDeCredito();
+		float totalP = 0;
+		// Total de los pedidos:
+		for (int i = 0; i < this.itemsPedido.size(); i++) {
+			totalP = totalP + itemsPedido.get(i).calcularSubtotal();
+		}
+
+		// Comparo y devuelvo;
+		if (totalP > maxC) // si el pedio es mayor al saldo disponible
+			return false;
+		else
+			return true;
+	}
+
 	// public EstadoPedido controlarLimiteCredito() {
 	//
 	// if(this.getCliente().getSaldo() >= getTotalPedido())
@@ -154,6 +154,18 @@ public class Pedido {
 	// return articulosFaltantes;
 	// }
 
+	public PedidoDTO toDTOAprobarPedido() {
+		PedidoDTO res = new PedidoDTO();
+		res.setNroPedido(this.nroPedido);
+		res.setEstadoPedido(this.estadoPedido);
+		res.setTotal(this.total);
+		
+		if (this.cliente != null)
+			res.setCliente(this.cliente.toDTOAprobarPedido());
+		
+		return res;
+	}
+	
 	public PedidoDTO toDTO() {
 		PedidoDTO res = new PedidoDTO();
 		res.setNroPedido(this.nroPedido);
@@ -162,8 +174,9 @@ public class Pedido {
 		res.setFechaDespacho(this.fechaDespacho);
 		res.setTotal(this.total);
 
-		if (this.cliente != null)
+		if (this.cliente != null) {
 			res.setCliente(this.cliente.toDTO());
+		}
 
 		for (ItemPedido iPedidoAux : this.itemsPedido) {
 			res.getItemsPedido().add(iPedidoAux.toDTO());
@@ -185,4 +198,13 @@ public class Pedido {
 			// TODO: handle exception
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Pedido [nroPedido=" + nroPedido + ", estadoPedido=" + estadoPedido + ", total=" + total + "]";
+	}
+
+	
+	
+	
 }

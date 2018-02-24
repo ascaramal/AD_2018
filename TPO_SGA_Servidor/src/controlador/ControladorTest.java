@@ -31,6 +31,14 @@ public class ControladorTest {
 			resultado.add(cliente.toDTO());
 		return resultado;
 	}
+
+	public List<PedidoDTO> getPedidos() {
+		List<PedidoDTO> res = new ArrayList<PedidoDTO>();
+		List<Pedido> pedidos = PedidoDAO.getInstancia().getPedidos();
+		for(Pedido pedido : pedidos)
+			res.add(pedido.toDTO());
+		return res;
+	}
 	
 	/*public List<PedidoDTO> recuperarListaPedidosAceptado() {
 		List<PedidoDTO> resultado = new ArrayList<PedidoDTO>();

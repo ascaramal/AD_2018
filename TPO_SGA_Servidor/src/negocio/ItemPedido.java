@@ -58,4 +58,11 @@ public class ItemPedido {
 			
 		return res;
 	}
+
+	@Override
+	public String toString() {
+		return "ItemPedido [nroItemPedido=" + nroItemPedido + ", articulo=" + articulo + ", cantidad=" + cantidad + "]";
+	}
+	
+	
 }

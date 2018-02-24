@@ -24,7 +24,7 @@ public class ArticuloDTO implements Serializable {
 	private float precio;
 	private List<MovimientoDTO> movimientos;
 	private List<LoteDTO> lotes;
-
+ 
 	
 	//Constructor
 	public ArticuloDTO() {

@@ -33,7 +33,7 @@ public class LoteDAO {
 			
 			for(UbicacionEntity itemAux : lotE.getUbicaciones()) {
 				Ubicacion ubic = new Ubicacion();
-				ubic.setCantLibre(itemAux.getCantLibre());
+				ubic.setCantOcupada(itemAux.getCantOcupada());
 				ubic.setCapacidadMax(itemAux.getCapacidadMax());
 				ubic.setCodigoUbicacion(itemAux.getCodigoUbicacion());
 				ubic.setNroUbicacion(itemAux.getNroUbicacion());

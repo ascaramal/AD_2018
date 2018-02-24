@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,33 +8,33 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Facturas")
-public class FacturaEntity{
+@Table(name = "Facturas")
+public class FacturaEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="nroFactura")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "nroFactura")
 	private int numero;
-	
+
 	private int prefijo;
 	private Date fechaEmision;
-	
+
 	@ManyToOne
-	@JoinColumn(name="nroCliente")
+	@JoinColumn(name = "nroCliente")
 	private ClienteEntity cliente;
-	
+
 	private float total;
-	
+
 	@OneToMany
-	@JoinColumn(name="nroFactura")
+	@JoinColumn(name = "nroFactura")
 	private List<ItemFacturaEntity> itemsFactura;
-	
-	
-	//Constructor
+
+	// Constructor
 	public FacturaEntity() {
 		this.itemsFactura = new ArrayList<ItemFacturaEntity>();
 	}
-	
 
 	public int getNumero() {
 		return numero;
@@ -83,11 +84,11 @@ public class FacturaEntity{
 		this.itemsFactura = itemsFactura;
 	}
 
-	//metodos 
+	// metodos
 	public float calcularTotal() {
-		return 0;	
+		return 0;
 	}
-	
+
 	public void agregarItemFactura(ItemFacturaEntity item) {
 		itemsFactura.add(item);
 	}

@@ -1,8 +1,12 @@
 package entities;
 
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,20 +16,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ItemsPedido")
-public class ItemPedidoEntity {
+public class ItemPedidoEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "nroItemPedido")
 	private int nroItemPedido;
 
-	@ManyToOne
+//	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "codArticulo")
 	private ArticuloEntity articulo;
 
 	@Column(name="cantidad")
 	private int cantidad;
 
+//	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@ManyToOne
 	@JoinColumn(name = "nroPedido")
 	private PedidoEntity pedidoEntity;
@@ -67,6 +75,12 @@ public class ItemPedidoEntity {
 
 	public void setPedidoEntity(PedidoEntity pedidoEntity) {
 		this.pedidoEntity = pedidoEntity;
+	}
+
+	@Override
+	public String toString() {
+		return "ItemPedidoEntity [nroItemPedido=" + nroItemPedido + ", articulo=" + articulo + ", cantidad=" + cantidad
+				+ ", pedidoEntity=" + pedidoEntity + "]";
 	}
 
 }

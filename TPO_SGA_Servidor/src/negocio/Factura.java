@@ -93,9 +93,7 @@ public class Factura {
 			res.setCliente(this.cliente.toDTO());
 		
 		for (ItemFactura itemFacAux : this.itemsFactura) {
-			ItemFacturaDTO itemFacDTO = itemFacAux.toDTO();
-			itemFacDTO.setFactura(res);
-			res.getItemsFactura().add(itemFacDTO);
+			res.getItemsFactura().add(itemFacAux.toDTO());
 		}
 
 		return res;

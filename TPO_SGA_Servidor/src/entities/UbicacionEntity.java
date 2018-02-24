@@ -15,18 +15,17 @@ public class UbicacionEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroUbicacion;
-	
+
 	private String codigoUbicacion;
-	private int cantLibre;
+	private int cantOcupada;
 	private int capacidadMax;
 
 	@ManyToOne
 	@JoinColumn(name = "codLote")
-	private LoteEntity lote; 
+	private LoteEntity lote;
 
 	
-	
-	//Constructor
+	// Constructor
 	public UbicacionEntity() {
 
 	}
@@ -47,20 +46,20 @@ public class UbicacionEntity {
 		this.codigoUbicacion = codigoUbicacion;
 	}
 
-	public int getCantLibre() {
-		return cantLibre;
-	}
-
-	public void setCantLibre(int cantLibre) {
-		this.cantLibre = cantLibre;
-	}
-
 	public int getCapacidadMax() {
 		return capacidadMax;
 	}
 
 	public void setCapacidadMax(int capacidadMax) {
 		this.capacidadMax = capacidadMax;
+	}
+
+	public int getCantOcupada() {
+		return cantOcupada;
+	}
+
+	public void setCantOcupada(int cantOcupada) {
+		this.cantOcupada = cantOcupada;
 	}
 
 	public LoteEntity getLote() {

@@ -1,12 +1,15 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Articulos")
-public class ArticuloEntity {
+public class ArticuloEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -158,6 +161,15 @@ public class ArticuloEntity {
 
 	public void setLotes(List<LoteEntity> lotes) {
 		this.lotes = lotes;
+	}
+
+	@Override
+	public String toString() {
+		return "ArticuloEntity [codArticulo=" + codArticulo + ", codigoBarras=" + codigoBarras + ", marca=" + marca
+				+ ", tipo=" + tipo + ", descripcion=" + descripcion + ", presentacion=" + presentacion + ", tamano="
+				+ tamano + ", unidad=" + unidad + ", cantAComprar=" + cantAComprar + ", cantReservada=" + cantReservada
+				+ ", cantReal=" + cantReal + ", cantFuturoDisponible=" + cantFuturoDisponible + ", precio=" + precio
+				+ ", movimientos=" + movimientos + ", lotes=" + lotes + "]";
 	}
 
 }

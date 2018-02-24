@@ -129,4 +129,21 @@ public class Cliente {
 		
 		return res; 
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
+				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
+				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
+	}
+
+	public ClienteDTO toDTOAprobarPedido() {
+		ClienteDTO res = new ClienteDTO();
+		res.setNroCliente(this.nroCliente);
+		res.setSaldo(this.saldo);
+		
+		return res;
+	}
+	
+	
 }
