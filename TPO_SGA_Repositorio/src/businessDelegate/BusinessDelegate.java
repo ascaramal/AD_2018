@@ -24,7 +24,7 @@ public class BusinessDelegate {
 	private INegocio negocioRemoto;
 	
 	private BusinessDelegate() throws SistemaException {
-		conectar();
+		conectar(); 
 	}
 
 	public static BusinessDelegate getInstance() throws SistemaException {
@@ -75,13 +75,20 @@ public class BusinessDelegate {
 		}
 	}
 
-	public void nuevoPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException {
-		try {
+	public void nuevoPedido(PedidoDTO pedidoDTO)  {
+		
 			negocioRemoto.nuevoPedido(pedidoDTO);
-		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			throw new PedidoException("No se pudo crear el pedido");
-		}
+		
+	}
+ 
+	public List<PedidoDTO> getPedidosNuevos(int nroCliente) throws ClienteException, PedidoException {
+		List<PedidoDTO> lst = null;
+		try {
+			lst = negocioRemoto.getPedidosNuevos(nroCliente);
+		} catch(RemoteException e) {
+			throw new PedidoException("No hay pedidos nuevos");
+		}		
+		return lst; 
 	}
 
 	

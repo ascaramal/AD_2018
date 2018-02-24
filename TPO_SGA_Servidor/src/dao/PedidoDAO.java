@@ -28,7 +28,7 @@ public class PedidoDAO {
 	
 	private PedidoDAO() {}
 
-	public static PedidoDAO getInstancia() {
+	public static PedidoDAO getInstancia() { 
 		if(instancia == null) {
 			instancia = new PedidoDAO();
 			sf = HibernateUtil.getSessionFactory();
@@ -85,16 +85,31 @@ public class PedidoDAO {
 //		}
 //	}
 
-	public void altaPedido(Pedido pedido) throws DAOException {
-		try {
+	public void altaPedido(Pedido pedido)  {
+
 			Session session = sf.openSession();
-			session.beginTransaction();
-			session.save(this.toEntity(pedido));
-			session.getTransaction().commit();
+			PedidoEntity res = new PedidoEntity();  
+		
+			res.setEstadoPedido(pedido.getEstadoPedido());
+			res.setFechaGeneracion(pedido.getFechaGeneracion());
+			res.setFechaDespacho(pedido.getFechaDespacho());
+			res.setTotal(pedido.getTotal());
+			
+
+			
+//			for(ItemPedido itemPedido : pedido.getItemsPedido()) {
+//				ItemPedidoEntity itemPEntity = new ItemPedidoEntity();
+//				itemPEntity.setCantidad(itemPedido.getCantidad());
+//				res.getItemsPedido().add(itemPEntity);
+//			}
+			
+			ItemPedidoEntity iPE = new ItemPedidoEntity();
+			iPE.setCantidad(200);
+			res.getItemsPedido().add(iPE);
+			session.save(res);
+			
 			session.close();
-		} catch (Exception e) {
-			throw new DAOException("Error PedidoDAO. AltaPedido");
-		}
+		
 	}
 	
 	public void altaPedidoConNegocio(Pedido pedido) throws DAOException {
@@ -219,6 +234,36 @@ public class PedidoDAO {
 		session.save(pedidoE);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	//Listado de Pedidos Nuevos
+	@SuppressWarnings("unchecked")
+	public List<Pedido> getPedidosNuevos(int nroCliente) {
+		try {
+			List<Pedido> resultado = new ArrayList<Pedido>();
+			Session s = sf.openSession();
+			List<PedidoEntity> aux = (List<PedidoEntity>)s.createQuery("FROM PedidoEntity p join p.cliente c where c.nroCliente = :cliente and p.estadoPedido = 'Nuevo' ")
+					.setParameter("cliente", nroCliente).list();
+			s.close();
+			for(PedidoEntity pedido : aux)
+				resultado.add(this.toNegocio(pedido));
+			return resultado;
+		} catch(Exception e) {
+			System.out.println(e);
+			System.out.println("Error PedidoDAO.recuperarListaPedidosNuevos");
+		}
+		return null;
+	}
+
+	private Pedido toNegocio(PedidoEntity pedido) {
+		Pedido res = new Pedido();
+		res.setNroPedido(pedido.getNroPedido());
+		res.setFechaGeneracion(pedido.getFechaGeneracion());
+		res.setFechaDespacho(pedido.getFechaDespacho());
+		res.setTotal(pedido.getTotal());
+		res.setEstadoPedido(pedido.getEstadoPedido());
+		
+		return res;
 	}
 	
 	

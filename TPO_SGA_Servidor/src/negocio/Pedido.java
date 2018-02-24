@@ -35,7 +35,7 @@ public class Pedido {
 		this.fechaDespacho = fechaDespacho;
 		this.itemsPedido = new ArrayList<ItemPedido>();
 		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajo>();
-		this.total = total;
+		this.total = total; 
 	}
 
 	public int getNroPedido() {

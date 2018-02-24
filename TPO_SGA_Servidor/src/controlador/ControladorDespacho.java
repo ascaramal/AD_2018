@@ -1,15 +1,21 @@
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dao.ArticuloDAO;
 import dao.ClienteDAO;
+import dao.PedidoDAO;
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
-
+import dto.ItemPedidoDTO;
 import dto.PedidoDTO;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.DAOException;
 import exceptions.PedidoException;
+import negocio.Cliente;
+import negocio.ItemPedido;
 import negocio.Pedido;
 
 
@@ -37,23 +43,38 @@ public class ControladorDespacho {
 	public ArticuloDTO findArticulo(int nroArticulo) throws ArticuloException {
 		ArticuloDTO articulo = new ArticuloDTO();
 		try {
-
-			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
-			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO(); 
 			articulo = ArticuloDAO.getInstancia().findArticulo(nroArticulo).toDTO();
 		} catch (DAOException e) {
 			throw new ArticuloException("No se encontro el articulo");
 		}
-		return articulo;
+		return articulo; 
 	}
 
 	
-	public void altaPedido(PedidoDTO pedidoDTO) throws ClienteException, PedidoException{
+	public void altaPedido(PedidoDTO pedidoDTO) {
 		//PedidoDAO dao = PedidoDAO.getInstancia();
+		
+		Pedido pedido = new Pedido();
+		pedido.setTotal(pedidoDTO.getTotal());
+		
+//		for(ItemPedidoDTO itemPedidoDTO : pedidoDTO.getItemsPedido()) {
+//			ItemPedido itemP = new ItemPedido();
+//			itemP.setCantidad(itemPedidoDTO.getCantidad());
+//			pedido.getItemsPedido().add(itemP); 
+//		}
+		
+				
+//		PedidoDAO.getInstancia().altaPedido(pedido); --> funciona
+		
+		
+		
+		PedidoDAO.getInstancia().altaPedido(pedido);
+		
+		
 		
 		//Pedido pe = dao.toNegocio(pedido);
 		//List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
-		try {
+
 //			//Se verifica el limite de credito 
 //			if(pe.controlarLimiteCredito() == EstadoPedido.Rechazado) {
 //				return EstadoPedido.Rechazado;
@@ -68,13 +89,19 @@ public class ControladorDespacho {
 //			}else {
 //				pe.setEstadoPedido(EstadoPedido.Completado);
 //			}
-			//se comento para verificar si genera el pedido desde cliente.
-			
-			Pedido pedi = new Pedido();
-			pedi.save();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	 
 		
-}
+	}
+
+	public List<PedidoDTO> getPedidosNuevos(int nroCliente) {
+		List<PedidoDTO> resultado = new ArrayList<PedidoDTO>();
+		List<Pedido> pedidos = PedidoDAO.getInstancia().getPedidosNuevos(nroCliente);
+		for(Pedido pedido : pedidos) 
+			resultado.add(pedido.toDTO());
+		return resultado;
+	}
+	
+}		
+
+
+

@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -34,6 +35,8 @@ public class ArticuloEntity {
 
 	// Constructor
 	public ArticuloEntity() {
+		this.movimientos = new ArrayList<MovimientoEntity>();
+		this.lotes = new ArrayList<LoteEntity>();
 	}
 
 	public Integer getCodArticulo() {

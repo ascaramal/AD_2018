@@ -37,6 +37,7 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Integer.valueOf("Hola"); 
 		
 			
 	}

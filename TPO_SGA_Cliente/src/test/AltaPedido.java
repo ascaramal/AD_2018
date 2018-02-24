@@ -13,28 +13,23 @@ import exceptions.SistemaException;
 public class AltaPedido {
 
 	public static void main(String[] args){
-		try {
 			generarPedido();
-		} catch (SistemaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ArticuloException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PedidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClienteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 	}
 
-	public static void generarPedido() throws SistemaException, ArticuloException, PedidoException, ClienteException {
+	public static void generarPedido() {
 		ClienteDTO cliente = new ClienteDTO();
 		cliente.setNroCliente(2);
 		ClienteDTO clienteVuelta = new ClienteDTO();
-		clienteVuelta = BusinessDelegate.getInstance().findCliente(cliente.getNroCliente());
+		try {
+			clienteVuelta = BusinessDelegate.getInstance().findCliente(cliente.getNroCliente());
+		} catch (ClienteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SistemaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		if (clienteVuelta != null) {
 			PedidoDTO pedidoDTO = new PedidoDTO();
@@ -56,12 +51,18 @@ public class AltaPedido {
 			iPedido.setArticulo(BusinessDelegate.getInstance().findArticulo(3));
 			iPedido.setCantidad(100);
 			pedidoDTO.agregarItemPedido(iPedido3);
-
+			
+			pedidoDTO.setTotal(100.0f);
 			
 			System.out.println("Cliente vuelta: " + clienteVuelta);
 			System.out.println(pedidoDTO.toString());
 			System.out.println(pedidoDTO.getCliente());
-			BusinessDelegate.getInstance().nuevoPedido(pedidoDTO);
+			try {
+				BusinessDelegate.getInstance().nuevoPedido(pedidoDTO);
+			} catch (SistemaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		} else {
 			System.out.println("Cliente Inexistente");

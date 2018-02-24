@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,8 +11,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Pedidos")
-public class PedidoEntity {
+public class PedidoEntity implements Serializable {
 	
+	private static final long serialVersionUID = 5317362669318773293L;
+
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int nroPedido;
@@ -19,18 +23,24 @@ public class PedidoEntity {
 	@JoinColumn(name="nroCliente")
 	private ClienteEntity cliente;
 	
+	@Column(name="estadoPedido")
 	private EstadoPedido estadoPedido;
+	
+	@Column(name="fechaGeneracion")
 	private Date fechaGeneracion;
+	
+	@Column(name="fechaDespacho")
 	private Date fechaDespacho;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL) 
 	@JoinColumn(name="nroPedido")
 	private List<ItemPedidoEntity> itemsPedido;
 	
+	@Column(name="total")
 	private float total;
 	
 	public PedidoEntity() {
-		
+		this.itemsPedido = new ArrayList<ItemPedidoEntity>();
 	}
 
 	public int getNroPedido() {

@@ -1,3 +1,9 @@
+<%@page import="javafx.scene.control.Alert"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="dto.PedidoDTO"%>
+<%@ page import="java.util.Iterator"%>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -7,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Die VerrÃ¼ckte Dose | Sistema </title>
+  <title>Die Verrückte Dose | Sistema </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
@@ -45,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>D</b>VD</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Die VerrÃ¼ckte Dose</b></span>
+      <span class="logo-lg"><b>Die Verrückte Dose</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -61,14 +67,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="dist/img/6.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Administrador</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="dist/img/6.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Administrador
@@ -78,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="index.jsp" class="btn btn-default btn-flat">Salir</a>
+                  <a href="perfilAdmin.html" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -96,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dist/img/6.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Administrador</p>
@@ -156,8 +162,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-        
-    </section>
+      	<section class="content-header">
+      	<h1>
+    	    Pedidos Agregados
+    	</h1>
+    	</section>
+    	<!-- Main content -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Estado</th>
+              <th>Nro Pedido</th>
+              <th>Fecha Generacion</th>
+              <th>Fecha Despacho</th>
+              <th>Total</th>
+              <th>Nro Cliente</th>
+              <th>
+            </tr>
+          </thead>
+          <tbody>
+           <%
+				PedidoDTO pedido;
+           		List<PedidoDTO> pedidos = (List<PedidoDTO>)request.getAttribute("pedidos");
+           		for(Iterator<PedidoDTO> i = pedidos.iterator(); i.hasNext();) {
+					pedido = i.next();
+			%>
+            <tr>
+              <td><%=pedido.getEstadoPedido() %></td>
+              <td><%=pedido.getNroPedido() %></td>
+              <td><%=pedido.getFechaGeneracion() %></td>
+              <td><%=pedido.getFechaDespacho() %></td>
+              <td><%=pedido.getTotal()%></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+    	
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -165,7 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">Grupo NÂ°1 - Applicaciones Distribuidas - UADE</a>.</strong>
+    <strong>Copyright &copy; 2018 Grupo N°1 - Applicaciones Distribuidas - UADE.</strong>
   </footer>
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->

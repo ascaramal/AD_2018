@@ -7,6 +7,7 @@ import java.util.List;
 
 import enumerations.EstadoPedido;
 
+
 public class PedidoDTO implements Serializable {
 
 	private static final long serialVersionUID = 846109194779402439L;
@@ -89,7 +90,8 @@ public class PedidoDTO implements Serializable {
 	
 	//Metodo
 	public void agregarItemPedido(ItemPedidoDTO iPedido) {
-		itemsPedido.add(iPedido);
+		itemsPedido.add(iPedido); 
 	}
+
 
 }

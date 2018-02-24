@@ -28,7 +28,7 @@ public class ItemPedidoDTO implements Serializable {
 	}
 	
 	public void setArticulo(ArticuloDTO articulo) {
-		this.articulo = articulo;
+		this.articulo = articulo; 
 	}
 	
 	public int getCantidad() {

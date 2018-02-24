@@ -7,7 +7,6 @@ import java.util.List;
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import dto.PedidoDTO;
-import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.PedidoException;
@@ -22,6 +21,7 @@ public interface INegocio extends Remote {
 	//public ClienteDTO findCliente(int nroCLiente) throws RemoteException;
 	public ArticuloDTO findArticulo(int nroArticulo) throws RemoteException, ArticuloException;
 	public ClienteDTO findCliente(int nroCLiente) throws RemoteException, ClienteException;
-	public void nuevoPedido(PedidoDTO pedidoDTO) throws RemoteException, ClienteException, PedidoException;
+	public void nuevoPedido(PedidoDTO pedidoDTO) throws RemoteException;
+	public List<PedidoDTO> getPedidosNuevos(int nroCliente) throws RemoteException;
 
 }

@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.mapping.Array;
 
 import dto.ClienteDTO;
 
@@ -37,14 +40,17 @@ public class ClienteEntity {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nroCliente")
-	private List<FacturaEntity> facturaEntity;
+	private List<FacturaEntity> facturas;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nroCliente")
-	private List<PedidoEntity> pedidoEntity;
+	private List<PedidoEntity> pedidos;
 
 	// Constructor
 	public ClienteEntity() {
+		this.remitos = new ArrayList<RemitoEntity>();
+		this.facturas = new ArrayList<FacturaEntity>();
+		this.pedidos = new ArrayList<PedidoEntity>();
 
 	}
 
@@ -136,20 +142,20 @@ public class ClienteEntity {
 		this.remitos = remitos;
 	}
 
-	public List<FacturaEntity> getFacturaEntity() {
-		return facturaEntity;
+	public List<FacturaEntity> getFacturas() {
+		return facturas;
 	}
 
-	public void setFacturaEntity(List<FacturaEntity> facturaEntity) {
-		this.facturaEntity = facturaEntity;
+	public void setFacturas(List<FacturaEntity> facturas) {
+		this.facturas = facturas;
 	}
 
-	public List<PedidoEntity> getPedidoEntity() {
-		return pedidoEntity;
+	public List<PedidoEntity> getPedidos() {
+		return pedidos;
 	}
 
-	public void setPedidoEntity(List<PedidoEntity> pedidoEntity) {
-		this.pedidoEntity = pedidoEntity;
+	public void setPedidos(List<PedidoEntity> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public ClienteDTO toDTO() {

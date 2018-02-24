@@ -4,5 +4,6 @@ public enum EstadoPedido {
 	Rechazado,  
 	Pendiente, 
 	Completado, 
-	Facturado
+	Facturado,
+	Nuevo
 }

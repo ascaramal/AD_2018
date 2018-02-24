@@ -12,6 +12,7 @@ import dto.PedidoDTO;
 import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
+import exceptions.DAOException;
 import exceptions.PedidoException;
 import interfaces.INegocio;
 import or.ObjetoRemoto;
@@ -31,7 +32,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 			try {
 				instancia = new ObjetoRemoto();
 			} catch (RemoteException e) {
-				e.printStackTrace();
+				e.printStackTrace(); 
 			}
 		}
 		return instancia;
@@ -51,8 +52,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements INegocio {
 		return ControladorTest.getInstancia().getClientes();
 	}
 
-	public void nuevoPedido(PedidoDTO pedidoDTO) throws RemoteException, ClienteException, PedidoException {
-		ControladorDespacho.getInstancia().altaPedido(pedidoDTO);
+	public List<PedidoDTO> getPedidosNuevos(int nroCliente) throws RemoteException {
+		return ControladorDespacho.getInstancia().getPedidosNuevos(nroCliente);
+	}
+	
+	public void nuevoPedido(PedidoDTO pedidoDTO) {
+		
+			ControladorDespacho.getInstancia().altaPedido(pedidoDTO);
+		
 	}
 
 }
