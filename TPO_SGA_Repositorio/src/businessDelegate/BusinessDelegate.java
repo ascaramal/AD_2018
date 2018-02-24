@@ -6,12 +6,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import dto.ArticuloDTO;
 import dto.ClienteDTO;
 import dto.PedidoDTO;
-import enumerations.EstadoPedido;
 import exceptions.ArticuloException;
 import exceptions.ClienteException;
 import exceptions.PedidoException;
@@ -46,15 +43,15 @@ public class BusinessDelegate {
 		}
 	}
 	
-	public List<ClienteDTO> getClientes() throws SistemaException, ClienteException {
-		List<ClienteDTO> lst = null;
-		try {
-			lst = negocioRemoto.getClientes();
-		} catch(RemoteException e) {
-			throw new ClienteException("No se pudo listar clientes");
-		}		
-		return lst;
-	}
+//	public List<ClienteDTO> getClientes() throws SistemaException, ClienteException {
+//		List<ClienteDTO> lst = null;
+//		try {
+//			lst = negocioRemoto.getClientes();
+//		} catch(RemoteException e) {
+//			throw new ClienteException("No se pudo listar clientes");
+//		}		
+//		return lst;
+//	}
 	
 
 	public ClienteDTO findCliente(int nroCliente) throws ClienteException {
@@ -75,10 +72,12 @@ public class BusinessDelegate {
 		}
 	}
 
-	public void nuevoPedido(PedidoDTO pedidoDTO)  {
-		
-			negocioRemoto.nuevoPedido(pedidoDTO);
-		
+	public void nuevoPedido(PedidoDTO pedido) throws SistemaException, PedidoException, ClienteException {
+		try {
+			negocioRemoto.nuevoPedido(pedido);
+		} catch (RemoteException e) {
+			throw new SistemaException("Error de Acceso al servidor");
+		}
 	}
  
 	public List<PedidoDTO> getPedidosNuevos(int nroCliente) throws ClienteException, PedidoException {
