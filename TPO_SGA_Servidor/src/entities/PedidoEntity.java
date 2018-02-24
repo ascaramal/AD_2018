@@ -1,6 +1,5 @@
 package entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,9 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Pedidos")
-public class PedidoEntity implements Serializable {
-	
-	private static final long serialVersionUID = 5317362669318773293L;
+public class PedidoEntity {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -30,6 +30,7 @@ public class LoteEntity {
 	// Constructor
 	public LoteEntity() {
 		this.ubicaciones = new ArrayList<UbicacionEntity>();
+		this.movimientos = new ArrayList<MovimientoEntity>();
 	}
 
 	public int getCodLote() {

@@ -15,6 +15,7 @@ public class UbicacionEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroUbicacion;
+	
 	private String codigoUbicacion;
 	private int cantLibre;
 	private int capacidadMax;

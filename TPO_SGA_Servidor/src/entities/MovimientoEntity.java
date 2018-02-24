@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,16 +20,19 @@ import javax.persistence.Table;
 @Table(name = "Movimientos")
 public class MovimientoEntity {
 
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroMovimiento;
 	private String tipoMovimiento;
 	private int nroPedido;
-	@Column(name="nroOCompra")
+
+	@Column(name = "nroOCompra")
 	private int nroOrdenDeCompra;
-	@Column(name="motivoDeAjuste")
+
+	@Column(name = "motivoDeAjuste")
 	private String motivoAjuste;
-	@Column(name="cantidad")
+
+	@Column(name = "cantidad")
 	private int cant;
 	private String empleado;
 
@@ -40,17 +44,10 @@ public class MovimientoEntity {
 	@JoinTable(name = "LotesMovimientos")
 	private List<LoteEntity> lotes;
 
-	public ArticuloEntity getArticuloEntity() {
-		return articuloEntity;
-	}
-
-	public void setArticuloEntity(ArticuloEntity articuloEntity) {
-		this.articuloEntity = articuloEntity;
-	}
-
+	
 	// Constructor
 	public MovimientoEntity() {
-
+		this.lotes = new ArrayList<LoteEntity>();
 	}
 
 	public int getNroMovimiento() {
@@ -75,6 +72,14 @@ public class MovimientoEntity {
 
 	public void setNroPedido(int nroPedido) {
 		this.nroPedido = nroPedido;
+	}
+
+	public ArticuloEntity getArticuloEntity() {
+		return articuloEntity;
+	}
+
+	public void setArticuloEntity(ArticuloEntity articuloEntity) {
+		this.articuloEntity = articuloEntity;
 	}
 
 	public int getNroOrdenDeCompra() {
