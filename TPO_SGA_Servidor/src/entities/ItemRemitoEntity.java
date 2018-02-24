@@ -3,37 +3,36 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ItemsRemito")
+@Table(name = "ItemsRemito")
 public class ItemRemitoEntity {
-	
-	
+
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroItemRemito;
 
 	@ManyToOne
-	@JoinColumn(name="codArticulo")
+	@JoinColumn(name = "codArticulo")
 	private ArticuloEntity articulo;
-	
-	@Column(name="cantidad")
+
+	@Column(name = "cantidad")
 	private int cant;
-	
+
 	@ManyToOne
-	@JoinColumn(name="nroRemito")
-	private RemitoEntity remitoEntity;
+	@JoinColumn(name = "nroRemito")
+	private RemitoEntity remito;
+
 	
-	
-	//Constructor
+	// Constructor
 	public ItemRemitoEntity() {
-		
+
 	}
 
-	public RemitoEntity getRemitoEntity() {
-		return remitoEntity;
+	public RemitoEntity getRemito() {
+		return remito;
 	}
 
-	public void setRemitoEntity(RemitoEntity remitoEntity) {
-		this.remitoEntity = remitoEntity;
+	public void setRemito(RemitoEntity remito) {
+		this.remito = remito;
 	}
 
 	public int getNroItemRemito() {
@@ -59,7 +58,5 @@ public class ItemRemitoEntity {
 	public void setCant(int cant) {
 		this.cant = cant;
 	}
-	
-	
 
 }

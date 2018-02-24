@@ -1,6 +1,5 @@
 package entities;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,42 +10,50 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ItemsOC")
-public class ItemOrdenDeCompraEntity  {
+@Table(name = "ItemsOC")
+public class ItemOrdenDeCompraEntity {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idItemOC")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idItemOC")
 	private int nroItemOrdenDeCompra;
-	@Column(name="cant")
+	@Column(name = "cant")
 	private int cantidad;
-	
+
 	@ManyToOne
-	@JoinColumn(name="codArticulo")
+	@JoinColumn(name = "codArticulo")
 	private ArticuloEntity articulo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="nroOC")
-	private OrdenDeCompraEntity ordenDeCompraEntity;
+	@JoinColumn(name = "nroOC")
+	private OrdenDeCompraEntity ordenDeCompra;
+
 	
-	
-	//Constructor
+	// Constructor
 	public ItemOrdenDeCompraEntity() {
-	
+
 	}
 
 	public int getCantidad() {
 		return cantidad;
 	}
-	
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
+
+	public OrdenDeCompraEntity getOrdenDeCompra() {
+		return ordenDeCompra;
+	}
+
+	public void setOrdenDeCompra(OrdenDeCompraEntity ordenDeCompra) {
+		this.ordenDeCompra = ordenDeCompra;
+	}
+
 	public ArticuloEntity getArticulo() {
 		return articulo;
 	}
-	
+
 	public void setArticulo(ArticuloEntity articulo) {
 		this.articulo = articulo;
 	}
@@ -58,6 +65,5 @@ public class ItemOrdenDeCompraEntity  {
 	public void setNroItemOrdenDeCompra(int nroItemOrdenDeCompra) {
 		this.nroItemOrdenDeCompra = nroItemOrdenDeCompra;
 	}
-	
-	
+
 }

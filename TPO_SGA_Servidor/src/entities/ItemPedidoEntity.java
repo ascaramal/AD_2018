@@ -1,6 +1,5 @@
 package entities;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,25 +12,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ItemsPedido")
-public class ItemPedidoEntity implements Serializable {
-
-	private static final long serialVersionUID = 3685912058061920431L;
+public class ItemPedidoEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "nroItemPedido")
 	private int nroItemPedido;
 
-	//@ManyToOne
-	//@JoinColumn(name = "codArticulo")
-	//private ArticuloEntity articulo;
+	@ManyToOne
+	@JoinColumn(name = "codArticulo")
+	private ArticuloEntity articulo;
 
 	@Column(name="cantidad")
 	private int cantidad;
 
-//	@ManyToOne
-//	@JoinColumn(name = "nroPedido")
-//	private PedidoEntity pedidoEntity;
+	@ManyToOne
+	@JoinColumn(name = "nroPedido")
+	private PedidoEntity pedidoEntity;
 
 	
 	
@@ -48,13 +45,13 @@ public class ItemPedidoEntity implements Serializable {
 		this.nroItemPedido = nroItemPedido;
 	}
 
-//	public ArticuloEntity getArticulo() {
-//		return articulo;
-//	}
-//
-//	public void setArticulo(ArticuloEntity articulo) {
-//		this.articulo = articulo;
-//	}
+	public ArticuloEntity getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(ArticuloEntity articulo) {
+		this.articulo = articulo;
+	}
 
 	public int getCantidad() {
 		return cantidad;
@@ -64,12 +61,12 @@ public class ItemPedidoEntity implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-//	public PedidoEntity getPedidoEntity() {
-//		return pedidoEntity;
-//	}
-//
-//	public void setPedidoEntity(PedidoEntity pedidoEntity) {
-//		this.pedidoEntity = pedidoEntity;
-//	}
+	public PedidoEntity getPedidoEntity() {
+		return pedidoEntity;
+	}
+
+	public void setPedidoEntity(PedidoEntity pedidoEntity) {
+		this.pedidoEntity = pedidoEntity;
+	}
 
 }
