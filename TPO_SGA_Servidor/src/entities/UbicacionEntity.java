@@ -22,7 +22,7 @@ public class UbicacionEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "codLote")
-	private LoteEntity lote;
+	private LoteEntity lote; 
 
 	
 	
