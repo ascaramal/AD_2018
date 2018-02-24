@@ -1,7 +1,6 @@
 package negocio;
 
 import dto.ClienteDTO;
-import entities.ClienteEntity;
 
 public class Cliente {
 
@@ -16,6 +15,8 @@ public class Cliente {
 	private float limiteDeCredito;
 	private float saldo;
 
+	
+	//Constructor
 	public Cliente() {
 	}
 	

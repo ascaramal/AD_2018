@@ -5,19 +5,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class LoteDTO implements Serializable {
-	
+
 	private static final long serialVersionUID = -2582825385773550673L;
-	
+
 	private int codLote;
 	private Date fechaVtoLote;
 	private List<UbicacionDTO> ubicaciones;
 	private ArticuloDTO articulo;
-	private MovimientoDTO movimiento;
-	
+
+	// Constructor
 	public LoteDTO() {
 		this.ubicaciones = new ArrayList<UbicacionDTO>();
+	}
+
+	public LoteDTO(int codLote, Date fechaVtoLote, List<UbicacionDTO> ubicaciones, ArticuloDTO articulo) {
+		this.codLote = codLote;
+		this.fechaVtoLote = fechaVtoLote;
+		this.ubicaciones = new ArrayList<UbicacionDTO>();
+		this.articulo = articulo;
 	}
 
 	public int getCodLote() {
@@ -52,18 +58,10 @@ public class LoteDTO implements Serializable {
 		this.articulo = articulo;
 	}
 
-	public MovimientoDTO getMovimiento() {
-		return movimiento;
-	}
-
-	public void setMovimiento(MovimientoDTO movimiento) {
-		this.movimiento = movimiento;
-	}
-
 	@Override
 	public String toString() {
 		return "LoteDTO [codLote=" + codLote + ", fechaVtoLote=" + fechaVtoLote + ", ubicaciones=" + ubicaciones
-				+ ", articulo=" + articulo + ", movimiento=" + movimiento + "]";
+				+ ", articulo=" + articulo + "]";
 	}
-	
+
 }

@@ -5,16 +5,15 @@ import java.io.Serializable;
 public class ItemFacturaDTO implements Serializable {
 
 	private static final long serialVersionUID = -5519684029885030186L;
-	
+
 	private int nroItemFactura;
 	private int cantidad;
 	private ArticuloDTO articulo;
 	private float precio;
-	private FacturaDTO factura;
 
-	//Constructor
+	// Constructor
 	public ItemFacturaDTO() {
-		
+
 	}
 
 	public int getNroItemFactura() {
@@ -49,26 +48,15 @@ public class ItemFacturaDTO implements Serializable {
 		this.precio = precio;
 	}
 
-
-	public FacturaDTO getFactura() {
-		return factura;
-	}
-
-	public void setFactura(FacturaDTO factura) {
-		this.factura = factura;
-	}
-
-	
 	@Override
 	public String toString() {
 		return "ItemFacturaDTO [nroItemFactura=" + nroItemFactura + ", cantidad=" + cantidad + ", articulo=" + articulo
-				+ ", precio=" + precio + ", factura=" + factura + "]";
+				+ ", precio=" + precio + "]";
 	}
 
-	//metodos
-    public float getSubtotal() {
-        return this.precio * this.cantidad;
-    }
-	
-	
+	// metodos
+	public float getSubtotal() {
+		return this.precio * this.cantidad;
+	}
+
 }

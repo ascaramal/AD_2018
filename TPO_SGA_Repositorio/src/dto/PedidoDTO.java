@@ -7,21 +7,44 @@ import java.util.List;
 
 import enumerations.EstadoPedido;
 
-
 public class PedidoDTO implements Serializable {
 
 	private static final long serialVersionUID = 846109194779402439L;
-	
+
 	private int nroPedido;
 	private ClienteDTO cliente;
 	private EstadoPedido estadoPedido;
 	private Date fechaGeneracion;
 	private Date fechaDespacho;
 	private List<ItemPedidoDTO> itemsPedido;
+	private List<OrdenDeTrabajoDTO> ordenesDeTrabajo;
 	private float total;
-	
+
+	// Constructor
 	public PedidoDTO() {
 		this.itemsPedido = new ArrayList<ItemPedidoDTO>();
+		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajoDTO>();
+	}
+
+	public PedidoDTO(int nroPedido, ClienteDTO cliente, EstadoPedido estadoPedido, Date fechaGeneracion,
+			Date fechaDespacho, List<ItemPedidoDTO> itemsPedido, List<OrdenDeTrabajoDTO> ordenesDeTrabajo,
+			float total) {
+		this.nroPedido = nroPedido;
+		this.cliente = cliente;
+		this.estadoPedido = estadoPedido;
+		this.fechaGeneracion = fechaGeneracion;
+		this.fechaDespacho = fechaDespacho;
+		this.itemsPedido = new ArrayList<ItemPedidoDTO>();
+		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajoDTO>();
+		this.total = total;
+	}
+
+	public List<OrdenDeTrabajoDTO> getOrdenesDeTrabajo() {
+		return ordenesDeTrabajo;
+	}
+
+	public void setOrdenesDeTrabajo(List<OrdenDeTrabajoDTO> ordenesDeTrabajo) {
+		this.ordenesDeTrabajo = ordenesDeTrabajo;
 	}
 
 	public int getNroPedido() {
@@ -87,11 +110,9 @@ public class PedidoDTO implements Serializable {
 				+ itemsPedido + ", total=" + total + "]";
 	}
 
-	
-	//Metodo
+	// Metodo
 	public void agregarItemPedido(ItemPedidoDTO iPedido) {
-		itemsPedido.add(iPedido); 
+		itemsPedido.add(iPedido);
 	}
-
 
 }

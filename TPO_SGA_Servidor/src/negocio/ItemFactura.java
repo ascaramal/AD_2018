@@ -10,17 +10,18 @@ public class ItemFactura {
 	private Articulo articulo;
 	private float precio;
 	
+	
+	//Constructor
+	public ItemFactura() {
+	
+	}
+	
 	public ItemFactura(int nroItemFactura, int cantidad, Articulo articulo, float precio) {
 		this.nroItemFactura = nroItemFactura;
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 		this.precio = precio;
 	}
-
-
-	public ItemFactura() {
-	}
-
 
 	public int getNroItemFactura() {
 		return nroItemFactura;
@@ -58,11 +59,12 @@ public class ItemFactura {
 		ItemFacturaDTO res = new ItemFacturaDTO();
 		res.setNroItemFactura(this.nroItemFactura);
 		res.setCantidad(this.cantidad);
-		res.setArticulo(this.articulo.toDTO());
 		res.setPrecio(this.precio);
-		
-		return res;
-		
+
+		if (this.articulo != null)
+			res.setArticulo(this.articulo.toDTO());
+
+		return res;	
 	}
 	
 	// metodos

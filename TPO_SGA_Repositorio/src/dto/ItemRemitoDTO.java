@@ -10,12 +10,20 @@ public class ItemRemitoDTO implements Serializable {
 	private int nroItemRemito;
 	private ArticuloDTO articulo;
 	private int cant;
-	private RemitoDTO remito;
-
+	
+	
+	//Constructor
 	public ItemRemitoDTO() {
 		
 	}
 	
+	public ItemRemitoDTO(int nroItemRemito, ArticuloDTO articulo, int cant) {
+		this.nroItemRemito = nroItemRemito;
+		this.articulo = articulo;
+		this.cant = cant;
+	}
+
+
 	public int getNroItemRemito() {
 		return nroItemRemito;
 	}
@@ -40,21 +48,10 @@ public class ItemRemitoDTO implements Serializable {
 		this.cant = cant;
 	}
 
-	public RemitoDTO getRemito() {
-		return remito;
-	}
-
-	public void setRemito(RemitoDTO remito) {
-		this.remito = remito;
-	}
-
 	@Override
 	public String toString() {
 		return "ItemRemitoDTO [nroItemRemito=" + nroItemRemito + ", articulo=" + articulo + ", cant=" + cant
-				+ ", remito=" + remito + "]";
+				+ ", remito=" + "]";
 	}
-
-	
-	
 	
 }

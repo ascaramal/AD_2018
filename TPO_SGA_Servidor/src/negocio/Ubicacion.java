@@ -6,16 +6,20 @@ public class Ubicacion {
 
 	private int nroUbicacion;
 	private String codigoUbicacion;
-	private int cantLibre;
-	private Lote lote;
+	private int cantOcupada;
 	private int capacidadMax;
 
-	public int getCantLibre() {
-		return cantLibre;
+	
+	// Constructor
+	public Ubicacion() {
+
 	}
 
-	public void setCantLibre(int cantLibre) {
-		this.cantLibre = cantLibre;
+	public Ubicacion(int nroUbicacion, String codigoUbicacion, int cantOcupada, int capacidadMax) {
+		this.nroUbicacion = nroUbicacion;
+		this.codigoUbicacion = codigoUbicacion;
+		this.cantOcupada = cantOcupada;
+		this.capacidadMax = capacidadMax;
 	}
 
 	public int getCapacidadMax() {
@@ -24,18 +28,6 @@ public class Ubicacion {
 
 	public void setCapacidadMax(int capacidadMax) {
 		this.capacidadMax = capacidadMax;
-	}
-
-	public Ubicacion(int nroUbicacion, String codigoUbicacion, int cantLibre, Lote lote, int capacidadMax) {
-		this.nroUbicacion = nroUbicacion;
-		this.codigoUbicacion = codigoUbicacion;
-		this.cantLibre = cantLibre;
-		this.lote = lote;
-		this.capacidadMax = capacidadMax;
-	}
-
-	public Ubicacion() {
-
 	}
 
 	public int getNroUbicacion() {
@@ -54,12 +46,12 @@ public class Ubicacion {
 		this.codigoUbicacion = codigoUbicacion;
 	}
 
-	public Lote getLote() {
-		return lote;
+	public int getCantOcupada() {
+		return cantOcupada;
 	}
 
-	public void setLote(Lote lote) {
-		this.lote = lote;
+	public void setCantOcupada(int cantOcupada) {
+		this.cantOcupada = cantOcupada;
 	}
 
 	public boolean sosUbicacion() {
@@ -70,8 +62,8 @@ public class Ubicacion {
 		UbicacionDTO res = new UbicacionDTO();
 		res.setNroUbicacion(this.nroUbicacion);
 		res.setCodigoUbicacion(this.codigoUbicacion);
-		res.setCantLibre(this.cantLibre);
-		res.setLote(this.lote.toDTO());
+		res.setCantOcupada(this.cantOcupada);
+		
 		return res;
 	}
 }

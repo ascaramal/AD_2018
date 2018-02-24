@@ -11,6 +11,12 @@ public class RecepcionCompra {
 	private Lote lote;
 	private Date fechaVtoLote;
 
+	
+	//Constructor
+	public RecepcionCompra() {
+		
+	}
+	
 	public RecepcionCompra(Articulo articulo, int cantidad, Lote lote, Date fechaVtoLote) {
 		this.articulo = articulo;
 		this.cantidad = cantidad;
@@ -52,10 +58,14 @@ public class RecepcionCompra {
 
 	public RecepcionCompraDTO toDTO() {
 		RecepcionCompraDTO res = new RecepcionCompraDTO();
-		res.setArticulo(this.articulo.toDTO());
 		res.setCantidad(this.cantidad);
 		res.setFechaVtoLote(this.fechaVtoLote);
-		res.setLote(this.lote.toDTO());
+		
+		if (this.articulo != null)
+			res.setArticulo(this.articulo.toDTO());
+		
+		if (this.lote != null)
+			res.setLote(this.lote.toDTO());
 		
 		return res;
 		

@@ -25,6 +25,7 @@ public class ArticuloDTO implements Serializable {
 	private List<MovimientoDTO> movimientos;
 	private List<LoteDTO> lotes;
 
+	
 	//Constructor
 	public ArticuloDTO() {
 		this.movimientos = new ArrayList<MovimientoDTO>();
@@ -34,7 +35,6 @@ public class ArticuloDTO implements Serializable {
 	public ArticuloDTO(int codArticulo, String codigoBarras, String marca, String tipo, String descripcion,
 			String presentacion, String tamano, int unidad, int cantAComprar, int cantReservada, int cantReal,
 			int cantFuturoDisponible, float precio, List<MovimientoDTO> movimientos, List<LoteDTO> lotes) {
-		super();
 		this.codArticulo = codArticulo;
 		this.codigoBarras = codigoBarras;
 		this.marca = marca;
@@ -48,8 +48,8 @@ public class ArticuloDTO implements Serializable {
 		this.cantReal = cantReal;
 		this.cantFuturoDisponible = cantFuturoDisponible;
 		this.precio = precio;
-		this.movimientos = movimientos;
-		this.lotes = lotes;
+		this.movimientos = new ArrayList<MovimientoDTO>();
+		this.lotes = new ArrayList<LoteDTO>();
 	}
 
 

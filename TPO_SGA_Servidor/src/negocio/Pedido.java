@@ -5,11 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import dao.PedidoDAO;
-import dto.ItemPedidoDTO;
-import dto.OrdenDeTrabajoDTO;
 import dto.PedidoDTO;
 import enumerations.EstadoPedido;
-import exceptions.DAOException;
 
 public class Pedido {
 
@@ -21,13 +18,14 @@ public class Pedido {
 	private List<ItemPedido> itemsPedido;
 	private List<OrdenDeTrabajo> ordenesDeTrabajo;
 	private float total;
-	
+
+	// Constructor
 	public Pedido() {
 		this.itemsPedido = new ArrayList<ItemPedido>();
 		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajo>();
-		
+
 	}
-	
+
 	public Pedido(int nroPedido, Cliente cliente, EstadoPedido estadoPedido, Date fechaGeneracion, Date fechaDespacho,
 			List<ItemPedido> itemsPedido, List<OrdenDeTrabajo> ordenesDeTrabajo, float total) {
 		this.nroPedido = nroPedido;
@@ -37,7 +35,7 @@ public class Pedido {
 		this.fechaDespacho = fechaDespacho;
 		this.itemsPedido = new ArrayList<ItemPedido>();
 		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajo>();
-		this.total = total; 
+		this.total = total;
 	}
 
 	public int getNroPedido() {
@@ -104,83 +102,87 @@ public class Pedido {
 		this.total = total;
 	}
 
-	
-	//Metodos
+	// Metodos
 	public void agregarItemPedido(ItemPedido itemP) {
 		itemsPedido.add(itemP);
 	}
-	
-//	public boolean controlarLimiteCredito()
-//	{
-//		//Saldo disponible del Cliente:
-//		float maxC = this.cliente.getLimiteDeCredito();
-//		float totalP = 0;
-//		//Total de los pedidos:
-//		for (int i = 0; i < this.itemsPedido.size(); i++)
-//		{
-//			totalP = totalP + itemsPedido.get(i).calcularSubtotal();
-//		}
-//		
-//		//Comparo y devuelvo;
-//		if(totalP > maxC) //si el pedio es mayor al saldo disponible
-//			return false;
-//		else
-//			return true;
-//	public EstadoPedido controlarLimiteCredito() {
-//	
-//		if(this.getCliente().getSaldo() >= getTotalPedido())
-//			return EstadoPedido.Pendiente;
-//		return EstadoPedido.Rechazado;
-//	}
-//	
-//	public float getTotalPedido() {
-//		float totalPedido = 0;
-//		for(ItemPedido i : this.getItemsPedido()) {
-//			totalPedido += i.getArticulo().getPrecio()*i.getCantidad();
-//		}
-//		return totalPedido;
-//	}
-	
-	//Devuleve una lista de articulos faltantes que luego generará la orden de compra.
-//	public List<Articulo> controlarStockPedido() {
-//		List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
-//		
-//		for(ItemPedido itemPedido : this.getItemsPedido()) {
-//			if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() - itemPedido.getArticulo().getCantReservada())) 
-//				if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() 
-//						+ itemPedido.getArticulo().getCantFuturoDisponible() 
-//						- itemPedido.getArticulo().getCantReservada()))
-//					articulosFaltantes.add(itemPedido.getArticulo());
-//		}
-//		return articulosFaltantes;
-//	}
-	
+
+	// public boolean controlarLimiteCredito()
+	// {
+	// //Saldo disponible del Cliente:
+	// float maxC = this.cliente.getLimiteDeCredito();
+	// float totalP = 0;
+	// //Total de los pedidos:
+	// for (int i = 0; i < this.itemsPedido.size(); i++)
+	// {
+	// totalP = totalP + itemsPedido.get(i).calcularSubtotal();
+	// }
+	//
+	// //Comparo y devuelvo;
+	// if(totalP > maxC) //si el pedio es mayor al saldo disponible
+	// return false;
+	// else
+	// return true;
+	// public EstadoPedido controlarLimiteCredito() {
+	//
+	// if(this.getCliente().getSaldo() >= getTotalPedido())
+	// return EstadoPedido.Pendiente;
+	// return EstadoPedido.Rechazado;
+	// }
+	//
+	// public float getTotalPedido() {
+	// float totalPedido = 0;
+	// for(ItemPedido i : this.getItemsPedido()) {
+	// totalPedido += i.getArticulo().getPrecio()*i.getCantidad();
+	// }
+	// return totalPedido;
+	// }
+
+	// Devuleve una lista de articulos faltantes que luego generará la orden de
+	// compra.
+	// public List<Articulo> controlarStockPedido() {
+	// List<Articulo> articulosFaltantes = new ArrayList<Articulo>();
+	//
+	// for(ItemPedido itemPedido : this.getItemsPedido()) {
+	// if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal() -
+	// itemPedido.getArticulo().getCantReservada()))
+	// if(itemPedido.getCantidad() < (itemPedido.getArticulo().getCantReal()
+	// + itemPedido.getArticulo().getCantFuturoDisponible()
+	// - itemPedido.getArticulo().getCantReservada()))
+	// articulosFaltantes.add(itemPedido.getArticulo());
+	// }
+	// return articulosFaltantes;
+	// }
+
 	public PedidoDTO toDTO() {
 		PedidoDTO res = new PedidoDTO();
 		res.setNroPedido(this.nroPedido);
-		res.setCliente(this.cliente.toDTO());
 		res.setEstadoPedido(this.estadoPedido);
 		res.setFechaGeneracion(this.getFechaGeneracion());
 		res.setFechaDespacho(this.fechaDespacho);
 		res.setTotal(this.total);
-		
-		for(ItemPedido iPedidoAux : this.getItemsPedido()) {
-			ItemPedidoDTO itemPDTO = iPedidoAux.toDTO();
-			itemPDTO.setPedido(res);
-			
+
+		if (this.cliente != null)
+			res.setCliente(this.cliente.toDTO());
+
+		for (ItemPedido iPedidoAux : this.itemsPedido) {
+			res.getItemsPedido().add(iPedidoAux.toDTO());
+
 		}
-		
-		for(OrdenDeTrabajo oDeTAux : this.getOrdenesDeTrabajo()) {
-			OrdenDeTrabajoDTO oDeTDTO = oDeTAux.toDTO();
-			oDeTDTO.setPedido(res);
+
+		for (OrdenDeTrabajo oDeTAux : this.ordenesDeTrabajo) {
+			res.getOrdenesDeTrabajo().add(oDeTAux.toDTO());
 		}
-		
+
 		return res;
+
 	}
-	
+
 	public void save() {
-		PedidoDAO.getInstancia().altaPedido(this);
-		
+		try {
+			PedidoDAO.getInstancia().altaPedido(this);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
-	
 }

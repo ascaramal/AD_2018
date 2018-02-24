@@ -6,7 +6,6 @@ import java.util.List;
 import dto.ArticuloDTO;
 import dto.LoteDTO;
 import dto.MovimientoDTO;
-import entities.MovimientoEntity;
 
 public class Articulo {
 
@@ -186,18 +185,20 @@ public class Articulo {
 		res.setCantAComprar(this.cantAComprar);
 		res.setCantReservada(this.cantReservada);
 		res.setPrecio(this.precio);
-
-//		for(Lote loteAux : this.getLotes()) {
-//			LoteDTO loteDTO = loteAux.toDTO();
-//			loteDTO.setArticulo(res);
-//			res.getLotes().add(loteDTO);
-//		}
-//		
-//		for(Movimiento movAux : this.getMovimientos()) {
-//			MovimientoDTO movimientoDTO = movAux.toDTO();
-//			movimientoDTO.setArticulo(res);
-//			res.getMovimientos().add(movimientoDTO);
-//		}
+		res.setCantFuturoDisponible(this.cantFuturoDisponible);
+		res.setCantReal(this.cantReal);
+			
+		for(Lote loteAux : this.lotes) {
+			LoteDTO loteDTO = loteAux.toDTO();
+			loteDTO.setArticulo(res);
+			res.getLotes().add(loteDTO);
+		}
+		
+		for(Movimiento movAux : this.movimientos) {
+			MovimientoDTO movimientoDTO = movAux.toDTO();
+			movimientoDTO.setArticulo(res);
+			res.getMovimientos().add(movimientoDTO);
+		}
 		
 		return res;
 	}

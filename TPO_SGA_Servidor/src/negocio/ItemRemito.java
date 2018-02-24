@@ -1,8 +1,5 @@
 package negocio;
 
-import java.util.ArrayList;
-
-import dto.ClienteDTO;
 import dto.ItemRemitoDTO;
 
 public class ItemRemito {
@@ -11,15 +8,19 @@ public class ItemRemito {
 	private Articulo articulo;
 	private int cant;
 	
+
+	//Constructor
+	public ItemRemito() {
+
+	}
+	
 	public ItemRemito(int nroItemRemito, Articulo articulo, int cant) {
 		this.nroItemRemito = nroItemRemito;
 		this.articulo = articulo;
 		this.cant = cant;
 	}
 	
-	public ItemRemito() {
 
-	}
 	
 	public int getNroItemRemito() {
 		return nroItemRemito;
@@ -47,11 +48,11 @@ public class ItemRemito {
 
 	public ItemRemitoDTO toDTO() {
 		ItemRemitoDTO res = new ItemRemitoDTO();
-		res.setCant(cant);
-
 		res.setNroItemRemito(this.nroItemRemito);
-		//res.setArticulo(this.getArticulo());
 		res.setCant(this.cant);
+		
+		if (this.articulo != null)
+			res.setArticulo(this.getArticulo().toDTO());
 		
 		return res; 
 	}

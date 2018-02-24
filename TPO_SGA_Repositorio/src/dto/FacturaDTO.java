@@ -5,22 +5,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FacturaDTO implements Serializable{
-	
+public class FacturaDTO implements Serializable {
+
 	private static final long serialVersionUID = 5065139918157523159L;
-	
+
 	private int numero;
 	private int prefijo;
 	private Date fechaEmision;
 	private ClienteDTO cliente;
 	private float total;
 	private List<ItemFacturaDTO> itemsFactura;
+
 	
-	//Constructor 
+	// Constructor
 	public FacturaDTO() {
-		this.itemsFactura = new ArrayList<ItemFacturaDTO>();  
+		this.itemsFactura = new ArrayList<ItemFacturaDTO>();
 	}
-	
+
+	public FacturaDTO(int numero, int prefijo, Date fechaEmision, ClienteDTO cliente, float total,
+			List<ItemFacturaDTO> itemsFactura) {
+		this.numero = numero;
+		this.prefijo = prefijo;
+		this.fechaEmision = fechaEmision;
+		this.cliente = cliente;
+		this.total = total;
+		this.itemsFactura = new ArrayList<ItemFacturaDTO>();
+	}
+
 	public int getNumero() {
 		return numero;
 	}
@@ -69,19 +80,17 @@ public class FacturaDTO implements Serializable{
 		this.itemsFactura = itemsFactura;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "FacturaDTO [numero=" + numero + ", prefijo=" + prefijo + ", fechaEmision=" + fechaEmision + ", cliente="
 				+ cliente + ", total=" + total + ", itemsFactura=" + itemsFactura + "]";
 	}
 
-	//metodos 
+	// metodos
 	public float calcularTotal() {
-		return 0;	
+		return 0;
 	}
-	
+
 	public void agregarItemFactura(ItemFacturaDTO item) {
 		itemsFactura.add(item);
 	}

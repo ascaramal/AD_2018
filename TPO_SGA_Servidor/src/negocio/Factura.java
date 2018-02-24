@@ -7,7 +7,6 @@ import java.util.List;
 import dto.FacturaDTO;
 import dto.ItemFacturaDTO;
 
-
 public class Factura {
 
 	private int numero;
@@ -16,8 +15,15 @@ public class Factura {
 	private Cliente cliente;
 	private float total;
 	private List<ItemFactura> itemsFactura;
+
 	
 	
+	// Constructor
+	public Factura() {
+		this.itemsFactura = new ArrayList<ItemFactura>();
+
+	}
+
 	public Factura(int numero, int prefijo, Date fechaEmision, Cliente cliente, float total,
 			List<ItemFactura> itemsFactura) {
 		this.numero = numero;
@@ -27,13 +33,6 @@ public class Factura {
 		this.total = total;
 		this.itemsFactura = new ArrayList<ItemFactura>();
 	}
-	
-	
-	public Factura() {
-		this.itemsFactura = new ArrayList<ItemFactura>();
-		
-	}
-
 
 	public int getNumero() {
 		return numero;
@@ -66,7 +65,7 @@ public class Factura {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	public float getTotal() {
 		return total;
 	}
@@ -83,29 +82,30 @@ public class Factura {
 		this.itemsFactura = itemsFactura;
 	}
 
-	
 	public FacturaDTO toDTO() {
 		FacturaDTO res = new FacturaDTO();
 		res.setNumero(this.numero);
 		res.setPrefijo(this.prefijo);
 		res.setFechaEmision(this.fechaEmision);
-		res.setCliente(this.cliente.toDTO());
 		res.setTotal(this.total);
+	
+		if (this.cliente != null) 
+			res.setCliente(this.cliente.toDTO());
 		
-		for(ItemFactura itemFacAux : this.getItemsFactura()) {
+		for (ItemFactura itemFacAux : this.itemsFactura) {
 			ItemFacturaDTO itemFacDTO = itemFacAux.toDTO();
 			itemFacDTO.setFactura(res);
 			res.getItemsFactura().add(itemFacDTO);
 		}
-		
-		return res; 
+
+		return res;
 	}
 
-	//metodos 
+	// metodos
 	public float calcularTotal() {
-		return 0;	
+		return 0;
 	}
-	
+
 	public void agregarItemFactura(ItemFactura item) {
 		itemsFactura.add(item);
 	}

@@ -3,7 +3,6 @@ package dto;
 import java.io.Serializable;
 import java.util.Date;
 
-
 public class RecepcionCompraDTO implements Serializable {
 
 	private static final long serialVersionUID = -6013668971457057606L;
@@ -13,10 +12,19 @@ public class RecepcionCompraDTO implements Serializable {
 	private LoteDTO lote;
 	private Date fechaVtoLote;
 
-	public RecepcionCompraDTO() {
-		
-	}
 	
+	// Constructor
+	public RecepcionCompraDTO() {
+
+	}
+
+	public RecepcionCompraDTO(ArticuloDTO articulo, int cantidad, LoteDTO lote, Date fechaVtoLote) {
+		this.articulo = articulo;
+		this.cantidad = cantidad;
+		this.lote = lote;
+		this.fechaVtoLote = fechaVtoLote;
+	}
+
 	public ArticuloDTO getArticulo() {
 		return articulo;
 	}
@@ -54,6 +62,5 @@ public class RecepcionCompraDTO implements Serializable {
 		return "RecepcionCompraDTO [articulo=" + articulo + ", cantidad=" + cantidad + ", lote=" + lote
 				+ ", fechaVtoLote=" + fechaVtoLote + "]";
 	}
-
 
 }

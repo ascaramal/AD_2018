@@ -8,14 +8,22 @@ public class UbicacionDTO implements Serializable {
 
 	private int nroUbicacion;
 	private String codigoUbicacion;
-	private int cantLibre;
-	private LoteDTO lote;
+	private int cantOcupada;
 	private int capacidadMax;
 
+	
+	//Constructor
 	public UbicacionDTO() {
 
 	}
 
+	public UbicacionDTO(int nroUbicacion, String codigoUbicacion, int cantOcupada, int capacidadMax) {
+		this.nroUbicacion = nroUbicacion;
+		this.codigoUbicacion = codigoUbicacion;
+		this.cantOcupada = cantOcupada;
+		this.capacidadMax = capacidadMax;
+	}
+	
 	public int getNroUbicacion() {
 		return nroUbicacion;
 	}
@@ -32,16 +40,12 @@ public class UbicacionDTO implements Serializable {
 		this.codigoUbicacion = codigoUbicacion;
 	}
 
-	public int getCantLibre() {
-		return cantLibre;
+	public int getCantOcupada() {
+		return cantOcupada;
 	}
 
-	public void setCantLibre(int cantLibre) {
-		this.cantLibre = cantLibre;
-	}
-
-	public LoteDTO getLote() {
-		return lote;
+	public void setCantOcupada(int cantOcupada) {
+		this.cantOcupada = cantOcupada;
 	}
 
 	public int getCapacidadMax() {
@@ -50,16 +54,6 @@ public class UbicacionDTO implements Serializable {
 
 	public void setCapacidadMax(int capacidadMax) {
 		this.capacidadMax = capacidadMax;
-	}
-
-	public void setLote(LoteDTO lote) {
-		this.lote = lote;
-	}
-
-	@Override
-	public String toString() {
-		return "UbicacionDTO [nroUbicacion=" + nroUbicacion + ", codigoUbicacion=" + codigoUbicacion + ", cantLibre="
-				+ cantLibre + ", lote=" + lote + ", capacidadMax=" + capacidadMax + "]";
 	}
 
 	// Metodos

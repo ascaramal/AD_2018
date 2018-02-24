@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import dto.ItemRemitoDTO;
 import dto.RemitoDTO;
 
 public class Remito {
@@ -15,6 +14,12 @@ public class Remito {
 	private Cliente cliente;
 	private List<ItemRemito> items;
 	
+
+	//Constructor
+	public Remito() {
+		this.items = new ArrayList<ItemRemito>();
+	}
+	
 	public Remito(int numero, int prefijo, Date fecha, Cliente cliente, List<ItemRemito> items) {
 		this.numero = numero;
 		this.prefijo = prefijo;
@@ -23,9 +28,6 @@ public class Remito {
 		this.items = new ArrayList<ItemRemito>();
 	}
 
-	public Remito() {
-		this.items = new ArrayList<ItemRemito>();
-	}
 
 	public int getNumero() {
 		return numero;
@@ -71,13 +73,13 @@ public class Remito {
 		RemitoDTO res = new RemitoDTO();
 		res.setNumero(this.numero);
 		res.setPrefijo(this.prefijo);
-		res.setCliente(this.cliente.toDTO());
 		res.setFecha(this.fecha);
 		
-		for(ItemRemito itemRAux : this.getItems()) {
-			ItemRemitoDTO itemRDTO = itemRAux.toDTO();
-			itemRDTO.setRemito(res);
-			res.getItems().add(itemRDTO);
+		if (this.cliente != null)
+			res.setCliente(this.cliente.toDTO());
+		
+		for(ItemRemito itemRAux : this.items) {
+			res.getItems().add(itemRAux.toDTO());
 		}
 		
 		return res;

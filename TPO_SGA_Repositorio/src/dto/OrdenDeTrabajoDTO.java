@@ -11,9 +11,9 @@ public class OrdenDeTrabajoDTO implements Serializable {
 	private UbicacionDTO Ubicacion;
 	private OrdenDeCompraDTO ordenDeCompra;
 	private PedidoDTO pedido;
-	
+
 	public OrdenDeTrabajoDTO() {
-		
+
 	}
 
 	public ArticuloDTO getArticulo() {
@@ -44,6 +44,10 @@ public class OrdenDeTrabajoDTO implements Serializable {
 		return ordenDeCompra;
 	}
 
+	public void setOrdenDeCompra(OrdenDeCompraDTO ordenDeCompra) {
+		this.ordenDeCompra = ordenDeCompra;
+	}
+
 	public PedidoDTO getPedido() {
 		return pedido;
 	}
@@ -52,16 +56,10 @@ public class OrdenDeTrabajoDTO implements Serializable {
 		this.pedido = pedido;
 	}
 
-	public void setOrdenDeCompra(OrdenDeCompraDTO ordenDeCompra) {
-		this.ordenDeCompra = ordenDeCompra;
-	}
-
 	@Override
 	public String toString() {
 		return "OrdenDeTrabajoDTO [articulo=" + articulo + ", cantidad=" + cantidad + ", Ubicacion=" + Ubicacion
 				+ ", ordenDeCompra=" + ordenDeCompra + ", pedido=" + pedido + "]";
 	}
-	
-	
-	
+
 }

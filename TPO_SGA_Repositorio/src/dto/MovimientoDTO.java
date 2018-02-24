@@ -4,24 +4,38 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import enumerations.TipoMovimiento;
 
 public class MovimientoDTO implements Serializable {
-	
+
 	private static final long serialVersionUID = 8108690230805397910L;
-	
+
 	private int nroMovimiento;
-	private String tipoMovimiento;
+	private TipoMovimiento tipoMovimiento;
 	private int nroPedido;
 	private int nroOrdenDeCompra;
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
-	private ArticuloDTO articulo;
 	private List<LoteDTO> lotes;
-	
-	
+	private ArticuloDTO articulo;
+
+	// Constructor
 	public MovimientoDTO() {
-		this.lotes = new ArrayList<LoteDTO>();  
+		this.lotes = new ArrayList<LoteDTO>();
+	}
+
+	public MovimientoDTO(int nroMovimiento, TipoMovimiento tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
+			String motivoAjuste, int cant, String empleado, List<LoteDTO> lotes, ArticuloDTO articulo) {
+		this.nroMovimiento = nroMovimiento;
+		this.tipoMovimiento = tipoMovimiento;
+		this.nroPedido = nroPedido;
+		this.nroOrdenDeCompra = nroOrdenDeCompra;
+		this.motivoAjuste = motivoAjuste;
+		this.cant = cant;
+		this.empleado = empleado;
+		this.lotes = new ArrayList<LoteDTO>();
+		this.articulo = articulo;
 	}
 
 	public int getNroMovimiento() {
@@ -32,11 +46,11 @@ public class MovimientoDTO implements Serializable {
 		this.nroMovimiento = nroMovimiento;
 	}
 
-	public String getTipoMovimiento() {
+	public TipoMovimiento getTipoMovimiento() {
 		return tipoMovimiento;
 	}
 
-	public void setTipoMovimiento(String tipoMovimiento) {
+	public void setTipoMovimiento(TipoMovimiento tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
 	}
 
@@ -80,6 +94,14 @@ public class MovimientoDTO implements Serializable {
 		this.empleado = empleado;
 	}
 
+	public List<LoteDTO> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<LoteDTO> lotes) {
+		this.lotes = lotes;
+	}
+
 	public ArticuloDTO getArticulo() {
 		return articulo;
 	}
@@ -88,19 +110,11 @@ public class MovimientoDTO implements Serializable {
 		this.articulo = articulo;
 	}
 
-	public List<LoteDTO> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<LoteDTO> lotes) {
-		this.lotes = lotes;
-	}
-	
 	@Override
 	public String toString() {
 		return "MovimientoDTO [nroMovimiento=" + nroMovimiento + ", tipoMovimiento=" + tipoMovimiento + ", nroPedido="
 				+ nroPedido + ", nroOrdenDeCompra=" + nroOrdenDeCompra + ", motivoAjuste=" + motivoAjuste + ", cant="
-				+ cant + ", empleado=" + empleado + ", articulo=" + articulo + "]";
+				+ cant + ", empleado=" + empleado + ", lotes=" + lotes + ", articulo=" + articulo + "]";
 	}
 
 }

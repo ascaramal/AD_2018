@@ -3,24 +3,30 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.OrdenDeCompraDTO;
 import enumerations.EstadoOC;
 
 public class OrdenDeCompra {
-	
+
 	private int nroOrdenDeCompra;
 	private int nroProveedor;
 	private EstadoOC estado;
 	private List<ItemOrdenDeCompra> itemsOC;
-	
-	public OrdenDeCompra(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado, List<ItemOrdenDeCompra> itemsOC) {
+	private List<OrdenDeTrabajo> ordenesDeTrabajo;
+
+	// Constructor
+	public OrdenDeCompra() {
+		this.itemsOC = new ArrayList<ItemOrdenDeCompra>();
+		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajo>();
+	}
+
+	public OrdenDeCompra(int nroOrdenDeCompra, int nroProveedor, EstadoOC estado, List<ItemOrdenDeCompra> itemsOC,
+			List<OrdenDeTrabajo> ordenesDeTrabajo) {
 		this.nroOrdenDeCompra = nroOrdenDeCompra;
 		this.nroProveedor = nroProveedor;
 		this.estado = estado;
-		this.itemsOC = new ArrayList<ItemOrdenDeCompra>();
-	}
-
-	public OrdenDeCompra() {
-		this.itemsOC = new ArrayList<ItemOrdenDeCompra>();
+		this.itemsOC = itemsOC;
+		this.ordenesDeTrabajo = ordenesDeTrabajo;
 	}
 
 	public int getNroOrdenDeCompra() {
@@ -55,10 +61,25 @@ public class OrdenDeCompra {
 		this.itemsOC = itemsOC;
 	}
 
-	public void imprimirOrdenDeCompra() { 
+	public void imprimirOrdenDeCompra() {
+
+	}
+
+	public OrdenDeCompraDTO toDTO() {
+		OrdenDeCompraDTO res = new OrdenDeCompraDTO();
+		res.setNroOrdenDeCompra(this.nroOrdenDeCompra);
+		res.setEstado(this.estado);
+		res.setNroProveedor(this.nroProveedor);
+		
+		for (ItemOrdenDeCompra itemOC : this.itemsOC) {
+			res.getItemsOC().add(itemOC.toDTO());
+		}
+		
+		
+		return res;
 		
 	}
-	
+
 	public void agregarItemOC(ItemOrdenDeCompra itemOC) {
 		itemsOC.add(itemOC);
 	}

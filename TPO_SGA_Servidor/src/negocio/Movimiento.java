@@ -3,27 +3,27 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.LoteDTO;
 import dto.MovimientoDTO;
+import enumerations.TipoMovimiento;
 
 public class Movimiento {
 
 	private int nroMovimiento;
-	private String tipoMovimiento;
+	private TipoMovimiento tipoMovimiento;
 	private int nroPedido;
 	private int nroOrdenDeCompra;
 	private String motivoAjuste;
 	private int cant;
 	private String empleado;
-	private Articulo articulo;
 	private List<Lote> lotes;
 
+	//Constructor
 	public Movimiento() {
 		this.lotes = new ArrayList<Lote>();
 	}
 
-	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
-			String motivoAjuste, int cant, String empleado, Articulo articulo, List<Lote> lotes) {
+	public Movimiento(int nroMovimiento, TipoMovimiento tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
+			String motivoAjuste, int cant, String empleado, List<Lote> lotes) {
 		this.nroMovimiento = nroMovimiento;
 		this.tipoMovimiento = tipoMovimiento;
 		this.nroPedido = nroPedido;
@@ -31,8 +31,7 @@ public class Movimiento {
 		this.motivoAjuste = motivoAjuste;
 		this.cant = cant;
 		this.empleado = empleado;
-		this.articulo = articulo;
-		this.lotes = new ArrayList<Lote>();
+		this.lotes = lotes;
 	}
 
 	public int getNroMovimiento() {
@@ -43,11 +42,11 @@ public class Movimiento {
 		this.nroMovimiento = nroMovimiento;
 	}
 
-	public String getTipoMovimiento() {
+	public TipoMovimiento getTipoMovimiento() {
 		return tipoMovimiento;
 	}
 
-	public void setTipoMovimiento(String tipoMovimiento) {
+	public void setTipoMovimiento(TipoMovimiento tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
 	}
 
@@ -91,14 +90,6 @@ public class Movimiento {
 		this.empleado = empleado;
 	}
 
-	public Articulo getArticulo() {
-		return articulo;
-	}
-
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
-
 	public List<Lote> getLotes() {
 		return lotes;
 	}
@@ -116,13 +107,6 @@ public class Movimiento {
 		res.setNroOrdenDeCompra(this.nroOrdenDeCompra);
 		res.setNroPedido(this.nroPedido);
 		res.setTipoMovimiento(this.tipoMovimiento);
-		res.setArticulo(this.articulo.toDTO());
-		
-		for(Lote loteAux : this.getLotes()) {
-			LoteDTO loteDTO = loteAux.toDTO();
-			loteDTO.setMovimiento(res);
-			res.getLotes().add(loteDTO);
-		}
 
 		return res;
 	}

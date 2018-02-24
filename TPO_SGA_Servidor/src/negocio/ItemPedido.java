@@ -49,11 +49,13 @@ public class ItemPedido {
 	}
 	
 	public ItemPedidoDTO toDTO() {
-		ItemPedidoDTO resultado = new ItemPedidoDTO();
-		resultado.setNroItemPedido(this.nroItemPedido);
-		resultado.setArticulo(this.articulo.toDTO());
-		resultado.setCantidad(this.cantidad);
-		
-		return resultado;
+		ItemPedidoDTO res = new ItemPedidoDTO();
+		res.setNroItemPedido(this.nroItemPedido);
+		res.setCantidad(this.cantidad);
+
+		if (this.articulo != null)
+			res.setArticulo(this.articulo.toDTO());
+			
+		return res;
 	}
 }

@@ -2,7 +2,6 @@ package dto;
 
 import java.io.Serializable;
 
-
 public class ClienteDTO implements Serializable {
 
 	private static final long serialVersionUID = -8655239895983395351L;
@@ -17,13 +16,12 @@ public class ClienteDTO implements Serializable {
 	private String condIVA;
 	private float limiteDeCredito;
 	private float saldo;
-	
-	
-	//Constructor
-	public ClienteDTO() { 
-		
+
+	// Constructor
+	public ClienteDTO() {
+
 	}
-	
+
 	public ClienteDTO(int nroCliente, String razonSocial, String direccion, String localidad, int codPostal,
 			String telefono, String cuit, String condIVA, float limiteDeCredito, float saldo) {
 		this.nroCliente = nroCliente;
@@ -37,8 +35,6 @@ public class ClienteDTO implements Serializable {
 		this.limiteDeCredito = limiteDeCredito;
 		this.saldo = saldo;
 	}
-
-
 
 	public int getNroCliente() {
 		return nroCliente;
@@ -96,11 +92,9 @@ public class ClienteDTO implements Serializable {
 		this.cuit = cuit;
 	}
 
-
 	public String getCondIVA() {
 		return condIVA;
 	}
-
 
 	public void setCondIVA(String condIVA) {
 		this.condIVA = condIVA;
@@ -122,12 +116,11 @@ public class ClienteDTO implements Serializable {
 		this.saldo = saldo;
 	}
 
-
 	@Override
 	public String toString() {
-		return "nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion
-				+ ", localidad=" + localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit
-				+ ", condIVA=" + condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
+		return "nroCliente=" + nroCliente + ", razonSocial=" + razonSocial + ", direccion=" + direccion + ", localidad="
+				+ localidad + ", codPostal=" + codPostal + ", telefono=" + telefono + ", cuit=" + cuit + ", condIVA="
+				+ condIVA + ", limiteDeCredito=" + limiteDeCredito + ", saldo=" + saldo + "]";
 	}
 
 }

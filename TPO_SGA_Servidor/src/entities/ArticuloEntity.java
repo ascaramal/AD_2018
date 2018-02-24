@@ -33,6 +33,7 @@ public class ArticuloEntity {
 	@JoinColumn(name = "codLote")
 	private List<LoteEntity> lotes;
 
+	
 	// Constructor
 	public ArticuloEntity() {
 		this.movimientos = new ArrayList<MovimientoEntity>();

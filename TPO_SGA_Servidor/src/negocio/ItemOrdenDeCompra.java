@@ -1,18 +1,31 @@
 package negocio;
 
+import dto.ItemOrdenDeCompraDTO;
+
 public class ItemOrdenDeCompra {
 
 	private int nroItemOrdenDeCompra;
 	private int cantidad;
 	private Articulo articulo;
 	
+	
+	//Constructor
+	public ItemOrdenDeCompra() {
+	
+	}
+
 	public ItemOrdenDeCompra(int nroItemOrdenDeCompra, int cantidad, Articulo articulo) {
-		this.setNroItemOrdenDeCompra(nroItemOrdenDeCompra);
+		this.nroItemOrdenDeCompra = nroItemOrdenDeCompra;
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}
 
-	public ItemOrdenDeCompra() {
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
 	}
 
 	public int getCantidad() {
@@ -22,14 +35,6 @@ public class ItemOrdenDeCompra {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
-	public Articulo getArticulo() {
-		return articulo;
-	}
-	
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
 
 	public int getNroItemOrdenDeCompra() {
 		return nroItemOrdenDeCompra;
@@ -37,6 +42,17 @@ public class ItemOrdenDeCompra {
 
 	public void setNroItemOrdenDeCompra(int nroItemOrdenDeCompra) {
 		this.nroItemOrdenDeCompra = nroItemOrdenDeCompra;
+	}
+
+	public ItemOrdenDeCompraDTO toDTO() {
+		ItemOrdenDeCompraDTO res = new ItemOrdenDeCompraDTO();
+		res.setNroItemOrdenDeCompra(this.nroItemOrdenDeCompra);
+		res.setCantidad(this.cantidad);
+		
+		if (this.articulo != null)
+			res.setArticulo(this.articulo.toDTO());
+		
+		return res;
 	}
 	
 	
