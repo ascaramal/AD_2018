@@ -10,7 +10,7 @@ import entities.MovimientoEntity;
 
 public class Articulo {
 
-	private int codArticulo;
+	private int codArticulo; 
 	private String codigoBarras;
 	private String marca;
 	private String tipo;
