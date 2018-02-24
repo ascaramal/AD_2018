@@ -20,6 +20,7 @@ public class OrdenDeCompra {
 	}
 
 	public OrdenDeCompra() {
+		this.itemsOC = new ArrayList<ItemOrdenDeCompra>();
 	}
 
 	public int getNroOrdenDeCompra() {

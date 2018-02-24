@@ -26,6 +26,7 @@ public class Lote {
 	}
 
 	public Lote() {
+		this.ubicaciones = new ArrayList<Ubicacion>();
 	}
 
 	public int getCodLote() {

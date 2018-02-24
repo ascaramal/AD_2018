@@ -30,6 +30,7 @@ public class Factura {
 	
 	
 	public Factura() {
+		this.itemsFactura = new ArrayList<ItemFactura>();
 		
 	}
 

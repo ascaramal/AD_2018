@@ -23,6 +23,8 @@ public class Pedido {
 	private float total;
 	
 	public Pedido() {
+		this.itemsPedido = new ArrayList<ItemPedido>();
+		this.ordenesDeTrabajo = new ArrayList<OrdenDeTrabajo>();
 		
 	}
 	
@@ -177,12 +179,7 @@ public class Pedido {
 	}
 	
 	public void save() {
-		try {
-			PedidoDAO.getInstancia().altaPedido(this);
-		} catch (DAOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		PedidoDAO.getInstancia().altaPedido(this);
 		
 	}
 	

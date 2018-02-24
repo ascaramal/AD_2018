@@ -6,6 +6,7 @@ import java.util.List;
 import dto.ArticuloDTO;
 import dto.LoteDTO;
 import dto.MovimientoDTO;
+import entities.MovimientoEntity;
 
 public class Articulo {
 
@@ -26,7 +27,8 @@ public class Articulo {
 	private List<Lote> lotes;
 
 	public Articulo() {
-		
+		this.movimientos = new ArrayList<Movimiento>();
+		this.lotes = new ArrayList<Lote>();
 	}	
 	
 	public Articulo(int codArticulo, String codigoBarras, String marca, String tipo, String descripcion,

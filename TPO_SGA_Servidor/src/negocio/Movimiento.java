@@ -18,6 +18,10 @@ public class Movimiento {
 	private Articulo articulo;
 	private List<Lote> lotes;
 
+	public Movimiento() {
+		this.lotes = new ArrayList<Lote>();
+	}
+
 	public Movimiento(int nroMovimiento, String tipoMovimiento, int nroPedido, int nroOrdenDeCompra,
 			String motivoAjuste, int cant, String empleado, Articulo articulo, List<Lote> lotes) {
 		this.nroMovimiento = nroMovimiento;

@@ -24,7 +24,7 @@ public class Remito {
 	}
 
 	public Remito() {
-		// TODO Auto-generated constructor stub
+		this.items = new ArrayList<ItemRemito>();
 	}
 
 	public int getNumero() {
