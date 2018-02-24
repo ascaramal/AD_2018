@@ -35,7 +35,15 @@ public class OrdenDeTrabajo {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	//hola euge
+	
+	public OrdenDeTrabajoDTO toDTO() {
+		OrdenDeTrabajoDTO res = new OrdenDeTrabajoDTO();
+		res.setCantidad(this.cantidad);
+		res.setArticulo(this.articulo.toDTO());
+		res.setUbicacion(this.ubicacion.toDTO());
+		
+		return res;
+	}
 	
 	
 }
